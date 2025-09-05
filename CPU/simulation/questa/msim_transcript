@@ -1,0 +1,136 @@
+# Reading pref.tcl
+# //  Questa Intel Starter FPGA Edition-64
+# //  Version 2023.3 win64 Jul 17 2023
+# //
+# //  Copyright 1991-2023 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# do cpu_run_msim_rtl_verilog.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Questa Intel Starter FPGA Edition-64 vmap 2023.3 Lib Mapping Utility 2023.07 Jul 17 2023
+# vmap work rtl_work 
+# Copying C:/intelFPGA_lite/23.1std/questa_fse/win64/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlog -vlog01compat -work work +incdir+C:/ECE/ECE\ 3710/CPU {C:/ECE/ECE 3710/CPU/seven_seg_hex.v}
+# Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+# Start time: 15:30:19 on Sep 04,2025
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/ECE/ECE 3710/CPU" C:/ECE/ECE 3710/CPU/seven_seg_hex.v 
+# -- Compiling module seven_seg_hex
+# 
+# Top level modules:
+# 	seven_seg_hex
+# End time: 15:30:19 on Sep 04,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+C:/ECE/ECE\ 3710/CPU {C:/ECE/ECE 3710/CPU/cpu.v}
+# Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+# Start time: 15:30:19 on Sep 04,2025
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/ECE/ECE 3710/CPU" C:/ECE/ECE 3710/CPU/cpu.v 
+# -- Compiling module cpu
+# 
+# Top level modules:
+# 	cpu
+# End time: 15:30:19 on Sep 04,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+C:/ECE/ECE\ 3710/CPU {C:/ECE/ECE 3710/CPU/alu.v}
+# Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+# Start time: 15:30:19 on Sep 04,2025
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/ECE/ECE 3710/CPU" C:/ECE/ECE 3710/CPU/alu.v 
+# -- Compiling module alu
+# 
+# Top level modules:
+# 	alu
+# End time: 15:30:19 on Sep 04,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vlog -vlog01compat -work work +incdir+C:/ECE/ECE\ 3710/CPU {C:/ECE/ECE 3710/CPU/alu.v}
+# Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+# Start time: 15:30:19 on Sep 04,2025
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/ECE/ECE 3710/CPU" C:/ECE/ECE 3710/CPU/alu.v 
+# -- Compiling module alu
+# 
+# Top level modules:
+# 	alu
+# End time: 15:30:19 on Sep 04,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+C:/ECE/ECE\ 3710/CPU {C:/ECE/ECE 3710/CPU/ALU_tb.v}
+# Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+# Start time: 15:30:19 on Sep 04,2025
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/ECE/ECE 3710/CPU" C:/ECE/ECE 3710/CPU/ALU_tb.v 
+# -- Compiling module ALU_tb
+# 
+# Top level modules:
+# 	ALU_tb
+# End time: 15:30:19 on Sep 04,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+C:/ECE/ECE\ 3710/CPU {C:/ECE/ECE 3710/CPU/seven_seg_hex.v}
+# Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+# Start time: 15:30:19 on Sep 04,2025
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/ECE/ECE 3710/CPU" C:/ECE/ECE 3710/CPU/seven_seg_hex.v 
+# -- Compiling module seven_seg_hex
+# 
+# Top level modules:
+# 	seven_seg_hex
+# End time: 15:30:20 on Sep 04,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+C:/ECE/ECE\ 3710/CPU {C:/ECE/ECE 3710/CPU/cpu.v}
+# Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+# Start time: 15:30:20 on Sep 04,2025
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/ECE/ECE 3710/CPU" C:/ECE/ECE 3710/CPU/cpu.v 
+# -- Compiling module cpu
+# 
+# Top level modules:
+# 	cpu
+# End time: 15:30:20 on Sep 04,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L fiftyfivenm_ver -L rtl_work -L work -voptargs="+acc"  ALU_tb
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L fiftyfivenm_ver -L rtl_work -L work -voptargs=""+acc"" ALU_tb 
+# Start time: 15:30:20 on Sep 04,2025
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading work.ALU_tb(fast)
+# Loading work.alu(fast)
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (8) for port 'opcode'. The port definition is at: C:/ECE/ECE 3710/CPU/alu.v(3).
+#    Time: 0 ps  Iteration: 0  Instance: /ALU_tb/k File: C:/ECE/ECE 3710/CPU/ALU_tb.v Line: 13
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run -all
+# I1: 0000000000000000 I2: 0000000000000000 OP: 00000000 Out: 0000000000000000 Flags: 10000
+# I1: 0000000000000100 I2: 1111111111111001 OP: 00000101 Out: 1111111111111101 Flags: 00000
+#    -> expected: 1111111111111101 (ADD)
+# I1: 1111111111111001 I2: 1111111111111011 OP: 00000001 Out: 1111111111111001 Flags: 00000
+#    -> expected: 1111111111111001 (AND)
+# I1: 0000000000000101 I2: 0000000000000101 OP: 00000010 Out: 0000000000000101 Flags: 00000
+#    -> expected: 0000000000000101 (OR)
+# I1: 1111111111111101 I2: 1111111111111010 OP: 00000011 Out: 0000000000000111 Flags: 00000
+#    -> expected: 0000000000000111 (XOR)
+# I1: 0000000000000001 I2: 0000000000000101 OP: 00001101 Out: 0000000000000001 Flags: 00000
+#    -> expected: 0000000000000001 (MOV)
+# I1: 0000000000000110 I2: 0000000000000101 OP: 00001000 Out: 0000000101000000 Flags: 00000
+#    -> expected: 0000000101000000 (LSH)
+# I1: 0000000000000101 I2: 0000000000000100 OP: 00001111 Out: 0000000000000000 Flags: 10000
+#    -> expected: 0000000000000000 (ASHU)
+# ** Note: $finish    : C:/ECE/ECE 3710/CPU/ALU_tb.v(69)
+#    Time: 87 ns  Iteration: 0  Instance: /ALU_tb
+# 1
+# Break in Module ALU_tb at C:/ECE/ECE 3710/CPU/ALU_tb.v line 69
+# End time: 15:31:18 on Sep 04,2025, Elapsed time: 0:00:58
+# Errors: 0, Warnings: 2

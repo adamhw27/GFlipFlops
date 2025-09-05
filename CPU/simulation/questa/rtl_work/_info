@@ -1,0 +1,122 @@
+m255
+K4
+z2
+!s12c _opt
+Z0 !s99 nomlopt
+!s11f vlog 2023.3 2023.07, Jul 17 2023
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z1 dC:/ECE/ECE 3710/CPU/simulation/questa
+T_opt
+!s110 1757021421
+Vn^N2H5NYW4K6FR[e75C`93
+04 6 4 work ALU_tb fast 0
+=1-dc215cae1eab-68ba04ec-346-7b00
+R0
+!s12b OEM100
+!s124 OEM10U2 
+o-quiet -auto_acc_if_foreign -work work -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L fiftyfivenm_ver -L rtl_work -L work +acc
+Z2 tCvgOpt 0
+n@_opt
+OL;O;2023.3;77
+valu
+2C:/ECE/ECE 3710/CPU/alu.v
+Z3 !s110 1757021419
+!i10b 1
+!s100 NLic:6>UbiU62g;BlZ?E@0
+I2dl94imV_ACJ=T``fn]4W1
+R1
+w1756932448
+8C:/ECE/ECE 3710/CPU/alu.v
+FC:/ECE/ECE 3710/CPU/alu.v
+!i122 3
+L0 3 179
+Z4 VDg1SIo80bB@j0V0VzS_@n1
+Z5 OL;L;2023.3;77
+r1
+!s85 0
+31
+Z6 !s108 1757021419.000000
+!s107 C:/ECE/ECE 3710/CPU/alu.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/ECE/ECE 3710/CPU|C:/ECE/ECE 3710/CPU/alu.v|
+!i113 0
+Z7 o-vlog01compat -work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z8 !s92 -vlog01compat -work work {+incdir+C:/ECE/ECE 3710/CPU} -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R2
+vALU_tb
+2C:/ECE/ECE 3710/CPU/ALU_tb.v
+R3
+!i10b 1
+!s100 WU;HSKZQ9mmN;D3Vi^T6l0
+II_OD5>H0e2V?ddMGRK43R3
+R1
+w1756938322
+8C:/ECE/ECE 3710/CPU/ALU_tb.v
+FC:/ECE/ECE 3710/CPU/ALU_tb.v
+!i122 4
+L0 2 70
+R4
+R5
+r1
+!s85 0
+31
+R6
+!s107 C:/ECE/ECE 3710/CPU/ALU_tb.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/ECE/ECE 3710/CPU|C:/ECE/ECE 3710/CPU/ALU_tb.v|
+!i113 0
+R7
+R8
+R2
+n@a@l@u_tb
+vcpu
+2C:/ECE/ECE 3710/CPU/cpu.v
+Z9 !s110 1757021420
+!i10b 1
+!s100 iL;;_^WKH^?^doQL7fc6H2
+I`9HDDHmlA?U=^C[JMBcPJ3
+R1
+w1756932447
+8C:/ECE/ECE 3710/CPU/cpu.v
+FC:/ECE/ECE 3710/CPU/cpu.v
+!i122 6
+L0 1 17
+R4
+R5
+r1
+!s85 0
+31
+!s108 1757021420.000000
+!s107 C:/ECE/ECE 3710/CPU/cpu.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/ECE/ECE 3710/CPU|C:/ECE/ECE 3710/CPU/cpu.v|
+!i113 0
+R7
+R8
+R2
+vseven_seg_hex
+2C:/ECE/ECE 3710/CPU/seven_seg_hex.v
+R9
+!i10b 1
+!s100 78[dfKQU:In@ZT<4S;BXb2
+I[GBnI@1W^:c3L176C2Hi40
+R1
+w1756932446
+8C:/ECE/ECE 3710/CPU/seven_seg_hex.v
+FC:/ECE/ECE 3710/CPU/seven_seg_hex.v
+!i122 5
+L0 1 28
+R4
+R5
+r1
+!s85 0
+31
+R6
+!s107 C:/ECE/ECE 3710/CPU/seven_seg_hex.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/ECE/ECE 3710/CPU|C:/ECE/ECE 3710/CPU/seven_seg_hex.v|
+!i113 0
+R7
+R8
+R2
