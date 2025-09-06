@@ -1,6 +1,6 @@
 module cpu (
 input [2:0] R1, R2,
-input [3:0] opcode,
+input [7:0] opcode,
 
 output [27:0] segOut
 );

@@ -4,7 +4,7 @@ module alu(R1, R2, opcode, aluOut, flags, cin);
 
 // R1 (Source) & R2 (Destination)
 input wire [15:0] R1, R2;
-input wire [3:0] opcode;
+input wire [7:0] opcode;
 input wire cin;
 
 output reg [15:0] aluOut;
@@ -20,7 +20,7 @@ parameter ADDC = 8'b0000_0111;
 parameter ADDCI = 8'b0111_xxxx;
 
 parameter MUL = 8'b0000_1110;
-parameter MUL = 8'b1110_xxxx;
+parameter MULI = 8'b1110_xxxx;
 
 parameter SUB = 8'b0000_1001;
 parameter SUBI = 8'b1001_xxxx;
@@ -45,7 +45,7 @@ parameter ASHU = 8'b1000_1111;
 parameter ASHUI = 8'b1000_001x;
 
 
-always @(R1, R2, opcode)
+always @(R1, R2, opcode, cin)
  begin
 	
 	flags[4:0] = 5'b00000;
