@@ -1,6 +1,6 @@
 module cpu (
 input [7:0] opcode,
-input cin;
+input cin,
 
 output [27:0] segOut
 );

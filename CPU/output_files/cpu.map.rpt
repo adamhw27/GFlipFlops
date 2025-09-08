@@ -1,6 +1,6 @@
 Analysis & Synthesis report for cpu
-Thu Sep  4 16:45:17 2025
-Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+Sun Sep  7 21:48:34 2025
+Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
 
 
 ---------------------
@@ -27,44 +27,44 @@ Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 2024  Intel Corporation. All rights reserved.
-Your use of Intel Corporation's design tools, logic functions 
+Copyright (C) 2025  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
 and other software and tools, and any partner logic 
 functions, and any output files from any of the foregoing 
 (including device programming or simulation files), and any 
 associated documentation or information are expressly subject 
-to the terms and conditions of the Intel Program License 
-Subscription Agreement, the Intel Quartus Prime License Agreement,
-the Intel FPGA IP License Agreement, or other applicable license
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
 agreement, including, without limitation, that your use is for
 the sole purpose of programming logic devices manufactured by
-Intel and sold by Intel or its authorized distributors.  Please
-refer to the applicable agreement for further details, at
-https://fpgasoftware.intel.com/eula.
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
 
 
 
-+----------------------------------------------------------------------------------+
-; Analysis & Synthesis Summary                                                     ;
-+---------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Thu Sep  4 16:45:17 2025          ;
-; Quartus Prime Version           ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
-; Revision Name                   ; cpu                                            ;
-; Top-level Entity Name           ; cpu                                            ;
-; Family                          ; Cyclone V                                      ;
-; Logic utilization (in ALMs)     ; N/A                                            ;
-; Total registers                 ; 0                                              ;
-; Total pins                      ; 38                                             ;
-; Total virtual pins              ; 0                                              ;
-; Total block memory bits         ; 0                                              ;
-; Total DSP Blocks                ; 1                                              ;
-; Total HSSI RX PCSs              ; 0                                              ;
-; Total HSSI PMA RX Deserializers ; 0                                              ;
-; Total HSSI TX PCSs              ; 0                                              ;
-; Total HSSI PMA TX Serializers   ; 0                                              ;
-; Total PLLs                      ; 0                                              ;
-; Total DLLs                      ; 0                                              ;
-+---------------------------------+------------------------------------------------+
++-----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                      ;
++---------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Sun Sep  7 21:48:34 2025           ;
+; Quartus Prime Version           ; 24.1std.0 Build 1077 03/04/2025 SC Lite Edition ;
+; Revision Name                   ; cpu                                             ;
+; Top-level Entity Name           ; cpu                                             ;
+; Family                          ; Cyclone V                                       ;
+; Logic utilization (in ALMs)     ; N/A                                             ;
+; Total registers                 ; 0                                               ;
+; Total pins                      ; 37                                              ;
+; Total virtual pins              ; 0                                               ;
+; Total block memory bits         ; 0                                               ;
+; Total DSP Blocks                ; 1                                               ;
+; Total HSSI RX PCSs              ; 0                                               ;
+; Total HSSI PMA RX Deserializers ; 0                                               ;
+; Total HSSI TX PCSs              ; 0                                               ;
+; Total HSSI PMA TX Serializers   ; 0                                               ;
+; Total PLLs                      ; 0                                               ;
+; Total DLLs                      ; 0                                               ;
++---------------------------------+-------------------------------------------------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------+
@@ -159,8 +159,8 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 8           ;
-; Maximum allowed            ; 4           ;
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 12          ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
 ; Maximum used               ; 1           ;
@@ -170,42 +170,42 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                      ;
-+----------------------------------+-----------------+------------------------+-------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path        ; Library ;
-+----------------------------------+-----------------+------------------------+-------------------------------------+---------+
-; seven_seg_hex.v                  ; yes             ; User Verilog HDL File  ; C:/ECE/ECE 3710/CPU/seven_seg_hex.v ;         ;
-; cpu.v                            ; yes             ; User Verilog HDL File  ; C:/ECE/ECE 3710/CPU/cpu.v           ;         ;
-; alu.v                            ; yes             ; User Verilog HDL File  ; C:/ECE/ECE 3710/CPU/alu.v           ;         ;
-+----------------------------------+-----------------+------------------------+-------------------------------------+---------+
++----------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                 ;
++----------------------------------+-----------------+------------------------+------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                   ; Library ;
++----------------------------------+-----------------+------------------------+------------------------------------------------+---------+
+; seven_seg_hex.v                  ; yes             ; User Verilog HDL File  ; C:/ECE/ECE 3710/GFlipFlops/CPU/seven_seg_hex.v ;         ;
+; cpu.v                            ; yes             ; User Verilog HDL File  ; C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v           ;         ;
+; alu.v                            ; yes             ; User Verilog HDL File  ; C:/ECE/ECE 3710/GFlipFlops/CPU/alu.v           ;         ;
++----------------------------------+-----------------+------------------------+------------------------------------------------+---------+
 
 
-+---------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                   ;
-+---------------------------------------------+-----------------+
-; Resource                                    ; Usage           ;
-+---------------------------------------------+-----------------+
-; Estimate of Logic utilization (ALMs needed) ; 65              ;
-;                                             ;                 ;
-; Combinational ALUT usage for logic          ; 95              ;
-;     -- 7 input functions                    ; 4               ;
-;     -- 6 input functions                    ; 31              ;
-;     -- 5 input functions                    ; 18              ;
-;     -- 4 input functions                    ; 32              ;
-;     -- <=3 input functions                  ; 10              ;
-;                                             ;                 ;
-; Dedicated logic registers                   ; 0               ;
-;                                             ;                 ;
-; I/O pins                                    ; 38              ;
-;                                             ;                 ;
-; Total DSP Blocks                            ; 1               ;
-;                                             ;                 ;
-; Maximum fan-out node                        ; opcode[0]~input ;
-; Maximum fan-out                             ; 37              ;
-; Total fan-out                               ; 529             ;
-; Average fan-out                             ; 3.08            ;
-+---------------------------------------------+-----------------+
++-------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                 ;
++---------------------------------------------+---------------+
+; Resource                                    ; Usage         ;
++---------------------------------------------+---------------+
+; Estimate of Logic utilization (ALMs needed) ; 24            ;
+;                                             ;               ;
+; Combinational ALUT usage for logic          ; 47            ;
+;     -- 7 input functions                    ; 0             ;
+;     -- 6 input functions                    ; 1             ;
+;     -- 5 input functions                    ; 16            ;
+;     -- 4 input functions                    ; 29            ;
+;     -- <=3 input functions                  ; 1             ;
+;                                             ;               ;
+; Dedicated logic registers                   ; 0             ;
+;                                             ;               ;
+; I/O pins                                    ; 37            ;
+;                                             ;               ;
+; Total DSP Blocks                            ; 1             ;
+;                                             ;               ;
+; Maximum fan-out node                        ; alu:k|Mult0~8 ;
+; Maximum fan-out                             ; 16            ;
+; Total fan-out                               ; 270           ;
+; Average fan-out                             ; 2.21          ;
++---------------------------------------------+---------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -213,8 +213,8 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------+---------------+--------------+
 ; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name  ; Entity Name   ; Library Name ;
 +----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------+---------------+--------------+
-; |cpu                       ; 95 (0)              ; 0 (0)                     ; 0                 ; 1          ; 38   ; 0            ; |cpu                 ; cpu           ; work         ;
-;    |alu:k|                 ; 67 (67)             ; 0 (0)                     ; 0                 ; 1          ; 0    ; 0            ; |cpu|alu:k           ; alu           ; work         ;
+; |cpu                       ; 47 (0)              ; 0 (0)                     ; 0                 ; 1          ; 37   ; 0            ; |cpu                 ; cpu           ; work         ;
+;    |alu:k|                 ; 19 (19)             ; 0 (0)                     ; 0                 ; 1          ; 0    ; 0            ; |cpu|alu:k           ; alu           ; work         ;
 ;    |seven_seg_hex:a|       ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |cpu|seven_seg_hex:a ; seven_seg_hex ; work         ;
 ;    |seven_seg_hex:b|       ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |cpu|seven_seg_hex:b ; seven_seg_hex ; work         ;
 ;    |seven_seg_hex:c|       ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |cpu|seven_seg_hex:c ; seven_seg_hex ; work         ;
@@ -255,40 +255,55 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 15:1               ; 2 bits    ; 20 LEs        ; 16 LEs               ; 4 LEs                  ; No         ; |cpu|alu:k|Mux6            ;
+; 14:1               ; 15 bits   ; 135 LEs       ; 90 LEs               ; 45 LEs                 ; No         ; |cpu|alu:k|Selector14      ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 
 
 +----------------------------------------------------+
 ; Parameter Settings for User Entity Instance: alu:k ;
-+----------------+-------+---------------------------+
-; Parameter Name ; Value ; Type                      ;
-+----------------+-------+---------------------------+
-; ADD            ; 0101  ; Unsigned Binary           ;
-; ADDU           ; 0110  ; Unsigned Binary           ;
-; ADDC           ; 0111  ; Unsigned Binary           ;
-; MUL            ; 1110  ; Unsigned Binary           ;
-; SUB            ; 1001  ; Unsigned Binary           ;
-; SUBC           ; 1010  ; Unsigned Binary           ;
-; CMP            ; 1011  ; Unsigned Binary           ;
-; AND            ; 0001  ; Unsigned Binary           ;
-; OR             ; 0010  ; Unsigned Binary           ;
-; XOR            ; 0011  ; Unsigned Binary           ;
-; MOV            ; 1101  ; Unsigned Binary           ;
-; LSH            ; 1000  ; Unsigned Binary           ;
-; ASHU           ; 1111  ; Unsigned Binary           ;
-+----------------+-------+---------------------------+
++----------------+----------+------------------------+
+; Parameter Name ; Value    ; Type                   ;
++----------------+----------+------------------------+
+; ADD            ; 00000101 ; Unsigned Binary        ;
+; ADDI           ; 0101XXXX ; Unsigned Binary        ;
+; ADDU           ; 00000110 ; Unsigned Binary        ;
+; ADDUI          ; 0110XXXX ; Unsigned Binary        ;
+; ADDC           ; 00000111 ; Unsigned Binary        ;
+; ADDCI          ; 0111XXXX ; Unsigned Binary        ;
+; MUL            ; 00001110 ; Unsigned Binary        ;
+; MULI           ; 1110XXXX ; Unsigned Binary        ;
+; SUB            ; 00001001 ; Unsigned Binary        ;
+; SUBI           ; 1001XXXX ; Unsigned Binary        ;
+; SUBC           ; 00001010 ; Unsigned Binary        ;
+; SUBCI          ; 1010XXXX ; Unsigned Binary        ;
+; CMP            ; 00001011 ; Unsigned Binary        ;
+; CMPI           ; 1011XXXX ; Unsigned Binary        ;
+; AND            ; 00000001 ; Unsigned Binary        ;
+; ANDI           ; 0001XXXX ; Unsigned Binary        ;
+; OR             ; 00000010 ; Unsigned Binary        ;
+; ORI            ; 0010XXXX ; Unsigned Binary        ;
+; XOR            ; 00000011 ; Unsigned Binary        ;
+; XORI           ; 0011XXXX ; Unsigned Binary        ;
+; MOV            ; 00001101 ; Unsigned Binary        ;
+; MOVI           ; 1101XXXX ; Unsigned Binary        ;
+; LSH            ; 10001000 ; Unsigned Binary        ;
+; LSHI           ; 1000000X ; Unsigned Binary        ;
+; ASHU           ; 10001111 ; Unsigned Binary        ;
+; ASHUI          ; 1000001X ; Unsigned Binary        ;
++----------------+----------+------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "alu:k"                                                                                                                    ;
-+-------+--------+----------+--------------------------------------------------------------------------------------------------------------------------+
-; Port  ; Type   ; Severity ; Details                                                                                                                  ;
-+-------+--------+----------+--------------------------------------------------------------------------------------------------------------------------+
-; flags ; Output ; Warning  ; Output or bidir port (5 bits) is wider than the port expression (1 bits) it drives; bit(s) "flags[4..1]" have no fanouts ;
-; flags ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                      ;
-+-------+--------+----------+--------------------------------------------------------------------------------------------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "alu:k"                                                                                                                                        ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                                                                                      ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; R1    ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (16 bits) it drives.  Extra input bit(s) "R1[15..1]" will be connected to GND. ;
+; R2    ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (16 bits) it drives.  Extra input bit(s) "R2[15..1]" will be connected to GND. ;
+; flags ; Output ; Warning  ; Output or bidir port (5 bits) is wider than the port expression (1 bits) it drives; bit(s) "flags[4..1]" have no fanouts                     ;
+; flags ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
++-------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------+
@@ -296,21 +311,18 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_lcell_comb     ; 99                          ;
-;     extend            ; 4                           ;
-;         7 data inputs ; 4                           ;
-;     normal            ; 95                          ;
+; arriav_lcell_comb     ; 51                          ;
+;     normal            ; 51                          ;
 ;         1 data inputs ; 4                           ;
-;         2 data inputs ; 5                           ;
-;         3 data inputs ; 5                           ;
-;         4 data inputs ; 32                          ;
-;         5 data inputs ; 18                          ;
-;         6 data inputs ; 31                          ;
+;         3 data inputs ; 1                           ;
+;         4 data inputs ; 29                          ;
+;         5 data inputs ; 16                          ;
+;         6 data inputs ; 1                           ;
 ; arriav_mac            ; 1                           ;
-; boundary_port         ; 38                          ;
+; boundary_port         ; 37                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 6.00                        ;
-; Average LUT depth     ; 4.67                        ;
+; Max LUT depth         ; 4.00                        ;
+; Average LUT depth     ; 3.45                        ;
 +-----------------------+-----------------------------+
 
 
@@ -328,36 +340,41 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
-    Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
-    Info: Processing started: Thu Sep  4 16:45:09 2025
+    Info: Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
+    Info: Processing started: Sun Sep  7 21:48:25 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off cpu -c cpu
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file seven_seg_hex.v
-    Info (12023): Found entity 1: seven_seg_hex File: C:/ECE/ECE 3710/CPU/seven_seg_hex.v Line: 1
+    Info (12023): Found entity 1: seven_seg_hex File: C:/ECE/ECE 3710/GFlipFlops/CPU/seven_seg_hex.v Line: 1
+Warning (10229): Verilog HDL Expression warning at cpu.v(11): truncated literal to match 8 bits File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
 Info (12021): Found 1 design units, including 1 entities, in source file cpu.v
-    Info (12023): Found entity 1: cpu File: C:/ECE/ECE 3710/CPU/cpu.v Line: 1
+    Info (12023): Found entity 1: cpu File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file alu_tb.v
-    Info (12023): Found entity 1: ALU_tb File: C:/ECE/ECE 3710/CPU/ALU_tb.v Line: 2
+    Info (12023): Found entity 1: ALU_tb File: C:/ECE/ECE 3710/GFlipFlops/CPU/ALU_tb.v Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file alu.v
-    Info (12023): Found entity 1: alu File: C:/ECE/ECE 3710/CPU/alu.v Line: 3
-Warning (10236): Verilog HDL Implicit Net warning at cpu.v(17): created implicit net for "flags" File: C:/ECE/ECE 3710/CPU/cpu.v Line: 17
+    Info (12023): Found entity 1: alu File: C:/ECE/ECE 3710/GFlipFlops/CPU/alu.v Line: 3
+Warning (10236): Verilog HDL Implicit Net warning at cpu.v(17): created implicit net for "R1N" File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 17
+Warning (10236): Verilog HDL Implicit Net warning at cpu.v(17): created implicit net for "R2N" File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 17
+Warning (10236): Verilog HDL Implicit Net warning at cpu.v(17): created implicit net for "flags" File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 17
 Info (12127): Elaborating entity "cpu" for the top level hierarchy
-Info (12128): Elaborating entity "alu" for hierarchy "alu:k" File: C:/ECE/ECE 3710/CPU/cpu.v Line: 17
-Info (12128): Elaborating entity "seven_seg_hex" for hierarchy "seven_seg_hex:a" File: C:/ECE/ECE 3710/CPU/cpu.v Line: 19
+Warning (10036): Verilog HDL or VHDL warning at cpu.v(8): object "R1" assigned a value but never read File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 8
+Warning (10036): Verilog HDL or VHDL warning at cpu.v(9): object "R2" assigned a value but never read File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 9
+Info (12128): Elaborating entity "alu" for hierarchy "alu:k" File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 17
+Info (12128): Elaborating entity "seven_seg_hex" for hierarchy "seven_seg_hex:a" File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 19
 Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 134 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 10 input pins
+Info (21057): Implemented 85 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 9 input pins
     Info (21059): Implemented 28 output pins
-    Info (21061): Implemented 95 logic cells
+    Info (21061): Implemented 47 logic cells
     Info (21062): Implemented 1 DSP elements
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 3 warnings
-    Info: Peak virtual memory: 4829 megabytes
-    Info: Processing ended: Thu Sep  4 16:45:17 2025
-    Info: Elapsed time: 00:00:08
-    Info: Total CPU time (on all processors): 00:00:19
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 8 warnings
+    Info: Peak virtual memory: 4863 megabytes
+    Info: Processing ended: Sun Sep  7 21:48:34 2025
+    Info: Elapsed time: 00:00:09
+    Info: Total CPU time (on all processors): 00:00:20
 
 
