@@ -101,7 +101,7 @@ always @(R1, R2, opcode, cin)
 			aluOut = (R2 - R1);
 
 			// Set overflow flag
-			if ( (~R1[15] & ~R2[15] & ~aluOut[15]) | (R1[15] & R2[15] & aluOut[15])) flags[2] = 1'b1;
+			if ( (R1[15] & ~R2[15] & aluOut[15]) | (~R1[15] & R2[15] & ~aluOut[15])) flags[2] = 1'b1;
 			else flags[2] = 1'b0;
 
 		end
@@ -114,7 +114,7 @@ always @(R1, R2, opcode, cin)
 			{flags[0], aluOut} = (R2 - (R1 + cin));
 			
 			// Set overflow flag
-			if ( (~R1[15] & ~R2[15] & aluOut[15]) | (R1[15] & R2[15] & ~aluOut[15])) flags[2] = 1'b1;
+			if ( (R1[15] & ~R2[15] & aluOut[15]) | (~R1[15] & R2[15] & ~aluOut[15])) flags[2] = 1'b1;
 			else flags[2] = 1'b0;
 			
 	

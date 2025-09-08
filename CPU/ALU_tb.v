@@ -4,6 +4,7 @@ module ALU_tb();
   // inputs to ALU
   reg [15:0] input1, input2;
   reg [7:0] opcode;
+  reg cin;
 
   // outputs from ALU
   wire [15:0] actualOutput;
@@ -17,6 +18,7 @@ module ALU_tb();
     input1 = 0;
     input2 = 0;
     opcode = 0;
+	 cin = 0;
 
     // nice aligned monitor
     $monitor("I1: %016b I2: %016b OP: %08b Out: %016b Flags: %05b",
@@ -25,8 +27,46 @@ module ALU_tb();
     // ADD
     #10 input1 = $random % 8;
         input2 = $random % 8;
+		  cin = 0;
         opcode = 8'b00000101;
     #1  $strobe("   -> expected: %016b (ADD)", input1 + input2);
+	 
+	 // ADDU
+    #10 input1 = $random % 8;
+        input2 = $random % 8;
+        cin = 0;
+        opcode = 8'b00000110;
+    #1  $strobe("   -> expected: %016b (ADDU)", input1 + input2);
+
+    // ADDC
+    #10 input1 = $random % 8;
+        input2 = $random % 8;
+        cin = 1;
+        opcode = 8'b00000111;
+    #1  $strobe("   -> expected: %016b (ADDC)", input1 + input2 + cin);
+	 
+	 // SUB
+    #10 input1 = $random % 8;
+        input2 = $random % 8;
+        cin = 0;
+        opcode = 8'b00001001;
+    #1  $strobe("   -> expected: %016b (SUB)", input2 - input1);
+
+    // SUBC
+    #10 input1 = $random % 8;
+        input2 = $random % 8;
+        cin = 1;
+        opcode = 8'b00001010;
+    #1  $strobe("   -> expected: %016b (SUBC)", input2 - (input1 + cin));
+
+    // CMP
+    #10 input1 = $random % 8;
+        input2 = $random % 8;
+        opcode = 8'b00001011; // CMP
+    #1  $strobe("   -> expected: %s (CMP)",
+                (input1 == input2) ? "equal" :
+                (input1 > input2)  ? "input1 > input2" :
+                                     "input1 < input2");
 
     // AND
     #10 input1 = $random % 8;
