@@ -109,9 +109,12 @@ always @(R1, R2, opcode, cin)
 	SUBC :
 		begin
 		
-			// Set carry and aluout
+			// Set aluout
 			
-			{flags[0], aluOut} = (R2 - (R1 + cin));
+			aluOut = (R2 - (R1 + cin));
+			
+			// set carry
+			flags[0] = R2 < (R1 + cin);
 			
 			// Set overflow flag
 			if ( (R1[15] & ~R2[15] & aluOut[15]) | (~R1[15] & R2[15] & ~aluOut[15])) flags[2] = 1'b1;
