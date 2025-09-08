@@ -36,6 +36,11 @@ segOut[24] <= seven_seg_hex:d.port1
 segOut[25] <= seven_seg_hex:d.port1
 segOut[26] <= seven_seg_hex:d.port1
 segOut[27] <= seven_seg_hex:d.port1
+flags[0] <= alu:k.flags
+flags[1] <= alu:k.flags
+flags[2] <= alu:k.flags
+flags[3] <= alu:k.flags
+flags[4] <= alu:k.flags
 
 
 |cpu|alu:k

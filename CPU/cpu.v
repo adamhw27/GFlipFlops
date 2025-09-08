@@ -2,19 +2,20 @@ module cpu (
 input [7:0] opcode,
 input cin,
 
-output [27:0] segOut
+output [27:0] segOut,
+output [4:0] flags
 );
 
 wire [15:0] R1;
 wire [15:0] R2;
 
-assign R2 = 8'h8FFF;
-assign R1 = 8'h0001;
+assign R2 = 16'h7FFF;
+assign R1 = 16'h0001;
 
 
 wire [15:0] aluOut;
 
-alu k(.R1(R1N), .R2(R2N), .opcode(opcode), .aluOut(aluOut), .flags(flags), .cin(cin));
+alu k(.R1(R1), .R2(R2), .opcode(opcode), .aluOut(aluOut), .flags(flags), .cin(cin));
 
 seven_seg_hex a(aluOut[3:0], segOut[6:0]);
 seven_seg_hex b(aluOut[7:4], segOut[13:7]);

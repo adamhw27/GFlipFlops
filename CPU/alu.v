@@ -45,6 +45,7 @@ parameter ASHU = 8'b1000_1111;
 parameter ASHUI = 8'b1000_001x;
 
 
+
 always @(R1, R2, opcode, cin)
  begin
 	
