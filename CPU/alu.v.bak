@@ -1,0 +1,181 @@
+// Beginning alu for lab 1 ece3710
+
+module alu(R1, R2, opcode, aluOut, flags);
+
+// R1 (Source) & R2 (Destination)
+input wire [15:0] R1, R2;
+input wire [3:0] opcode;
+
+output reg [15:0] aluOut;
+
+output reg [4:0] flags;
+// [Carry, Low, Flag, Negative, Z]
+
+parameter ADD = 4'b0101;
+parameter ADDU = 4'b0110; 
+parameter ADDC = 4'b0111;
+
+parameter MUL = 4'b1110;
+
+parameter SUB = 4'b1001;
+parameter SUBC = 4'b1010;
+
+parameter CMP = 4'b1011;
+
+parameter AND = 4'b0001;
+parameter OR = 4'b0010;
+parameter XOR = 4'b0011;
+parameter MOV = 4'b1101;
+
+parameter LSH = 4'b1000;
+parameter ASHU = 4'b1111;
+
+
+always @(R1, R2, opcode)
+ begin
+	
+	flags[4:0] = 5'b00000;
+	
+	case (opcode)
+	
+  
+	ADD : 
+		begin 
+		
+			aluOut = (R1 + R2);
+		
+			// Set overflow flag
+			if ( (~R1[15] & ~R2[15] & aluOut[15]) | (R1[15] & R2[15] & ~aluOut[15])) flags[2] = 1'b1;
+			else flags[2] = 1'b0;
+			
+		end
+		
+	ADDU :
+		begin
+		
+			// Set carry bit and dst reg
+			{flags[0], aluOut} = (R1 + R2);
+			
+			// Overflow is ignored
+	
+		end
+		
+	ADDC : 
+		begin 
+			
+			// Set carry flag and dst reg
+			{flags[0], aluOut} = (R1 + R2 + flags[0]);
+			
+			// Set overflow flag
+			if ( (~R1[15] & ~R2[15] & aluOut[15]) | (R1[15] & R2[15] & ~aluOut[15])) flags[2] = 1'b1;
+			else flags[2] = 1'b0;
+	
+		end
+	
+	MUL : 
+		begin
+			
+			aluOut = (R1 * R2);
+
+		end
+		
+	SUB :
+		begin
+		
+			// Set carry flag and dst reg
+			
+			aluOut = (R2 - R1);
+
+			// Set overflow flag
+			if ( (~R1[15] & ~R2[15] & ~aluOut[15]) | (R1[15] & R2[15] & aluOut[15])) flags[2] = 1'b1;
+			else flags[2] = 1'b0;
+
+		end
+		
+	SUBC :
+		begin
+		
+			// Set carry and aluout
+			
+			{flags[0], aluOut} = (R2 - (R1 + flags[0]));
+			
+			// Set overflow flag
+			if ( (~R1[15] & ~R2[15] & aluOut[15]) | (R1[15] & R2[15] & ~aluOut[15])) flags[2] = 1'b1;
+			else flags[2] = 1'b0;
+			
+	
+		end
+	
+	CMP :
+		begin
+
+			// Equals
+			if (R1 == R2) aluOut = 16'h0000;
+			else aluOut = 16'hffff;
+			
+			// Compare signed
+			if ($signed(R1) > $signed(R2)) flags[3] = 1'b1;
+			else flags[3] = 1'b0;
+			
+			// Compare unsigned
+			if (R1 > R2) flags[1] = 1'b1;
+			else flags[1] = 1'b0;
+							
+		end
+		
+	AND :
+		begin
+			
+			aluOut = R1 & R2;
+					
+		end
+		
+	OR :
+		begin
+			
+			aluOut = R1 | R2;
+						
+		end
+		
+	XOR :
+		begin
+			
+			aluOut = R1 ^ R2;
+
+		end
+		
+	MOV :
+		begin
+		
+			aluOut = R1;
+			
+		end
+		
+	LSH :
+		begin
+		
+			if ($signed(R1) < 0) aluOut = R2 >> (~R1 + 1);
+				
+			else aluOut = R2 << R1;
+						
+		end
+		
+	ASHU :
+		begin
+	
+			aluOut = R2 >>> R1;
+					
+		end
+	
+	default : 
+	
+		aluOut = 16'h0000;
+		
+  endcase
+  
+		// Set zero flag
+		if (aluOut == 16'h0000) flags[4] = 1'b1;
+		else flags[4] = 1'b0;
+ end
+ 
+endmodule
