@@ -1,6 +1,6 @@
 Analysis & Synthesis report for cpu
-Wed Sep 10 16:48:18 2025
-Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
+Mon Sep 15 13:39:12 2025
+Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 
 
 ---------------------
@@ -10,61 +10,47 @@ Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
   2. Analysis & Synthesis Summary
   3. Analysis & Synthesis Settings
   4. Parallel Compilation
-  5. Analysis & Synthesis Source Files Read
-  6. Analysis & Synthesis Resource Usage Summary
-  7. Analysis & Synthesis Resource Utilization by Entity
-  8. Analysis & Synthesis DSP Block Usage Summary
-  9. General Register Statistics
- 10. Multiplexer Restructuring Statistics (Restructuring Performed)
- 11. Parameter Settings for User Entity Instance: alu:k
- 12. Port Connectivity Checks: "alu:k"
- 13. Post-Synthesis Netlist Statistics for Top Partition
- 14. Elapsed Time Per Partition
- 15. Analysis & Synthesis Messages
+  5. Analysis & Synthesis Messages
+  6. Analysis & Synthesis Suppressed Messages
 
 
 
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 2025  Altera Corporation. All rights reserved.
-Your use of Altera Corporation's design tools, logic functions 
+Copyright (C) 2024  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
 and other software and tools, and any partner logic 
 functions, and any output files from any of the foregoing 
 (including device programming or simulation files), and any 
 associated documentation or information are expressly subject 
-to the terms and conditions of the Altera Program License 
-Subscription Agreement, the Altera Quartus Prime License Agreement,
-the Altera IP License Agreement, or other applicable license
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
 agreement, including, without limitation, that your use is for
 the sole purpose of programming logic devices manufactured by
-Altera and sold by Altera or its authorized distributors.  Please
-refer to the Altera Software License Subscription Agreements 
-on the Quartus Prime software download page.
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
 
 
 
-+-----------------------------------------------------------------------------------+
-; Analysis & Synthesis Summary                                                      ;
-+---------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Wed Sep 10 16:48:18 2025           ;
-; Quartus Prime Version           ; 24.1std.0 Build 1077 03/04/2025 SC Lite Edition ;
-; Revision Name                   ; cpu                                             ;
-; Top-level Entity Name           ; cpu                                             ;
-; Family                          ; Cyclone V                                       ;
-; Logic utilization (in ALMs)     ; N/A                                             ;
-; Total registers                 ; 0                                               ;
-; Total pins                      ; 42                                              ;
-; Total virtual pins              ; 0                                               ;
-; Total block memory bits         ; 0                                               ;
-; Total DSP Blocks                ; 1                                               ;
-; Total HSSI RX PCSs              ; 0                                               ;
-; Total HSSI PMA RX Deserializers ; 0                                               ;
-; Total HSSI TX PCSs              ; 0                                               ;
-; Total HSSI PMA TX Serializers   ; 0                                               ;
-; Total PLLs                      ; 0                                               ;
-; Total DLLs                      ; 0                                               ;
-+---------------------------------+-------------------------------------------------+
++------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                 ;
++-----------------------------+------------------------------------------------+
+; Analysis & Synthesis Status ; Failed - Mon Sep 15 13:39:12 2025              ;
+; Quartus Prime Version       ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
+; Revision Name               ; cpu                                            ;
+; Top-level Entity Name       ; cpu                                            ;
+; Family                      ; Cyclone V                                      ;
+; Logic utilization (in ALMs) ; N/A until Partition Merge                      ;
+; Total registers             ; N/A until Partition Merge                      ;
+; Total pins                  ; N/A until Partition Merge                      ;
+; Total virtual pins          ; N/A until Partition Merge                      ;
+; Total block memory bits     ; N/A until Partition Merge                      ;
+; Total PLLs                  ; N/A until Partition Merge                      ;
+; Total DLLs                  ; N/A until Partition Merge                      ;
++-----------------------------+------------------------------------------------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------+
@@ -159,8 +145,8 @@ on the Quartus Prime software download page.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 12          ;
-; Maximum allowed            ; 12          ;
+; Number detected on machine ; 16          ;
+; Maximum allowed            ; 8           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
 ; Maximum used               ; 1           ;
@@ -170,213 +156,62 @@ on the Quartus Prime software download page.
 +----------------------------+-------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                 ;
-+----------------------------------+-----------------+------------------------+------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                   ; Library ;
-+----------------------------------+-----------------+------------------------+------------------------------------------------+---------+
-; seven_seg_hex.v                  ; yes             ; User Verilog HDL File  ; C:/ECE/ECE 3710/GFlipFlops/CPU/seven_seg_hex.v ;         ;
-; cpu.v                            ; yes             ; User Verilog HDL File  ; C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v           ;         ;
-; alu.v                            ; yes             ; User Verilog HDL File  ; C:/ECE/ECE 3710/GFlipFlops/CPU/alu.v           ;         ;
-+----------------------------------+-----------------+------------------------+------------------------------------------------+---------+
-
-
-+-------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                 ;
-+---------------------------------------------+---------------+
-; Resource                                    ; Usage         ;
-+---------------------------------------------+---------------+
-; Estimate of Logic utilization (ALMs needed) ; 43            ;
-;                                             ;               ;
-; Combinational ALUT usage for logic          ; 70            ;
-;     -- 7 input functions                    ; 0             ;
-;     -- 6 input functions                    ; 16            ;
-;     -- 5 input functions                    ; 9             ;
-;     -- 4 input functions                    ; 42            ;
-;     -- <=3 input functions                  ; 3             ;
-;                                             ;               ;
-; Dedicated logic registers                   ; 0             ;
-;                                             ;               ;
-; I/O pins                                    ; 42            ;
-;                                             ;               ;
-; Total DSP Blocks                            ; 1             ;
-;                                             ;               ;
-; Maximum fan-out node                        ; alu:k|Mult0~8 ;
-; Maximum fan-out                             ; 26            ;
-; Total fan-out                               ; 387           ;
-; Average fan-out                             ; 2.50          ;
-+---------------------------------------------+---------------+
-
-
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                       ;
-+----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------+---------------+--------------+
-; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name  ; Entity Name   ; Library Name ;
-+----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------+---------------+--------------+
-; |cpu                       ; 70 (0)              ; 0 (0)                     ; 0                 ; 1          ; 42   ; 0            ; |cpu                 ; cpu           ; work         ;
-;    |alu:k|                 ; 42 (42)             ; 0 (0)                     ; 0                 ; 1          ; 0    ; 0            ; |cpu|alu:k           ; alu           ; work         ;
-;    |seven_seg_hex:a|       ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |cpu|seven_seg_hex:a ; seven_seg_hex ; work         ;
-;    |seven_seg_hex:b|       ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |cpu|seven_seg_hex:b ; seven_seg_hex ; work         ;
-;    |seven_seg_hex:c|       ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |cpu|seven_seg_hex:c ; seven_seg_hex ; work         ;
-;    |seven_seg_hex:d|       ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |cpu|seven_seg_hex:d ; seven_seg_hex ; work         ;
-+----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------+---------------+--------------+
-Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
-
-
-+-----------------------------------------------+
-; Analysis & Synthesis DSP Block Usage Summary  ;
-+---------------------------------+-------------+
-; Statistic                       ; Number Used ;
-+---------------------------------+-------------+
-; Two Independent 18x18           ; 1           ;
-; Total number of DSP blocks      ; 1           ;
-;                                 ;             ;
-; Fixed Point Unsigned Multiplier ; 1           ;
-+---------------------------------+-------------+
-
-
-+------------------------------------------------------+
-; General Register Statistics                          ;
-+----------------------------------------------+-------+
-; Statistic                                    ; Value ;
-+----------------------------------------------+-------+
-; Total registers                              ; 0     ;
-; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 0     ;
-; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
-; Number of registers using Preset             ; 0     ;
-+----------------------------------------------+-------+
-
-
-+------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 256:1              ; 14 bits   ; 2380 LEs      ; 210 LEs              ; 2170 LEs               ; No         ; |cpu|alu:k|Selector13      ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-
-
-+----------------------------------------------------+
-; Parameter Settings for User Entity Instance: alu:k ;
-+----------------+----------+------------------------+
-; Parameter Name ; Value    ; Type                   ;
-+----------------+----------+------------------------+
-; ADD            ; 00000101 ; Unsigned Binary        ;
-; ADDI           ; 0101XXXX ; Unsigned Binary        ;
-; ADDU           ; 00000110 ; Unsigned Binary        ;
-; ADDUI          ; 0110XXXX ; Unsigned Binary        ;
-; ADDC           ; 00000111 ; Unsigned Binary        ;
-; ADDCI          ; 0111XXXX ; Unsigned Binary        ;
-; MUL            ; 00001110 ; Unsigned Binary        ;
-; MULI           ; 1110XXXX ; Unsigned Binary        ;
-; SUB            ; 00001001 ; Unsigned Binary        ;
-; SUBI           ; 1001XXXX ; Unsigned Binary        ;
-; SUBC           ; 00001010 ; Unsigned Binary        ;
-; SUBCI          ; 1010XXXX ; Unsigned Binary        ;
-; CMP            ; 00001011 ; Unsigned Binary        ;
-; CMPI           ; 1011XXXX ; Unsigned Binary        ;
-; AND            ; 00000001 ; Unsigned Binary        ;
-; ANDI           ; 0001XXXX ; Unsigned Binary        ;
-; OR             ; 00000010 ; Unsigned Binary        ;
-; ORI            ; 0010XXXX ; Unsigned Binary        ;
-; XOR            ; 00000011 ; Unsigned Binary        ;
-; XORI           ; 0011XXXX ; Unsigned Binary        ;
-; MOV            ; 00001101 ; Unsigned Binary        ;
-; MOVI           ; 1101XXXX ; Unsigned Binary        ;
-; LSH            ; 10001000 ; Unsigned Binary        ;
-; LSHI           ; 1000000X ; Unsigned Binary        ;
-; ASHU           ; 10001111 ; Unsigned Binary        ;
-; ASHUI          ; 1000001X ; Unsigned Binary        ;
-+----------------+----------+------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+---------------------------------------------+
-; Port Connectivity Checks: "alu:k"           ;
-+-----------+-------+----------+--------------+
-; Port      ; Type  ; Severity ; Details      ;
-+-----------+-------+----------+--------------+
-; R1[15..1] ; Input ; Info     ; Stuck at GND ;
-; R1[0]     ; Input ; Info     ; Stuck at VCC ;
-; R2[14..0] ; Input ; Info     ; Stuck at VCC ;
-; R2[15]    ; Input ; Info     ; Stuck at GND ;
-+-----------+-------+----------+--------------+
-
-
-+-----------------------------------------------------+
-; Post-Synthesis Netlist Statistics for Top Partition ;
-+-----------------------+-----------------------------+
-; Type                  ; Count                       ;
-+-----------------------+-----------------------------+
-; arriav_lcell_comb     ; 75                          ;
-;     normal            ; 75                          ;
-;         0 data inputs ; 1                           ;
-;         1 data inputs ; 4                           ;
-;         2 data inputs ; 1                           ;
-;         3 data inputs ; 2                           ;
-;         4 data inputs ; 42                          ;
-;         5 data inputs ; 9                           ;
-;         6 data inputs ; 16                          ;
-; arriav_mac            ; 1                           ;
-; boundary_port         ; 42                          ;
-;                       ;                             ;
-; Max LUT depth         ; 4.00                        ;
-; Average LUT depth     ; 3.42                        ;
-+-----------------------+-----------------------------+
-
-
-+-------------------------------+
-; Elapsed Time Per Partition    ;
-+----------------+--------------+
-; Partition Name ; Elapsed Time ;
-+----------------+--------------+
-; Top            ; 00:00:00     ;
-+----------------+--------------+
-
-
 +-------------------------------+
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
-    Info: Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
-    Info: Processing started: Wed Sep 10 16:48:06 2025
+    Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+    Info: Processing started: Mon Sep 15 13:39:04 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off cpu -c cpu
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
+Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file Mux.v
+    Info (12023): Found entity 1: RegMux File: /home/u1456456/Desktop/GFlipFlops/CPU/Mux.v Line: 1
 Info (12021): Found 2 design units, including 2 entities, in source file regfile.v
-    Info (12023): Found entity 1: Register File: C:/ECE/ECE 3710/GFlipFlops/CPU/regfile.v Line: 23
-    Info (12023): Found entity 2: RegBank File: C:/ECE/ECE 3710/GFlipFlops/CPU/regfile.v Line: 54
+    Info (12023): Found entity 1: Register File: /home/u1456456/Desktop/GFlipFlops/CPU/regfile.v Line: 23
+    Info (12023): Found entity 2: RegBank File: /home/u1456456/Desktop/GFlipFlops/CPU/regfile.v Line: 54
 Info (12021): Found 1 design units, including 1 entities, in source file seven_seg_hex.v
-    Info (12023): Found entity 1: seven_seg_hex File: C:/ECE/ECE 3710/GFlipFlops/CPU/seven_seg_hex.v Line: 1
+    Info (12023): Found entity 1: seven_seg_hex File: /home/u1456456/Desktop/GFlipFlops/CPU/seven_seg_hex.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file cpu.v
-    Info (12023): Found entity 1: cpu File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file alu_tb.v
-    Info (12023): Found entity 1: ALU_tb File: C:/ECE/ECE 3710/GFlipFlops/CPU/ALU_tb.v Line: 2
+    Info (12023): Found entity 1: cpu File: /home/u1456456/Desktop/GFlipFlops/CPU/cpu.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file ALU_tb.v
+    Info (12023): Found entity 1: ALU_tb File: /home/u1456456/Desktop/GFlipFlops/CPU/ALU_tb.v Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file alu.v
-    Info (12023): Found entity 1: alu File: C:/ECE/ECE 3710/GFlipFlops/CPU/alu.v Line: 3
-Info (12127): Elaborating entity "cpu" for the top level hierarchy
-Info (12128): Elaborating entity "alu" for hierarchy "alu:k" File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 18
-Info (12128): Elaborating entity "seven_seg_hex" for hierarchy "seven_seg_hex:a" File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 20
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "flags[0]" is stuck at GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 7
-    Warning (13410): Pin "flags[1]" is stuck at GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 7
-    Warning (13410): Pin "flags[3]" is stuck at GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 7
-Info (286030): Timing-Driven Synthesis is running
-Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
-    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 113 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 9 input pins
-    Info (21059): Implemented 33 output pins
-    Info (21061): Implemented 70 logic cells
-    Info (21062): Implemented 1 DSP elements
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 4863 megabytes
-    Info: Processing ended: Wed Sep 10 16:48:18 2025
-    Info: Elapsed time: 00:00:12
-    Info: Total CPU time (on all processors): 00:00:24
+    Info (12023): Found entity 1: alu File: /home/u1456456/Desktop/GFlipFlops/CPU/alu.v Line: 3
+Error (10170): Verilog HDL syntax error at FSM_test2.v(20) near text: ",";  expecting ";". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: /home/u1456456/Desktop/GFlipFlops/CPU/FSM_test2.v Line: 20
+Error (10149): Verilog HDL Declaration error at FSM_test2.v(24): identifier "S1" is already declared in the present scope File: /home/u1456456/Desktop/GFlipFlops/CPU/FSM_test2.v Line: 24
+Error (10170): Verilog HDL syntax error at FSM_test2.v(24) near text: "y". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: /home/u1456456/Desktop/GFlipFlops/CPU/FSM_test2.v Line: 24
+Error (10149): Verilog HDL Declaration error at FSM_test2.v(25): identifier "S2" is already declared in the present scope File: /home/u1456456/Desktop/GFlipFlops/CPU/FSM_test2.v Line: 25
+Error (10170): Verilog HDL syntax error at FSM_test2.v(25) near text: "y". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: /home/u1456456/Desktop/GFlipFlops/CPU/FSM_test2.v Line: 25
+Error (10149): Verilog HDL Declaration error at FSM_test2.v(26): identifier "S3" is already declared in the present scope File: /home/u1456456/Desktop/GFlipFlops/CPU/FSM_test2.v Line: 26
+Error (10170): Verilog HDL syntax error at FSM_test2.v(26) near text: "y". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: /home/u1456456/Desktop/GFlipFlops/CPU/FSM_test2.v Line: 26
+Error (10149): Verilog HDL Declaration error at FSM_test2.v(27): identifier "S4" is already declared in the present scope File: /home/u1456456/Desktop/GFlipFlops/CPU/FSM_test2.v Line: 27
+Error (10170): Verilog HDL syntax error at FSM_test2.v(27) near text: "y". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: /home/u1456456/Desktop/GFlipFlops/CPU/FSM_test2.v Line: 27
+Error (10149): Verilog HDL Declaration error at FSM_test2.v(28): identifier "S5" is already declared in the present scope File: /home/u1456456/Desktop/GFlipFlops/CPU/FSM_test2.v Line: 28
+Error (10170): Verilog HDL syntax error at FSM_test2.v(28) near text: "y". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: /home/u1456456/Desktop/GFlipFlops/CPU/FSM_test2.v Line: 28
+Error (10149): Verilog HDL Declaration error at FSM_test2.v(29): identifier "S6" is already declared in the present scope File: /home/u1456456/Desktop/GFlipFlops/CPU/FSM_test2.v Line: 29
+Error (10170): Verilog HDL syntax error at FSM_test2.v(29) near text: "y". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: /home/u1456456/Desktop/GFlipFlops/CPU/FSM_test2.v Line: 29
+Error (10149): Verilog HDL Declaration error at FSM_test2.v(30): identifier "S7" is already declared in the present scope File: /home/u1456456/Desktop/GFlipFlops/CPU/FSM_test2.v Line: 30
+Error (10170): Verilog HDL syntax error at FSM_test2.v(30) near text: "y". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: /home/u1456456/Desktop/GFlipFlops/CPU/FSM_test2.v Line: 30
+Error (10170): Verilog HDL syntax error at FSM_test2.v(33) near text: "end"; "end" without "begin" . Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: /home/u1456456/Desktop/GFlipFlops/CPU/FSM_test2.v Line: 33
+Error (10170): Verilog HDL syntax error at FSM_test2.v(71) near text: "end"; "end" without "begin" . Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: /home/u1456456/Desktop/GFlipFlops/CPU/FSM_test2.v Line: 71
+Error (10170): Verilog HDL syntax error at FSM_test2.v(73) near text: "end"; "end" without "begin" . Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: /home/u1456456/Desktop/GFlipFlops/CPU/FSM_test2.v Line: 73
+Error (10170): Verilog HDL syntax error at FSM_test2.v(73) near text: "module";  expecting "endcase". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: /home/u1456456/Desktop/GFlipFlops/CPU/FSM_test2.v Line: 73
+Info (12021): Found 0 design units, including 0 entities, in source file FSM_test2.v
+Info (12021): Found 1 design units, including 1 entities, in source file twoInputMuxv.v
+    Info (12023): Found entity 1: TwoInputMux File: /home/u1456456/Desktop/GFlipFlops/CPU/twoInputMuxv.v Line: 1
+Info (144001): Generated suppressed messages file /home/u1456456/Desktop/GFlipFlops/CPU/output_files/cpu.map.smsg
+Error: Quartus Prime Analysis & Synthesis was unsuccessful. 19 errors, 1 warning
+    Error: Peak virtual memory: 660 megabytes
+    Error: Processing ended: Mon Sep 15 13:39:13 2025
+    Error: Elapsed time: 00:00:09
+    Error: Total CPU time (on all processors): 00:00:14
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in /home/u1456456/Desktop/GFlipFlops/CPU/output_files/cpu.map.smsg.
 
 
