@@ -1,7 +1,6 @@
 module cpu (
-input [7:0] opcode,
 input cin,
-input clck, reset,
+input clk, rst,
 
 output [27:0] segOut,
 output [4:0] flags
@@ -9,6 +8,7 @@ output [4:0] flags
 
 // Make registers
 wire [15:0] r0, r1, r2, r3, r4, r5, r6, r7, r8 ,r9, r10, r11, r12, r13, r14, r15;
+
 
 // Connect R1 and R2 alu
 wire [15:0] R1;
@@ -29,7 +29,22 @@ wire [3:0] dstSel;
 
 // To connect Immediate/Reg to ALU
 wire regImmSel;
-wire [15:0] rDstMuxToImmMux;
+wire [15:0] rSrcMuxToImmMux;
+
+// opcode wire
+wire [7:0] opcode;
+
+// immediate connect wire
+wire [15:0] immConnect;
+
+//immediate sel wire
+wire immSel;
+
+//immediate sel wire - right now it does nothing 
+wire flagEn;
+
+// call fsm2 test
+FSM_test2 fsm2(.clk(clk), .rst(rst), .regEnable(regEnable), .flagEn(flagEn), .RorI(immSel), .opcode(opcode), .Rsrc(srcSel), .Rdest(dstSel), .imm(immConnect));
 
 //Instantiating the ALU
 alu alu(.R1(R1), .R2(R2), .opcode(opcode), .aluOut(aluOut), .flags(flags), .cin(cin));
@@ -42,16 +57,18 @@ RegBank rb(.ALUBus(aluOut), .r0(r0), .r1(r1), .r2(r2), .r3(r3), .r4(r4), .r5(r5)
 // Connect Rsrc to ALU via Mux
 
 RegMux RSrcMux(.r0(r0), .r1(r1), .r2(r2), .r3(r3), .r4(r4), .r5(r5), .r6(r6), .r7(r7), .r9(r9), 
-					.r10(r10), .r11(r11), .r12(r12), .r13(r13), .r14(r14), .r15(r15), .sel(srcSel), .out(R1));
+					.r10(r10), .r11(r11), .r12(r12), .r13(r13), .r14(r14), .r15(r15), .sel(srcSel), .out(rSrcMuxToImmMux));
 					
 // Set up RDst mux. Connect output to ImmReg mux
 
 RegMux RDstMux(.r0(r0), .r1(r1), .r2(r2), .r3(r3), .r4(r4), .r5(r5), .r6(r6), .r7(r7), .r9(r9), 
-					.r10(r10), .r11(r11), .r12(r12), .r13(r13), .r14(r14), .r15(r15), .sel(dstSel), .out(rDstMuxToImmMux));
+					.r10(r10), .r11(r11), .r12(r12), .r13(r13), .r14(r14), .r15(r15), .sel(dstSel), .out(R2));
 				
 // Determine Imm or Reg for second ALU input	
 	
-TwoInputMux immMux(.i0(rDstMuxToImmMux), .i1(imm), .sel(regImmSel), .out(R2));
+TwoInputMux immMux(.i0(rSrcMuxToImmMux), .i1(immConnect), .sel(immSel), .out(R1));
+
+
 
 // Connect SegOut
 seven_seg_hex a(aluOut[3:0], segOut[6:0]);
