@@ -1,6 +1,6 @@
 Analysis & Synthesis report for cpu
-Wed Sep 10 16:48:18 2025
-Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
+Tue Sep 16 15:33:01 2025
+Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 
 
 ---------------------
@@ -14,57 +14,61 @@ Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. Analysis & Synthesis DSP Block Usage Summary
-  9. General Register Statistics
- 10. Multiplexer Restructuring Statistics (Restructuring Performed)
- 11. Parameter Settings for User Entity Instance: alu:k
- 12. Port Connectivity Checks: "alu:k"
- 13. Post-Synthesis Netlist Statistics for Top Partition
- 14. Elapsed Time Per Partition
- 15. Analysis & Synthesis Messages
+  9. Registers Removed During Synthesis
+ 10. General Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Parameter Settings for User Entity Instance: alu:alu
+ 13. Port Connectivity Checks: "Mux:RDstMux"
+ 14. Port Connectivity Checks: "Mux:RSrcMux"
+ 15. Port Connectivity Checks: "RegBank:rb"
+ 16. Post-Synthesis Netlist Statistics for Top Partition
+ 17. Elapsed Time Per Partition
+ 18. Analysis & Synthesis Messages
+ 19. Analysis & Synthesis Suppressed Messages
 
 
 
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 2025  Altera Corporation. All rights reserved.
-Your use of Altera Corporation's design tools, logic functions 
+Copyright (C) 2024  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
 and other software and tools, and any partner logic 
 functions, and any output files from any of the foregoing 
 (including device programming or simulation files), and any 
 associated documentation or information are expressly subject 
-to the terms and conditions of the Altera Program License 
-Subscription Agreement, the Altera Quartus Prime License Agreement,
-the Altera IP License Agreement, or other applicable license
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
 agreement, including, without limitation, that your use is for
 the sole purpose of programming logic devices manufactured by
-Altera and sold by Altera or its authorized distributors.  Please
-refer to the Altera Software License Subscription Agreements 
-on the Quartus Prime software download page.
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
 
 
 
-+-----------------------------------------------------------------------------------+
-; Analysis & Synthesis Summary                                                      ;
-+---------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Wed Sep 10 16:48:18 2025           ;
-; Quartus Prime Version           ; 24.1std.0 Build 1077 03/04/2025 SC Lite Edition ;
-; Revision Name                   ; cpu                                             ;
-; Top-level Entity Name           ; cpu                                             ;
-; Family                          ; Cyclone V                                       ;
-; Logic utilization (in ALMs)     ; N/A                                             ;
-; Total registers                 ; 0                                               ;
-; Total pins                      ; 42                                              ;
-; Total virtual pins              ; 0                                               ;
-; Total block memory bits         ; 0                                               ;
-; Total DSP Blocks                ; 1                                               ;
-; Total HSSI RX PCSs              ; 0                                               ;
-; Total HSSI PMA RX Deserializers ; 0                                               ;
-; Total HSSI TX PCSs              ; 0                                               ;
-; Total HSSI PMA TX Serializers   ; 0                                               ;
-; Total PLLs                      ; 0                                               ;
-; Total DLLs                      ; 0                                               ;
-+---------------------------------+-------------------------------------------------+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++---------------------------------+------------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Tue Sep 16 15:33:01 2025          ;
+; Quartus Prime Version           ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
+; Revision Name                   ; cpu                                            ;
+; Top-level Entity Name           ; cpu                                            ;
+; Family                          ; Cyclone V                                      ;
+; Logic utilization (in ALMs)     ; N/A                                            ;
+; Total registers                 ; 0                                              ;
+; Total pins                      ; 44                                             ;
+; Total virtual pins              ; 0                                              ;
+; Total block memory bits         ; 0                                              ;
+; Total DSP Blocks                ; 1                                              ;
+; Total HSSI RX PCSs              ; 0                                              ;
+; Total HSSI PMA RX Deserializers ; 0                                              ;
+; Total HSSI TX PCSs              ; 0                                              ;
+; Total HSSI PMA TX Serializers   ; 0                                              ;
+; Total PLLs                      ; 0                                              ;
+; Total DLLs                      ; 0                                              ;
++---------------------------------+------------------------------------------------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------+
@@ -159,8 +163,8 @@ on the Quartus Prime software download page.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 12          ;
-; Maximum allowed            ; 12          ;
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
 ; Maximum used               ; 1           ;
@@ -175,37 +179,39 @@ on the Quartus Prime software download page.
 +----------------------------------+-----------------+------------------------+------------------------------------------------+---------+
 ; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                   ; Library ;
 +----------------------------------+-----------------+------------------------+------------------------------------------------+---------+
+; Mux.v                            ; yes             ; User Verilog HDL File  ; C:/ECE/ECE 3710/GFlipFlops/CPU/Mux.v           ;         ;
+; regfile.v                        ; yes             ; User Verilog HDL File  ; C:/ECE/ECE 3710/GFlipFlops/CPU/regfile.v       ;         ;
 ; seven_seg_hex.v                  ; yes             ; User Verilog HDL File  ; C:/ECE/ECE 3710/GFlipFlops/CPU/seven_seg_hex.v ;         ;
 ; cpu.v                            ; yes             ; User Verilog HDL File  ; C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v           ;         ;
 ; alu.v                            ; yes             ; User Verilog HDL File  ; C:/ECE/ECE 3710/GFlipFlops/CPU/alu.v           ;         ;
 +----------------------------------+-----------------+------------------------+------------------------------------------------+---------+
 
 
-+-------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                 ;
-+---------------------------------------------+---------------+
-; Resource                                    ; Usage         ;
-+---------------------------------------------+---------------+
-; Estimate of Logic utilization (ALMs needed) ; 43            ;
-;                                             ;               ;
-; Combinational ALUT usage for logic          ; 70            ;
-;     -- 7 input functions                    ; 0             ;
-;     -- 6 input functions                    ; 16            ;
-;     -- 5 input functions                    ; 9             ;
-;     -- 4 input functions                    ; 42            ;
-;     -- <=3 input functions                  ; 3             ;
-;                                             ;               ;
-; Dedicated logic registers                   ; 0             ;
-;                                             ;               ;
-; I/O pins                                    ; 42            ;
-;                                             ;               ;
-; Total DSP Blocks                            ; 1             ;
-;                                             ;               ;
-; Maximum fan-out node                        ; alu:k|Mult0~8 ;
-; Maximum fan-out                             ; 26            ;
-; Total fan-out                               ; 387           ;
-; Average fan-out                             ; 2.50          ;
-+---------------------------------------------+---------------+
++---------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                   ;
++---------------------------------------------+-----------------+
+; Resource                                    ; Usage           ;
++---------------------------------------------+-----------------+
+; Estimate of Logic utilization (ALMs needed) ; 43              ;
+;                                             ;                 ;
+; Combinational ALUT usage for logic          ; 69              ;
+;     -- 7 input functions                    ; 0               ;
+;     -- 6 input functions                    ; 16              ;
+;     -- 5 input functions                    ; 18              ;
+;     -- 4 input functions                    ; 30              ;
+;     -- <=3 input functions                  ; 5               ;
+;                                             ;                 ;
+; Dedicated logic registers                   ; 0               ;
+;                                             ;                 ;
+; I/O pins                                    ; 44              ;
+;                                             ;                 ;
+; Total DSP Blocks                            ; 1               ;
+;                                             ;                 ;
+; Maximum fan-out node                        ; opcode[2]~input ;
+; Maximum fan-out                             ; 32              ;
+; Total fan-out                               ; 391             ;
+; Average fan-out                             ; 2.47            ;
++---------------------------------------------+-----------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -213,8 +219,8 @@ on the Quartus Prime software download page.
 +----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------+---------------+--------------+
 ; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name  ; Entity Name   ; Library Name ;
 +----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------+---------------+--------------+
-; |cpu                       ; 70 (0)              ; 0 (0)                     ; 0                 ; 1          ; 42   ; 0            ; |cpu                 ; cpu           ; work         ;
-;    |alu:k|                 ; 42 (42)             ; 0 (0)                     ; 0                 ; 1          ; 0    ; 0            ; |cpu|alu:k           ; alu           ; work         ;
+; |cpu                       ; 69 (0)              ; 0 (0)                     ; 0                 ; 1          ; 44   ; 0            ; |cpu                 ; cpu           ; work         ;
+;    |alu:alu|               ; 41 (41)             ; 0 (0)                     ; 0                 ; 1          ; 0    ; 0            ; |cpu|alu:alu         ; alu           ; work         ;
 ;    |seven_seg_hex:a|       ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |cpu|seven_seg_hex:a ; seven_seg_hex ; work         ;
 ;    |seven_seg_hex:b|       ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |cpu|seven_seg_hex:b ; seven_seg_hex ; work         ;
 ;    |seven_seg_hex:c|       ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |cpu|seven_seg_hex:c ; seven_seg_hex ; work         ;
@@ -233,6 +239,30 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ;                                 ;             ;
 ; Fixed Point Unsigned Multiplier ; 1           ;
 +---------------------------------+-------------+
+
+
++-------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                            ;
++----------------------------------------+--------------------------------------+
+; Register name                          ; Reason for Removal                   ;
++----------------------------------------+--------------------------------------+
+; RegBank:rb|Register:Inst15|r[0..3]     ; Stuck at GND due to stuck port clock ;
+; RegBank:rb|Register:Inst14|r[0..3]     ; Stuck at GND due to stuck port clock ;
+; RegBank:rb|Register:Inst13|r[0..3]     ; Stuck at GND due to stuck port clock ;
+; RegBank:rb|Register:Inst12|r[0..3]     ; Stuck at GND due to stuck port clock ;
+; RegBank:rb|Register:Inst11|r[0..3]     ; Stuck at GND due to stuck port clock ;
+; RegBank:rb|Register:Inst10|r[0..3]     ; Stuck at GND due to stuck port clock ;
+; RegBank:rb|Register:Inst9|r[0..3]      ; Stuck at GND due to stuck port clock ;
+; RegBank:rb|Register:Inst7|r[0..3]      ; Stuck at GND due to stuck port clock ;
+; RegBank:rb|Register:Inst6|r[0..3]      ; Stuck at GND due to stuck port clock ;
+; RegBank:rb|Register:Inst5|r[0..3]      ; Stuck at GND due to stuck port clock ;
+; RegBank:rb|Register:Inst4|r[0..3]      ; Stuck at GND due to stuck port clock ;
+; RegBank:rb|Register:Inst3|r[0..3]      ; Stuck at GND due to stuck port clock ;
+; RegBank:rb|Register:Inst2|r[0..3]      ; Stuck at GND due to stuck port clock ;
+; RegBank:rb|Register:Inst1|r[0..3]      ; Stuck at GND due to stuck port clock ;
+; RegBank:rb|Register:Inst0|r[0..3]      ; Stuck at GND due to stuck port clock ;
+; Total Number of Removed Registers = 60 ;                                      ;
++----------------------------------------+--------------------------------------+
 
 
 +------------------------------------------------------+
@@ -255,55 +285,86 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 256:1              ; 14 bits   ; 2380 LEs      ; 210 LEs              ; 2170 LEs               ; No         ; |cpu|alu:k|Selector13      ;
+; 14:1               ; 15 bits   ; 135 LEs       ; 90 LEs               ; 45 LEs                 ; No         ; |cpu|alu:alu|Selector14    ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 
 
-+----------------------------------------------------+
-; Parameter Settings for User Entity Instance: alu:k ;
-+----------------+----------+------------------------+
-; Parameter Name ; Value    ; Type                   ;
-+----------------+----------+------------------------+
-; ADD            ; 00000101 ; Unsigned Binary        ;
-; ADDI           ; 0101XXXX ; Unsigned Binary        ;
-; ADDU           ; 00000110 ; Unsigned Binary        ;
-; ADDUI          ; 0110XXXX ; Unsigned Binary        ;
-; ADDC           ; 00000111 ; Unsigned Binary        ;
-; ADDCI          ; 0111XXXX ; Unsigned Binary        ;
-; MUL            ; 00001110 ; Unsigned Binary        ;
-; MULI           ; 1110XXXX ; Unsigned Binary        ;
-; SUB            ; 00001001 ; Unsigned Binary        ;
-; SUBI           ; 1001XXXX ; Unsigned Binary        ;
-; SUBC           ; 00001010 ; Unsigned Binary        ;
-; SUBCI          ; 1010XXXX ; Unsigned Binary        ;
-; CMP            ; 00001011 ; Unsigned Binary        ;
-; CMPI           ; 1011XXXX ; Unsigned Binary        ;
-; AND            ; 00000001 ; Unsigned Binary        ;
-; ANDI           ; 0001XXXX ; Unsigned Binary        ;
-; OR             ; 00000010 ; Unsigned Binary        ;
-; ORI            ; 0010XXXX ; Unsigned Binary        ;
-; XOR            ; 00000011 ; Unsigned Binary        ;
-; XORI           ; 0011XXXX ; Unsigned Binary        ;
-; MOV            ; 00001101 ; Unsigned Binary        ;
-; MOVI           ; 1101XXXX ; Unsigned Binary        ;
-; LSH            ; 10001000 ; Unsigned Binary        ;
-; LSHI           ; 1000000X ; Unsigned Binary        ;
-; ASHU           ; 10001111 ; Unsigned Binary        ;
-; ASHUI          ; 1000001X ; Unsigned Binary        ;
-+----------------+----------+------------------------+
++------------------------------------------------------+
+; Parameter Settings for User Entity Instance: alu:alu ;
++----------------+----------+--------------------------+
+; Parameter Name ; Value    ; Type                     ;
++----------------+----------+--------------------------+
+; ADD            ; 00000101 ; Unsigned Binary          ;
+; ADDI           ; 0101XXXX ; Unsigned Binary          ;
+; ADDU           ; 00000110 ; Unsigned Binary          ;
+; ADDUI          ; 0110XXXX ; Unsigned Binary          ;
+; ADDC           ; 00000111 ; Unsigned Binary          ;
+; ADDCI          ; 0111XXXX ; Unsigned Binary          ;
+; MUL            ; 00001110 ; Unsigned Binary          ;
+; MULI           ; 1110XXXX ; Unsigned Binary          ;
+; SUB            ; 00001001 ; Unsigned Binary          ;
+; SUBI           ; 1001XXXX ; Unsigned Binary          ;
+; SUBC           ; 00001010 ; Unsigned Binary          ;
+; SUBCI          ; 1010XXXX ; Unsigned Binary          ;
+; CMP            ; 00001011 ; Unsigned Binary          ;
+; CMPI           ; 1011XXXX ; Unsigned Binary          ;
+; AND            ; 00000001 ; Unsigned Binary          ;
+; ANDI           ; 0001XXXX ; Unsigned Binary          ;
+; OR             ; 00000010 ; Unsigned Binary          ;
+; ORI            ; 0010XXXX ; Unsigned Binary          ;
+; XOR            ; 00000011 ; Unsigned Binary          ;
+; XORI           ; 0011XXXX ; Unsigned Binary          ;
+; MOV            ; 00001101 ; Unsigned Binary          ;
+; MOVI           ; 1101XXXX ; Unsigned Binary          ;
+; LSH            ; 10001000 ; Unsigned Binary          ;
+; LSHI           ; 1000000X ; Unsigned Binary          ;
+; ASHU           ; 10001111 ; Unsigned Binary          ;
+; ASHUI          ; 1000001X ; Unsigned Binary          ;
++----------------+----------+--------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+---------------------------------------------+
-; Port Connectivity Checks: "alu:k"           ;
-+-----------+-------+----------+--------------+
-; Port      ; Type  ; Severity ; Details      ;
-+-----------+-------+----------+--------------+
-; R1[15..1] ; Input ; Info     ; Stuck at GND ;
-; R1[0]     ; Input ; Info     ; Stuck at VCC ;
-; R2[14..0] ; Input ; Info     ; Stuck at VCC ;
-; R2[15]    ; Input ; Info     ; Stuck at GND ;
-+-----------+-------+----------+--------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Mux:RDstMux"                                                                                                                                ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                                                                                      ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; r8   ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Mux:RSrcMux"                                                                                                                                ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                                                                                      ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; r8   ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "RegBank:rb"                                                                                                                                                                          ;
++--------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                                                                                                                            ;
++--------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; ALUBus ; Input  ; Warning  ; Input port expression (16 bits) is wider than the input port (4 bits) it drives.  The 12 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; r0     ; Output ; Warning  ; Output or bidir port (4 bits) is smaller than the port expression (16 bits) it drives.  The 12 most-significant bit(s) in the port expression will be connected to GND.            ;
+; r1     ; Output ; Warning  ; Output or bidir port (4 bits) is smaller than the port expression (16 bits) it drives.  The 12 most-significant bit(s) in the port expression will be connected to GND.            ;
+; r2     ; Output ; Warning  ; Output or bidir port (4 bits) is smaller than the port expression (16 bits) it drives.  The 12 most-significant bit(s) in the port expression will be connected to GND.            ;
+; r3     ; Output ; Warning  ; Output or bidir port (4 bits) is smaller than the port expression (16 bits) it drives.  The 12 most-significant bit(s) in the port expression will be connected to GND.            ;
+; r4     ; Output ; Warning  ; Output or bidir port (4 bits) is smaller than the port expression (16 bits) it drives.  The 12 most-significant bit(s) in the port expression will be connected to GND.            ;
+; r5     ; Output ; Warning  ; Output or bidir port (4 bits) is smaller than the port expression (16 bits) it drives.  The 12 most-significant bit(s) in the port expression will be connected to GND.            ;
+; r6     ; Output ; Warning  ; Output or bidir port (4 bits) is smaller than the port expression (16 bits) it drives.  The 12 most-significant bit(s) in the port expression will be connected to GND.            ;
+; r7     ; Output ; Warning  ; Output or bidir port (4 bits) is smaller than the port expression (16 bits) it drives.  The 12 most-significant bit(s) in the port expression will be connected to GND.            ;
+; r9     ; Output ; Warning  ; Output or bidir port (4 bits) is smaller than the port expression (16 bits) it drives.  The 12 most-significant bit(s) in the port expression will be connected to GND.            ;
+; r10    ; Output ; Warning  ; Output or bidir port (4 bits) is smaller than the port expression (16 bits) it drives.  The 12 most-significant bit(s) in the port expression will be connected to GND.            ;
+; r11    ; Output ; Warning  ; Output or bidir port (4 bits) is smaller than the port expression (16 bits) it drives.  The 12 most-significant bit(s) in the port expression will be connected to GND.            ;
+; r12    ; Output ; Warning  ; Output or bidir port (4 bits) is smaller than the port expression (16 bits) it drives.  The 12 most-significant bit(s) in the port expression will be connected to GND.            ;
+; r13    ; Output ; Warning  ; Output or bidir port (4 bits) is smaller than the port expression (16 bits) it drives.  The 12 most-significant bit(s) in the port expression will be connected to GND.            ;
+; r14    ; Output ; Warning  ; Output or bidir port (4 bits) is smaller than the port expression (16 bits) it drives.  The 12 most-significant bit(s) in the port expression will be connected to GND.            ;
+; r15    ; Output ; Warning  ; Output or bidir port (4 bits) is smaller than the port expression (16 bits) it drives.  The 12 most-significant bit(s) in the port expression will be connected to GND.            ;
+; r8     ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                                                           ;
++--------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------+
@@ -311,20 +372,20 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_lcell_comb     ; 75                          ;
-;     normal            ; 75                          ;
+; arriav_lcell_comb     ; 74                          ;
+;     normal            ; 74                          ;
 ;         0 data inputs ; 1                           ;
 ;         1 data inputs ; 4                           ;
-;         2 data inputs ; 1                           ;
-;         3 data inputs ; 2                           ;
-;         4 data inputs ; 42                          ;
-;         5 data inputs ; 9                           ;
+;         2 data inputs ; 4                           ;
+;         3 data inputs ; 1                           ;
+;         4 data inputs ; 30                          ;
+;         5 data inputs ; 18                          ;
 ;         6 data inputs ; 16                          ;
 ; arriav_mac            ; 1                           ;
-; boundary_port         ; 42                          ;
+; boundary_port         ; 44                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 4.00                        ;
-; Average LUT depth     ; 3.42                        ;
+; Average LUT depth     ; 3.30                        ;
 +-----------------------+-----------------------------+
 
 
@@ -342,11 +403,14 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
-    Info: Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
-    Info: Processing started: Wed Sep 10 16:48:06 2025
+    Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+    Info: Processing started: Tue Sep 16 15:32:53 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off cpu -c cpu
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Warning (12090): Entity "Mux" obtained from "Mux.v" instead of from Quartus Prime megafunction library File: C:/ECE/ECE 3710/GFlipFlops/CPU/Mux.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file mux.v
+    Info (12023): Found entity 1: Mux File: C:/ECE/ECE 3710/GFlipFlops/CPU/Mux.v Line: 1
 Info (12021): Found 2 design units, including 2 entities, in source file regfile.v
     Info (12023): Found entity 1: Register File: C:/ECE/ECE 3710/GFlipFlops/CPU/regfile.v Line: 23
     Info (12023): Found entity 2: RegBank File: C:/ECE/ECE 3710/GFlipFlops/CPU/regfile.v Line: 54
@@ -358,25 +422,404 @@ Info (12021): Found 1 design units, including 1 entities, in source file alu_tb.
     Info (12023): Found entity 1: ALU_tb File: C:/ECE/ECE 3710/GFlipFlops/CPU/ALU_tb.v Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file alu.v
     Info (12023): Found entity 1: alu File: C:/ECE/ECE 3710/GFlipFlops/CPU/alu.v Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file fsm_test2.v
+    Info (12023): Found entity 1: FSM_test2 File: C:/ECE/ECE 3710/GFlipFlops/CPU/FSM_test2.v Line: 3
+Warning (10236): Verilog HDL Implicit Net warning at cpu.v(35): created implicit net for "clk" File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 35
 Info (12127): Elaborating entity "cpu" for the top level hierarchy
-Info (12128): Elaborating entity "alu" for hierarchy "alu:k" File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 18
-Info (12128): Elaborating entity "seven_seg_hex" for hierarchy "seven_seg_hex:a" File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 20
+Info (12128): Elaborating entity "alu" for hierarchy "alu:alu" File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 31
+Info (12128): Elaborating entity "RegBank" for hierarchy "RegBank:rb" File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 35
+Info (12128): Elaborating entity "Register" for hierarchy "RegBank:rb|Register:Inst0" File: C:/ECE/ECE 3710/GFlipFlops/CPU/regfile.v Line: 66
+Info (12128): Elaborating entity "Mux" for hierarchy "Mux:RSrcMux" File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 41
+Info (12128): Elaborating entity "seven_seg_hex" for hierarchy "seven_seg_hex:a" File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 49
+Warning (12011): Net is missing source, defaulting to GND
+    Warning (12110): Net "r0[15]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r0[14]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r0[13]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r0[12]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r0[11]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r0[10]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r0[9]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r0[8]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r0[7]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r0[6]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r0[5]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r0[4]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r1[15]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r1[14]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r1[13]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r1[12]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r1[11]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r1[10]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r1[9]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r1[8]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r1[7]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r1[6]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r1[5]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r1[4]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r2[15]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r2[14]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r2[13]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r2[12]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r2[11]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r2[10]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r2[9]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r2[8]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r2[7]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r2[6]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r2[5]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r2[4]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r3[15]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r3[14]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r3[13]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r3[12]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r3[11]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r3[10]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r3[9]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r3[8]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r3[7]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r3[6]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r3[5]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r3[4]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r4[15]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r4[14]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r4[13]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r4[12]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r4[11]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r4[10]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r4[9]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r4[8]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r4[7]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r4[6]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r4[5]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r4[4]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r5[15]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r5[14]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r5[13]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r5[12]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r5[11]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r5[10]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r5[9]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r5[8]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r5[7]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r5[6]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r5[5]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r5[4]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r6[15]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r6[14]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r6[13]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r6[12]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r6[11]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r6[10]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r6[9]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r6[8]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r6[7]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r6[6]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r6[5]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r6[4]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r7[15]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r7[14]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r7[13]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r7[12]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r7[11]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r7[10]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r7[9]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r7[8]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r7[7]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r7[6]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r7[5]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r7[4]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r9[15]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r9[14]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r9[13]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r9[12]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r9[11]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r9[10]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r9[9]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r9[8]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r9[7]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r9[6]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r9[5]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r9[4]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r10[15]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r10[14]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r10[13]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r10[12]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r10[11]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r10[10]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r10[9]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r10[8]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r10[7]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r10[6]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r10[5]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r10[4]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r11[15]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r11[14]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r11[13]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r11[12]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r11[11]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r11[10]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r11[9]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r11[8]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r11[7]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r11[6]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r11[5]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r11[4]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r12[15]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r12[14]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r12[13]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r12[12]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r12[11]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r12[10]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r12[9]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r12[8]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r12[7]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r12[6]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r12[5]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r12[4]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r13[15]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r13[14]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r13[13]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r13[12]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r13[11]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r13[10]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r13[9]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r13[8]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r13[7]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r13[6]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r13[5]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r13[4]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r14[15]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r14[14]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r14[13]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r14[12]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r14[11]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r14[10]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r14[9]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r14[8]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r14[7]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r14[6]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r14[5]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r14[4]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r15[15]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r15[14]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r15[13]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r15[12]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r15[11]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r15[10]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r15[9]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r15[8]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r15[7]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r15[6]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r15[5]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r15[4]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+Warning (12011): Net is missing source, defaulting to GND
+    Warning (12110): Net "r0[15]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r0[14]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r0[13]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r0[12]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r0[11]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r0[10]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r0[9]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r0[8]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r0[7]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r0[6]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r0[5]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r0[4]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r1[15]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r1[14]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r1[13]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r1[12]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r1[11]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r1[10]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r1[9]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r1[8]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r1[7]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r1[6]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r1[5]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r1[4]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r2[15]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r2[14]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r2[13]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r2[12]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r2[11]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r2[10]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r2[9]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r2[8]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r2[7]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r2[6]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r2[5]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r2[4]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r3[15]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r3[14]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r3[13]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r3[12]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r3[11]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r3[10]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r3[9]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r3[8]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r3[7]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r3[6]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r3[5]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r3[4]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r4[15]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r4[14]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r4[13]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r4[12]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r4[11]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r4[10]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r4[9]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r4[8]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r4[7]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r4[6]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r4[5]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r4[4]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r5[15]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r5[14]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r5[13]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r5[12]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r5[11]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r5[10]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r5[9]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r5[8]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r5[7]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r5[6]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r5[5]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r5[4]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r6[15]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r6[14]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r6[13]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r6[12]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r6[11]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r6[10]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r6[9]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r6[8]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r6[7]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r6[6]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r6[5]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r6[4]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r7[15]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r7[14]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r7[13]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r7[12]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r7[11]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r7[10]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r7[9]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r7[8]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r7[7]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r7[6]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r7[5]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r7[4]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r9[15]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r9[14]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r9[13]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r9[12]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r9[11]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r9[10]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r9[9]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r9[8]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r9[7]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r9[6]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r9[5]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r9[4]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r10[15]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r10[14]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r10[13]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r10[12]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r10[11]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r10[10]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r10[9]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r10[8]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r10[7]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r10[6]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r10[5]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r10[4]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r11[15]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r11[14]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r11[13]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r11[12]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r11[11]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r11[10]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r11[9]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r11[8]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r11[7]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r11[6]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r11[5]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r11[4]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r12[15]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r12[14]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r12[13]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r12[12]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r12[11]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r12[10]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r12[9]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r12[8]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r12[7]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r12[6]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r12[5]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r12[4]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r13[15]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r13[14]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r13[13]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r13[12]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r13[11]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r13[10]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r13[9]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r13[8]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r13[7]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r13[6]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r13[5]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r13[4]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r14[15]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r14[14]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r14[13]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r14[12]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r14[11]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r14[10]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r14[9]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r14[8]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r14[7]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r14[6]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r14[5]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r14[4]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r15[15]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r15[14]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r15[13]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r15[12]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r15[11]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r15[10]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r15[9]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r15[8]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r15[7]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r15[6]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r15[5]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+    Warning (12110): Net "r15[4]" is missing source, defaulting to GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 11
+Warning (12241): 3 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "flags[0]" is stuck at GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 7
-    Warning (13410): Pin "flags[1]" is stuck at GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 7
-    Warning (13410): Pin "flags[3]" is stuck at GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 7
+    Warning (13410): Pin "flags[1]" is stuck at GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 8
+    Warning (13410): Pin "flags[2]" is stuck at GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 8
+    Warning (13410): Pin "flags[3]" is stuck at GND File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 8
 Info (286030): Timing-Driven Synthesis is running
+Info (144001): Generated suppressed messages file C:/ECE/ECE 3710/GFlipFlops/CPU/output_files/cpu.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 113 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 9 input pins
+Warning (21074): Design contains 2 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "clck" File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 4
+    Warning (15610): No output dependent on input pin "reset" File: C:/ECE/ECE 3710/GFlipFlops/CPU/cpu.v Line: 4
+Info (21057): Implemented 114 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 11 input pins
     Info (21059): Implemented 33 output pins
-    Info (21061): Implemented 70 logic cells
+    Info (21061): Implemented 69 logic cells
     Info (21062): Implemented 1 DSP elements
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 4863 megabytes
-    Info: Processing ended: Wed Sep 10 16:48:18 2025
-    Info: Elapsed time: 00:00:12
-    Info: Total CPU time (on all processors): 00:00:24
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 373 warnings
+    Info: Peak virtual memory: 4829 megabytes
+    Info: Processing ended: Tue Sep 16 15:33:01 2025
+    Info: Elapsed time: 00:00:08
+    Info: Total CPU time (on all processors): 00:00:20
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/ECE/ECE 3710/GFlipFlops/CPU/output_files/cpu.map.smsg.
 
 

@@ -116,7 +116,7 @@
 					"strict" : false
 				},
 				{
-					"name" : "flags[2]",
+					"name" : "flags[0]",
 					"strict" : false
 				},
 				{
@@ -128,11 +128,7 @@
 					"strict" : false
 				},
 				{
-					"name" : "opcode[1]",
-					"strict" : false
-				},
-				{
-					"name" : "opcode[7]",
+					"name" : "opcode[3]",
 					"strict" : false
 				},
 				{
@@ -140,15 +136,7 @@
 					"strict" : false
 				},
 				{
-					"name" : "opcode[3]",
-					"strict" : false
-				},
-				{
 					"name" : "cin",
-					"strict" : false
-				},
-				{
-					"name" : "opcode[4]",
 					"strict" : false
 				},
 				{
@@ -157,6 +145,18 @@
 				},
 				{
 					"name" : "opcode[6]",
+					"strict" : false
+				},
+				{
+					"name" : "opcode[7]",
+					"strict" : false
+				},
+				{
+					"name" : "opcode[1]",
+					"strict" : false
+				},
+				{
+					"name" : "opcode[4]",
 					"strict" : false
 				}
 			]
