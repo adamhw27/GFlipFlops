@@ -1,0 +1,25 @@
+module fsm(
+	input wire clk, rs,
+	);
+	
+	reg [4:0] state;
+	always @(posedge clk or negedge rs) begin
+		if (~rs) state <= 5'b0;
+		else if (state != 5'b) count <= count + 4'b1;
+	end
+	
+	always @(*) begin
+		case (state)
+			// S1: R2 = R1 + R0; initialize R0 & R1
+			5'b00001 : begin
+			
+			end
+			
+			// S2: R3 = R2 + R1;
+			5'b00010 : begin
+			
+			end
+		endcase
+	end
+	
+endmodule
