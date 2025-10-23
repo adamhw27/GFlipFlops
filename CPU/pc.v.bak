@@ -1,0 +1,15 @@
+module pc (
+input incrEN,
+input clk, rst,
+input [9:0] currentAddress,
+
+output [9:0] outAddress
+);
+
+
+	always @(posedge clk) begin
+		if (incEN)
+			outAddress = currentAddress + 1;
+	end
+
+endmodule

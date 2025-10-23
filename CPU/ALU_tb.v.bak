@@ -1,0 +1,46 @@
+`timescale 1ns / 1ps
+module ALU_tb();
+
+// inputs to ALU
+reg[15:0] input1, input2;
+reg[7:0] opcode;
+
+// outputs to ALU
+wire[15:0] actualOutput;
+wire[4:0] flags;
+
+// alu instantiation
+
+
+integer i;
+
+initial begin
+	$monitor("I1: %b\tI2: %b\tOP: %b\tOut: %b\tFlags: %b", input1, input2, opcode, actualOutput, flags);
+
+	//for(i = 0; i < 256; i = i+1)
+	//begin/
+	
+	// add
+	#10
+	input1 = $random %65536;
+	input2 = $random %65536;
+	opcode = 4'b0101;
+	// and
+	#10
+	input1 = $random %65536;
+	input2 = $random %65536;
+	opcode = 4'b0001;
+	
+	// or
+	#10
+	input1 = $random %65536;
+	input2 = $random %65536;
+	opcode = 4'b0010;
+	//xor
+	#10
+	input1 = $random %65536;
+	input2 = $random %65536;
+	opcode = 4'b0011;
+	$finish(2);
+end
+endmodule
