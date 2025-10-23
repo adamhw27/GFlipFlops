@@ -1,0 +1,41 @@
+module seven_seg_hex(
+	input [3:0] binaryInput,
+	output reg [6:0] seven_seg
+);
+
+always @* begin
+  case (binaryInput)
+    4'b0000 : seven_seg = ~7'b1111110; // 0
+    4'b0001 : seven_seg = ~7'b0110000; // 1
+    4'b0010 : seven_seg = ~7'b1101101; // 2
+    4'b0011 : seven_seg = ~7'b1111001; // 3
+    4'b0100 : seven_seg = ~7'b0110011; // 4
+    4'b0101 : seven_seg = ~7'b1011011; // 5
+    4'b0110 : seven_seg = ~7'b1011111; // 6
+    4'b0111 : seven_seg = ~7'b1110000; // 7
+    4'b1000 : seven_seg = ~7'b1111111; // 8
+    4'b1001 : seven_seg = ~7'b1110011; // 9
+    4'b1010 : seven_seg = ~7'b1110111; // A
+    4'b1011 : seven_seg = ~7'b0011111; // b
+    4'b1100 : seven_seg = ~7'b1001110; // C
+    4'b1101 : seven_seg = ~7'b0111101; // d
+    4'b1110 : seven_seg = ~7'b1001111; // E
+    4'b1111 : seven_seg = ~7'b1000111; // F
+    default : seven_seg = ~7'b0000000; // blank/off or error
+  endcase
+end
+
+endmodule
+
+/*
+PIN ASSIGNMENTS
+
+seven_seg[6]		Output		PIN_C14
+seven_seg[5]		Output		PIN_E15
+seven_seg[4]		Output		PIN_C15
+seven_seg[3]		Output		PIN_C16
+seven_seg[2]		Output		PIN_E16
+seven_seg[1]		Output		PIN_D17
+seven_seg[0]		Output		PIN_C17
+
+*/
