@@ -9,7 +9,7 @@ output reg [9:0] outPC
 
 	always @(posedge clk) begin
 		if (PCen)
-			outAddress = currentAddress + 1;
+			outPC = currentPC + 1;
 			
 	end
 

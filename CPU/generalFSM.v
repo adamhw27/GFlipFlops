@@ -3,7 +3,7 @@ module generalFSM (
 	input rst,
 	input [15:0] inst,
 	
-	output reg PCen, R/I,
+	output reg PCen, RorI,
 	output reg [15:0] Ren,
 	output reg [7:0] opcode,
 	output reg [3:0] Rdest,
@@ -12,6 +12,8 @@ module generalFSM (
 
 );
 	
+	reg [3:0] state;
+
 	// states
 	parameter S0 = 4'b0000;
 	parameter S1 = 4'b0001;
@@ -37,6 +39,13 @@ module generalFSM (
 		case(state)
 		
 			S0: begin
+				PCen = 0;
+				Rdest = 4'bxxxx;
+				Rsrc = 4'bxxxx;
+				opcode = 8'bxxxxxxxx;
+				imm = 16'bx;
+				RorI = 1'bx;
+				Ren = 16'bx;
 			
 			end
 			
@@ -45,20 +54,43 @@ module generalFSM (
 				PCen = 0;
 				Rdest = inst[11:8];
 				Rsrc = inst[3:0];
-				if (inst[15:12] == 0)
-					opcode = {inst[15:12], inst[7:4]};
-					imm = 0;
-				else // not sure if this handles unsigned operations correctly
-					imm = {8inst[7],inst[7:0]}
+				Ren = 16'b0;
+				if (inst[15:12] == 0) begin // true if not i-type instruction
+					RorI = 0; // indicates to choose Rsrc
 					
-			end
-			
+					opcode = {inst[15:12], inst[7:4]}; // from lecture slides:
+					// if opcode = R-type or I-type, then Next State = S2 
+					// unsure how to implement
+					imm = 0;
+				end else begin// not sure if this handles unsigned operations correctly
+					RorI = 1; // indicates to choose immediate
+					opcode = inst[15:12];
+					imm = {8*inst[7],inst[7:0]};	 // sign extend immediate
+				end
 			end
 			
 			S2: begin 
-			
+				PCen = 1;
+				Rdest = inst[11:8];
+				Rsrc = inst[3:0];
+				Ren= 16'b1 << Rdest; // wb to rdest register
+				
+				if (inst[15:12] == 0) begin// true if not i-type instruction
+					RorI = 0; // indicates to choose Rsrc
+					
+					opcode = {inst[15:12], inst[7:4]}; // from lecture slides:
+					// if opcode = R-type or I-type, then Next State = S2 
+					// unsure how to implement
+					imm = 0;
+				end else begin// not sure if this handles unsigned operations correctly
+					RorI = 1; // indicates to choose immediate
+					opcode = inst[15:12];
+					imm = {8*inst[7],inst[7:0]};	 // sign extend immediate
+				end
+				
+				
 			end
-	
+		endcase
 	end
 	
 endmodule

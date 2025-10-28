@@ -12,11 +12,11 @@ module decoding (
 		begin
 			Rdest = inst[11:8];
 			Rsrc = inst[3:0];
-			if (inst[15:12] == 0)
+			if (inst[15:12] == 0) begin
 				opcode = {inst[15:12], inst[7:4]};
 				imm = 0;
-			else // not sure if this handles unsigned operations correctly
-				imm = {8inst[7],inst[7:0]}
+			end else begin // not sure if this handles unsigned operations correctly
+				imm = {8*inst[7],inst[7:0]};
 			end
 		end
 
