@@ -5,6 +5,10 @@ input clk, rst,
 output [27:0] segOut
 );
 
+// 16 bit Instruction
+wire [15:0] inst;
+
+
 // Make registers
 wire [15:0] r0, r1, r2, r3, r4, r5, r6, r7, r8 ,r9, r10, r11, r12, r13, r14, r15;
 
@@ -39,14 +43,17 @@ wire [15:0] immConnect;
 //immediate sel wire
 wire immSel;
 
+// PC enable
+wire PCen;
+
 //immediate sel wire - right now it does nothing 
-wire flagEn;
+//wire flagEn;
 
 // Temp wire to ignore flags
 wire [4:0] flags;
 
 // call fsm2 test
-FSM_test1 fsm2(.clk(clk), .rst(rst), .regEnable(regEnable), .flagEn(flagEn), .RorI(immSel), .opcode(opcode), .Rsrc(srcSel), .Rdest(dstSel), .imm(immConnect));
+generalFSM fsm(.clk(clk), .rst(rst), .inst(inst), .Ren(regEnable), .PCen(PCen), .RorI(immSel), .opcode(opcode), .Rsrc(srcSel), .Rdest(dstSel), .imm(immConnect));
 
 //Instantiating the ALU
 alu alu(.R1(R1), .R2(R2), .opcode(opcode), .aluOut(aluOut), .flags(flags), .cin(cin));

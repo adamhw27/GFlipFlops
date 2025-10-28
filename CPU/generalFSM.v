@@ -3,11 +3,14 @@ module generalFSM (
 	input rst,
 	input [15:0] inst,
 	
-	output reg PCen, RorI,
 	output reg [15:0] Ren,
+	output reg PCen, RorI,
+	
+	output reg PCen, RorI,
+	
 	output reg [7:0] opcode,
-	output reg [3:0] Rdest,
 	output reg [3:0] Rsrc,
+	output reg [3:0] Rdest,
 	output reg [15:0] imm
 
 );
