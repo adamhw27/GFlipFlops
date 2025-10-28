@@ -5,7 +5,7 @@ input clk, rst,
 output [27:0] segOut
 );
 
-// 16 bit Instruction
+// 16 bit Instruction pulled from mem
 wire [15:0] inst;
 
 
@@ -45,12 +45,18 @@ wire immSel;
 
 // PC enable
 wire PCen;
+wire PCvalue;
 
 //immediate sel wire - right now it does nothing 
 //wire flagEn;
 
 // Temp wire to ignore flags
 wire [4:0] flags;
+
+
+
+// PC
+pc pc(.PCen(PCen), .clk(clk), .rst(rst), .initialPCvalue(initialPCvalue), .outPC(PCvalue));
 
 // call fsm2 test
 generalFSM fsm(.clk(clk), .rst(rst), .inst(inst), .Ren(regEnable), .PCen(PCen), .RorI(immSel), .opcode(opcode), .Rsrc(srcSel), .Rdest(dstSel), .imm(immConnect));
@@ -77,6 +83,8 @@ RegMux RDstMux(.r0(r0), .r1(r1), .r2(r2), .r3(r3), .r4(r4), .r5(r5), .r6(r6), .r
 	
 TwoInputMux immMux(.i0(rSrcMuxToImmMux), .i1(immConnect), .sel(immSel), .out(R1));
 
+// Memory setup
+true_dual_port_ram_single_clock f(.data_a(data_a), .data_b(data_b), .addr_a(PCvalue), .addr_b(addr_b), .we_a(we_a), .we_b(we_b), .clk(clk), .q_a(inst), .q_b(q_b));
 
 
 // Connect SegOut

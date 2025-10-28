@@ -1,16 +1,16 @@
 module pc (
-input PCen,
-input clk, rst,
-input [9:0] currentPC,
-
-output reg [9:0] outPC
+	input wire PCen,
+	input wire clk,
+	input wire rst,
+	input wire [9:0] initialPCvalue,
+	output reg [9:0] outPC
 );
 
-
-	always @(posedge clk) begin
-		if (PCen)
-			outPC = currentPC + 1;
-			
+	always @(posedge clk or posedge rst) begin
+	  if (rst)
+			outPC <= initialPCvalue;
+	  else if (PCen)
+			outPC <= outPC + 1;
 	end
 
 endmodule

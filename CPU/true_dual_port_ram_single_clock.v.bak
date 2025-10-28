@@ -15,10 +15,8 @@ module true_dual_port_ram_single_clock
 	integer i;
 	initial
 	begin
-		for (i = 0; i < 2**ADDR_WIDTH; i = i + 1)
-            ram[i] = 0;
-				
-		$readmemh("memH.hex", ram, 0, (2**ADDR_WIDTH)-1);
+		for(i=0;i<1024;i=i+1)
+			ram[i] = i[15:0]; 
 	end
 
 	// Port A 

@@ -4,7 +4,6 @@ module generalFSM (
 	input [15:0] inst,
 	
 	output reg [15:0] Ren,
-	output reg PCen, RorI,
 	
 	output reg PCen, RorI,
 	
@@ -40,6 +39,8 @@ module generalFSM (
 	always @(state)  begin
 	
 		case(state)
+		
+		
 		
 			S0: begin
 				PCen = 0;

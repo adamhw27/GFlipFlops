@@ -1,9 +1,8 @@
 `timescale 1ns/1ps
 
-module mem_FSM_tb;
+module generalFSM_tb ();
 
 	// Inputs
-	 reg PCvalue;
     reg cin;
     reg clk;
     reg rst;
@@ -13,8 +12,6 @@ module mem_FSM_tb;
 
     // Instantiate the CPU
     cpu uut (
-			.PCvalue(PCvalue),
-			.cin(cin),
         .clk(clk),
         .rst(rst),
         .segOut(segOut)
@@ -24,8 +21,6 @@ module mem_FSM_tb;
     initial begin
         clk = 0;
         forever #5 clk = ~clk;
-		  
-		  PCvalue = 0;
     end
 
     // Test stimulus
