@@ -29,7 +29,7 @@ module generalFSM (
 			case (state)
 				 S0: state <= S1;
 				 S1: state <= S2;
-				 S2: state <= S2;
+				 S2: state <= S0;
 				 default: state <= S0;
 			endcase
 	  end

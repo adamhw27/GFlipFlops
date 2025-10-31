@@ -45,7 +45,7 @@ wire immSel;
 
 // PC enable
 wire PCen;
-wire PCvalue;
+wire [9:0] PCvalue;
 
 //immediate sel wire - right now it does nothing 
 //wire flagEn;
@@ -54,9 +54,8 @@ wire PCvalue;
 wire [4:0] flags;
 
 
-
 // PC
-pc pc(.PCen(PCen), .clk(clk), .rst(rst), .initialPCvalue(initialPCvalue), .outPC(PCvalue));
+pc pc(.PCen(PCen), .clk(clk), .rst(rst), .outPC(PCvalue));
 
 // call fsm2 test
 generalFSM fsm(.clk(clk), .rst(rst), .inst(inst), .Ren(regEnable), .PCen(PCen), .RorI(immSel), .opcode(opcode), .Rsrc(srcSel), .Rdest(dstSel), .imm(immConnect));
@@ -88,9 +87,9 @@ true_dual_port_ram_single_clock f(.data_a(data_a), .data_b(data_b), .addr_a(PCva
 
 
 // Connect SegOut
-seven_seg_hex a(r15[3:0], segOut[6:0]);
-seven_seg_hex b(r15[7:4], segOut[13:7]);
-seven_seg_hex c(r15[11:8], segOut[20:14]);
-seven_seg_hex d(r15[15:12], segOut[27:21]);
+seven_seg_hex a(r1[3:0], segOut[6:0]);
+seven_seg_hex b(r1[7:4], segOut[13:7]);
+seven_seg_hex c(r1[11:8], segOut[20:14]);
+seven_seg_hex d(r1[15:12], segOut[27:21]);
 
 endmodule
