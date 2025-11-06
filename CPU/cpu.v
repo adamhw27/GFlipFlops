@@ -25,6 +25,7 @@ wire [15:0] regEnable;
 
 // To connect to Bus
 wire [15:0] aluOut;
+wire [15:0] ALUBus;
 
 // To connect mux to FSM
 wire [3:0] srcSel;
@@ -58,18 +59,25 @@ wire LScntl;
 wire we_a;
 wire [9:0] address;
 
+// IR register wires
+wire [15:0] IR;
+wire IRenable;
+
+// alu bus mux
+wire Alu_Mux_cntl;
+wire [15:0] ALUBus;
 
 // PC
 pc pc(.PCen(PCen), .clk(clk), .rst(rst), .outPC(PCvalue));
 
 // call fsm2 test
-generalFSM fsm(.clk(clk), .rst(rst), .instruction(instruction), .Ren(regEnable), .PCen(PCen), .RorI(immSel), .LScntl(LScntl), .we_a(we_a), .opcode(opcode), .Rsrc(srcSel), .Rdest(dstSel), .imm(immConnect));
+generalFSM fsm(.clk(clk), .rst(rst), .inst(IR), .Ren(regEnable), .PCen(PCen), .RorI(immSel), .LScntl(LScntl), .we_a(we_a), .IRenable(IRenable), .Alu_Mux_cntl(Alu_Mux_cntl), .opcode(opcode), .Rsrc(srcSel), .Rdest(dstSel), .imm(immConnect));
 
 //instantiating the ALU
 alu alu(.R1(R1), .R2(R2), .opcode(opcode), .aluOut(aluOut), .flags(flags), .cin(cin));
 
 // Connect Alu out to Reg Bank
-RegBank rb(.ALUBus(aluOut), .r0(r0), .r1(r1), .r2(r2), .r3(r3), .r4(r4), .r5(r5), .r6(r6),
+RegBank rb(.ALUBus(ALUBus), .r0(r0), .r1(r1), .r2(r2), .r3(r3), .r4(r4), .r5(r5), .r6(r6),
 					.r7(r7), .r8(r8), .r9(r9), .r10(r10), .r11(r11), .r12(r12), .r13(r13), .r14(r14), .r15(r15), .regEnable(regEnable), .clk(clk), .rst(rst));
 					
 					
@@ -84,17 +92,19 @@ RegMux RDstMux(.r0(r0), .r1(r1), .r2(r2), .r3(r3), .r4(r4), .r5(r5), .r6(r6), .r
 					.r10(r10), .r11(r11), .r12(r12), .r13(r13), .r14(r14), .r15(r15), .sel(dstSel), .out(R2));
 				
 // Determine Imm or Reg for second ALU input	
-	
 TwoInputMux immMux(.i0(rSrcMuxToImmMux), .i1(immConnect), .sel(immSel), .out(R1));
 
-// Determine whether we are using LS address passed from logic, or PCvalue address
-	
+// Determine whether we are using LS address passed from logic, or PCvalue address	
 TwoInputMux LScntlMux(.i0(PCvalue), .i1(R2), .sel(LScntl), .out(address));
 
 // Memory setup
 true_dual_port_ram_single_clock f(.data_a(R1), .data_b(data_b), .addr_a(address), .addr_b(addr_b), .we_a(we_a), .we_b(we_b), .clk(clk), .q_a(instruction), .q_b(q_b));
 
-// NEED TO ADJUST INPUT SIZE FOR MUX
+// IR register setup
+IRreg IRmodule (.clk(clk), .rst(rst), .IRenable(IRenable), .instruction(instruction), .IR(IR));
+
+// Determine whether we are using aluout or data out	
+TwoInputMux ALUmux(.i0(aluOut), .i1(instruction), .sel(Alu_Mux_cntl), .out(ALUBus));
 
 // Connect SegOut
 seven_seg_hex a(r1[3:0], segOut[6:0]);

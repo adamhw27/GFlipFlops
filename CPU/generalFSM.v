@@ -5,7 +5,7 @@ module generalFSM (
 	
 	output reg [15:0] Ren,
 	
-	output reg PCen, RorI, LScntl, we_a,
+	output reg PCen, RorI, LScntl, we_a, IRenable, Alu_Mux_cntl,
 	
 	output reg [7:0] opcode,
 	output reg [3:0] Rsrc,
@@ -16,13 +16,11 @@ module generalFSM (
 
 
 	// check opcodes for LOAD and STORE are okay
-	// Incorporate IR register
-	// Complete LOAD function
-	
-	wire [7:0] savedOpcode;
-	wire[3:0] savedRsrc;
-	wire [3:0] savedRdest;
-	wire [15:0] savedImm;
+	// do these need to be reg? do we even need these if we have the IR reg?
+	reg [7:0] savedOpcode;
+	reg [3:0] savedRsrc;
+	reg [3:0] savedRdest;
+	reg [15:0] savedImm;
 	
 	reg [3:0] state;
 
@@ -32,6 +30,7 @@ module generalFSM (
 	parameter S2_Rtype = 4'b0010;
 	parameter S3_Store = 4'b0011;
 	parameter S4_Load = 4'b0100;
+	parameter S5_dataToReg = 4'b0101;
 
 	always @(posedge clk) begin
 	  if (~rst) state <= S0;
@@ -41,10 +40,10 @@ module generalFSM (
 				 S1_Decode: begin
 				   
 					if (opcode == 8'b0100_0100) begin
-						state <= s3_Store
+						state <= S3_Store
 					end
 					else if (opcode == 8'b0100_0000) begin
-						state <= s4_Load
+						state <= S4_Load
 					end
 					else begin
 						state <= S2_Rtype;
@@ -53,8 +52,9 @@ module generalFSM (
 				 end
 				 
 				 S2_Rtype: state <= S0_Fetch;
-				 s3_Store: state <= S0_Fetch;
-				 s4_Load: state <= S0_Fetch;
+				 S3_Store: state <= S0_Fetch;
+				 S4_Load: state <= S5_dataToReg;
+				 S5_dataToReg: state <= S0_Fetch;
 				 
 				 default: state <= S0_Fetch;
 			endcase
@@ -72,7 +72,9 @@ module generalFSM (
 			S0_Fetch: begin
 				PCen = 0;
 				LScntl = 0;
-				we_a =0;
+				we_a = 0;
+				IRenable = 1;
+				Alu_Mux_cntl = 0;
 				Rdest = 4'bxxxx;
 				Rsrc = 4'bxxxx;
 				opcode = 8'bxxxxxxxx;
@@ -87,6 +89,8 @@ module generalFSM (
 				PCen = 0;
 				LScntl = 0;
 				we_a = 0;
+				IRenable = 0;
+				Alu_Mux_cntl = 0;
 				Rdest = inst[11:8];
 				Rsrc = inst[3:0];
 				Ren = 16'b0;
@@ -112,31 +116,69 @@ module generalFSM (
 			end
 			
 			S2_Rtype: begin 
-				PCen = 1;
-				LScntl = 0;
-				we_a = 0;
-				Ren= 16'b1 << Rdest; // wb to rdest register
-				
 				Rdest = savedRdest;
 				Rsrc = savedRsrc;
 				opcode = savedOpcode;
 				imm = savedImm;
+				
+				PCen = 1;
+				LScntl = 0;
+				we_a = 0;
+				IRenable = 0;
+				Alu_Mux_cntl = 0;
+				Ren= 16'b1 << Rdest; // wb to rdest register
 				
 			end
 			
 			S3_Store: begin
-			
-				PCen = 1;
-				LScntl = 1;
-				we_a = 1;
-				Ren = 16'bx;
-				
 				Rdest = savedRdest;
 				Rsrc = savedRsrc;
 				opcode = savedOpcode;
 				imm = savedImm;
 			
+				PCen = 1;
+				LScntl = 1;
+				we_a = 1;
+				IRenable = 0;
+				Alu_Mux_cntl = 0;
+				Ren = 16'bx;
+				
 			end
+			
+			s4_Load: begin
+				
+				Rdest = savedRdest;
+				Rsrc = savedRsrc;
+				opcode = savedOpcode;
+				imm = savedImm;
+				
+				PCen = 0;
+				LScntl = 1;
+				we_a = 0;
+				IRenable = 0;
+				Alu_Mux_cntl = 0;
+				Ren = 16'bx;
+			
+			end
+			
+			S5_dataToReg: begin
+				
+				Rdest = savedRdest;
+				Rsrc = savedRsrc;
+				opcode = savedOpcode;
+				imm = savedImm;
+				
+				PCen = 1;
+				LScntl = 1;
+				we_a = 0;
+				IRenable = 0;
+				Alu_Mux_cntl = 1;
+				Ren= 16'b1 << Rdst; // wb to rdest register
+				
+			
+			end
+			
+			
 		endcase
 	end
 	
