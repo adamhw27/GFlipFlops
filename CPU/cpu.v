@@ -5,8 +5,8 @@ input clk, rst,
 output [27:0] segOut
 );
 
-// 16 bit Instruction pulled from mem
-wire [15:0] inst;
+// 16 bit instruction pulled from mem
+wire [15:0] instruction;
 
 
 // Make registers
@@ -45,7 +45,7 @@ wire immSel;
 
 // PC enable
 wire PCen;
-wire [9:0] PCvalue;
+wire [15:0] PCvalue;
 
 //immediate sel wire - right now it does nothing 
 //wire flagEn;
@@ -53,14 +53,19 @@ wire [9:0] PCvalue;
 // Temp wire to ignore flags
 wire [4:0] flags;
 
+// write enable for mem
+wire LScntl;
+wire we_a;
+wire [9:0] address;
+
 
 // PC
 pc pc(.PCen(PCen), .clk(clk), .rst(rst), .outPC(PCvalue));
 
 // call fsm2 test
-generalFSM fsm(.clk(clk), .rst(rst), .inst(inst), .Ren(regEnable), .PCen(PCen), .RorI(immSel), .opcode(opcode), .Rsrc(srcSel), .Rdest(dstSel), .imm(immConnect));
+generalFSM fsm(.clk(clk), .rst(rst), .instruction(instruction), .Ren(regEnable), .PCen(PCen), .RorI(immSel), .LScntl(LScntl), .we_a(we_a), .opcode(opcode), .Rsrc(srcSel), .Rdest(dstSel), .imm(immConnect));
 
-//Instantiating the ALU
+//instantiating the ALU
 alu alu(.R1(R1), .R2(R2), .opcode(opcode), .aluOut(aluOut), .flags(flags), .cin(cin));
 
 // Connect Alu out to Reg Bank
@@ -82,9 +87,14 @@ RegMux RDstMux(.r0(r0), .r1(r1), .r2(r2), .r3(r3), .r4(r4), .r5(r5), .r6(r6), .r
 	
 TwoInputMux immMux(.i0(rSrcMuxToImmMux), .i1(immConnect), .sel(immSel), .out(R1));
 
-// Memory setup
-true_dual_port_ram_single_clock f(.data_a(data_a), .data_b(data_b), .addr_a(PCvalue), .addr_b(addr_b), .we_a(we_a), .we_b(we_b), .clk(clk), .q_a(inst), .q_b(q_b));
+// Determine whether we are using LS address passed from logic, or PCvalue address
+	
+TwoInputMux LScntlMux(.i0(PCvalue), .i1(R2), .sel(LScntl), .out(address));
 
+// Memory setup
+true_dual_port_ram_single_clock f(.data_a(R1), .data_b(data_b), .addr_a(address), .addr_b(addr_b), .we_a(we_a), .we_b(we_b), .clk(clk), .q_a(instruction), .q_b(q_b));
+
+// NEED TO ADJUST INPUT SIZE FOR MUX
 
 // Connect SegOut
 seven_seg_hex a(r1[3:0], segOut[6:0]);
