@@ -57,21 +57,16 @@ wire [4:0] flags;
 // write enable for mem
 wire LScntl;
 wire we_a;
-wire [9:0] address;
-
-// IR register wires
-wire [15:0] IR;
-wire IRenable;
+wire [15:0] address;
 
 // alu bus mux
 wire Alu_Mux_cntl;
-wire [15:0] ALUBus;
 
 // PC
 pc pc(.PCen(PCen), .clk(clk), .rst(rst), .outPC(PCvalue));
 
 // call fsm2 test
-generalFSM fsm(.clk(clk), .rst(rst), .inst(IR), .Ren(regEnable), .PCen(PCen), .RorI(immSel), .LScntl(LScntl), .we_a(we_a), .IRenable(IRenable), .Alu_Mux_cntl(Alu_Mux_cntl), .opcode(opcode), .Rsrc(srcSel), .Rdest(dstSel), .imm(immConnect));
+generalFSM fsm(.clk(clk), .rst(rst), .inst(instruction), .Ren(regEnable), .PCen(PCen), .RorI(immSel), .LScntl(LScntl), .we_a(we_a), .IRenable(IRenable), .Alu_Mux_cntl(Alu_Mux_cntl), .opcode(opcode), .Rsrc(srcSel), .Rdest(dstSel), .imm(immConnect));
 
 //instantiating the ALU
 alu alu(.R1(R1), .R2(R2), .opcode(opcode), .aluOut(aluOut), .flags(flags), .cin(cin));
@@ -99,9 +94,6 @@ TwoInputMux LScntlMux(.i0(PCvalue), .i1(R2), .sel(LScntl), .out(address));
 
 // Memory setup
 true_dual_port_ram_single_clock f(.data_a(R1), .data_b(data_b), .addr_a(address), .addr_b(addr_b), .we_a(we_a), .we_b(we_b), .clk(clk), .q_a(instruction), .q_b(q_b));
-
-// IR register setup
-IRreg IRmodule (.clk(clk), .rst(rst), .IRenable(IRenable), .instruction(instruction), .IR(IR));
 
 // Determine whether we are using aluout or data out	
 TwoInputMux ALUmux(.i0(aluOut), .i1(instruction), .sel(Alu_Mux_cntl), .out(ALUBus));

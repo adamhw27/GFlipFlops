@@ -17,10 +17,9 @@ module generalFSM (
 
 	// check opcodes for LOAD and STORE are okay
 	// do these need to be reg? do we even need these if we have the IR reg?
-	reg [7:0] savedOpcode;
-	reg [3:0] savedRsrc;
 	reg [3:0] savedRdest;
-	reg [15:0] savedImm;
+	reg savedAlu_Mux_ctrl;
+	reg [3:0] savedRsrc;
 	
 	reg [3:0] state;
 
@@ -33,17 +32,17 @@ module generalFSM (
 	parameter S5_dataToReg = 4'b0101;
 
 	always @(posedge clk) begin
-	  if (~rst) state <= S0;
+	  if (~rst) state <= S0_Fetch;
 	  else begin
 			case (state)
 				 S0_Fetch: state <= S1_Decode;				 
 				 S1_Decode: begin
 				   
 					if (opcode == 8'b0100_0100) begin
-						state <= S3_Store
+						state <= S3_Store;
 					end
 					else if (opcode == 8'b0100_0000) begin
-						state <= S4_Load
+						state <= S4_Load;
 					end
 					else begin
 						state <= S2_Rtype;
@@ -108,18 +107,16 @@ module generalFSM (
 					imm = {8*inst[7],inst[7:0]};	 // sign extend immediate
 				end
 				
-				savedOpcode = opcode;
-				savedRsrc = Rsrc;
 				savedRdest = Rdest;
-				savedImm = imm;
+				savedRsrc = Rsrc;
+				savedAlu_Mux_ctrl = Alu_Mux_cntl;
 				
 			end
 			
 			S2_Rtype: begin 
 				Rdest = savedRdest;
 				Rsrc = savedRsrc;
-				opcode = savedOpcode;
-				imm = savedImm;
+				Alu_Mux_cntl = savedAlu_Mux_ctrl;
 				
 				PCen = 1;
 				LScntl = 0;
@@ -132,9 +129,8 @@ module generalFSM (
 			
 			S3_Store: begin
 				Rdest = savedRdest;
+				Alu_Mux_cntl = savedAlu_Mux_ctrl;
 				Rsrc = savedRsrc;
-				opcode = savedOpcode;
-				imm = savedImm;
 			
 				PCen = 1;
 				LScntl = 1;
@@ -145,12 +141,11 @@ module generalFSM (
 				
 			end
 			
-			s4_Load: begin
+			S4_Load: begin
 				
 				Rdest = savedRdest;
+				Alu_Mux_cntl = savedAlu_Mux_ctrl;
 				Rsrc = savedRsrc;
-				opcode = savedOpcode;
-				imm = savedImm;
 				
 				PCen = 0;
 				LScntl = 1;
@@ -163,17 +158,16 @@ module generalFSM (
 			
 			S5_dataToReg: begin
 				
-				Rdest = savedRdest;
+				Rdest = savedRdest; // to fix, get RSRC to hok up with memory
+				Alu_Mux_cntl = savedAlu_Mux_ctrl;
 				Rsrc = savedRsrc;
-				opcode = savedOpcode;
-				imm = savedImm;
 				
 				PCen = 1;
 				LScntl = 1;
 				we_a = 0;
 				IRenable = 0;
 				Alu_Mux_cntl = 1;
-				Ren= 16'b1 << Rdst; // wb to rdest register
+				Ren= 16'b1 << Rdest; // wb to rdest register
 				
 			
 			end
