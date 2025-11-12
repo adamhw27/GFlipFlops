@@ -32,7 +32,7 @@ module generalFSM_tb ();
         rst = 1;          // Release reset
 
         // Run simulation for a while
-        #100;
+        #10000;
 
         $display(segOut);
         $stop;

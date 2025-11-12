@@ -101,6 +101,11 @@ module generalFSM (
 					// if opcode = R-type or I-type, then Next State = S2 
 					// unsure how to implement
 					imm = 0;
+				end else if (inst[15:12] == 4'b0100) begin
+					opcode = {inst[15:12], inst[7:4]};
+					RorI = 0;
+					imm = 0;
+		
 				end else begin// not sure if this handles unsigned operations correctly
 					RorI = 1; // indicates to choose immediate
 					opcode = inst[15:12];
@@ -114,9 +119,8 @@ module generalFSM (
 			end
 			
 			S2_Rtype: begin 
-				Rdest = savedRdest;
-				Rsrc = savedRsrc;
-				Alu_Mux_cntl = savedAlu_Mux_ctrl;
+				
+				
 				
 				PCen = 1;
 				LScntl = 0;
@@ -128,13 +132,19 @@ module generalFSM (
 			end
 			
 			S3_Store: begin
-				Rdest = savedRdest;
-				Alu_Mux_cntl = savedAlu_Mux_ctrl;
-				Rsrc = savedRsrc;
+
+				IRenable = 0;
+				Alu_Mux_cntl = 0;
+				RorI = 0;
+				
+				
+				Rdest = savedRsrc;
+				Rsrc = savedRdest;
 			
 				PCen = 1;
 				LScntl = 1;
 				we_a = 1;
+				
 				IRenable = 0;
 				Alu_Mux_cntl = 0;
 				Ren = 16'bx;
@@ -162,12 +172,13 @@ module generalFSM (
 				Alu_Mux_cntl = savedAlu_Mux_ctrl;
 				Rsrc = savedRsrc;
 				
-				PCen = 1;
 				LScntl = 1;
 				we_a = 0;
 				IRenable = 0;
 				Alu_Mux_cntl = 1;
-				Ren= 16'b1 << Rdest; // wb to rdest register
+				Ren= 16'b1 << Rsrc; // wb to rdest register
+				
+				PCen = 1;
 				
 			
 			end
