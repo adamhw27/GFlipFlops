@@ -77,13 +77,20 @@ TwoInputMux pcincr(.i0(16'b1  + PCvalue), .i1(jumpLocation), .sel(jumpMux), .out
 // PC displacement calculator
 PCDisplacementCalculator dispCalc(.inPC(PCvalue), .Rtarget(rSrcMuxToImmMux), .disp(displacement), .target_or_disp(dispSel), .incr(jumpLocation));
 
+//instantiating flag wires
+wire [4:0] currentFlags;
+wire flagEn;
 
 
 // call fsm2 test
-generalFSM fsm(.clk(clk), .rst(rst), .flags(flags), .inst(instruction), .Ren(regEnable), .PCen(PCen), .RorI(immSel), .LScntl(LScntl), .we_a(we_a), .Alu_Mux_cntl(Alu_Mux_cntl), .opcode(opcode), .Rsrc(srcSel), .Rdest(dstSel), .imm(immConnect), .displacement(displacement), .j_or_b_Sel(dispSel), .PCSel(jumpMux));
+generalFSM fsm(.clk(clk), .rst(rst), .flags(currentFlags), .inst(instruction), .Ren(regEnable), .PCen(PCen), .RorI(immSel), .LScntl(LScntl), .we_a(we_a), .Alu_Mux_cntl(Alu_Mux_cntl), .flagEn(flagEn), .opcode(opcode), .Rsrc(srcSel), .Rdest(dstSel), .imm(immConnect), .displacement(displacement), .j_or_b_Sel(dispSel), .PCSel(jumpMux));
+
 
 //instantiating the ALU
 alu alu(.R1(R1), .R2(R2), .opcode(opcode), .aluOut(aluOut), .flags(flags), .cin(cin));
+
+// flags reg
+FlagReg flagReg(.clk(clk), .rst(rst), .iFlags(flags), .flagEn(flagEn), .oFlags(currentFlags));
 
 // Connect Alu out to Reg Bank
 RegBank rb(.ALUBus(ALUBus), .r0(r0), .r1(r1), .r2(r2), .r3(r3), .r4(r4), .r5(r5), .r6(r6),

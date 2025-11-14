@@ -13,7 +13,10 @@ module PCDisplacementCalculator(
 				end
 			1'b1:
 				begin
-				incr <= inPC + disp;
+					if(disp[7])
+						incr <= inPC + {8'hff, disp[7:0]};
+					else
+						incr <= inPC + {8'h00, disp[7:0]};
 				end
 			default:
 				begin

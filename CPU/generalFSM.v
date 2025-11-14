@@ -6,7 +6,7 @@ module generalFSM (
 	
 	output reg [15:0] Ren,
 	
-	output reg PCen, RorI, LScntl, we_a, Alu_Mux_cntl,
+	output reg PCen, RorI, LScntl, we_a, Alu_Mux_cntl, flagEn,
 	
 	output reg [7:0] opcode,
 	output reg [3:0] Rsrc,
@@ -83,6 +83,7 @@ module generalFSM (
 				PCen = 0;
 				LScntl = 0;
 				PCSel = 1;
+				flagEn = 0;
 				we_a = 0;
 				Alu_Mux_cntl = 0;
 				Rdest = 4'bxxxx;
@@ -102,6 +103,7 @@ module generalFSM (
 				PCSel = 0;
 				LScntl = 0;
 				we_a = 0;
+				flagEn = 0;
 				Alu_Mux_cntl = 0;
 				j_or_b_Sel = 1'bx;
 				Rdest = inst[11:8];
@@ -123,7 +125,10 @@ module generalFSM (
 				end else begin// not sure if this handles unsigned operations correctly
 					RorI = 1; // indicates to choose immediate
 					opcode = inst[15:12];
-					imm = {8*inst[7],inst[7:0]};	 // sign extend immediate
+					if (inst[7])
+						imm = {8'hff, inst[7:0]};
+					else
+						imm = {8'h00, inst[7:0]};
 				end
 				
 				savedRdest = Rdest;
@@ -140,6 +145,7 @@ module generalFSM (
 				
 				PCen = 1;
 				LScntl = 0;
+				flagEn = 1;
 				we_a = 0;
 				Alu_Mux_cntl = 0;
 				Ren= 16'b1 << Rdest; // wb to rdest register
@@ -158,6 +164,7 @@ module generalFSM (
 			
 				PCen = 1;
 				LScntl = 1;
+				flagEn = 0;
 				we_a = 1;
 				
 				Alu_Mux_cntl = 0;
@@ -177,6 +184,7 @@ module generalFSM (
 				
 				PCen = 0;
 				LScntl = 1;
+				flagEn = 0;
 				we_a = 0;
 				Alu_Mux_cntl = 0;
 				Ren = 16'bx;
@@ -190,6 +198,7 @@ module generalFSM (
 				Alu_Mux_cntl = savedAlu_Mux_ctrl;
 				Rsrc = savedRsrc;
 				RorI = 0;
+				flagEn = 0;
 				j_or_b_Sel = 1'bx;
 				LScntl = 1;
 				we_a = 0;
@@ -202,7 +211,9 @@ module generalFSM (
 			
 			S6_Jump: begin
 				// LSB =========================MSB
-				// [Carry, Low, Flag, Negative, Z]
+				// [Carry, Low, Flag, Negative, Z]		
+				flagEn = 0;
+
 			
 				// checking for which jump condition
 				// jeq (jump if equal)
@@ -227,6 +238,7 @@ module generalFSM (
 				// [Carry, Low, Flag, Negative, Z]
 			
 				displacement = inst[7:0];
+				flagEn = 0;
 
 				// Check branch condition
 				case(inst[11:8])
@@ -262,7 +274,7 @@ module generalFSM (
 					end
 					
 					// BGE
-					4'b0001: begin
+					4'b1101: begin
 						if( flags[4] == 1 | flags[3] == 1) begin
 							j_or_b_Sel = 1'b1;
 							PCSel = 1'b1;
@@ -275,6 +287,7 @@ module generalFSM (
 
 						end
 					end
+					
 					
 					
 					
