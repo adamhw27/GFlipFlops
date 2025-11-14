@@ -2,6 +2,7 @@ module pc (
 	input wire PCen,
 	input wire clk,
 	input wire rst,
+	input wire [15:0] incr,
 	output reg [15:0] outPC
 );
 
@@ -9,7 +10,7 @@ module pc (
 	  if (~rst)
 			outPC <= 16'd0;
 	  else if (PCen)
-			outPC <= outPC + 1;
+			outPC <= incr;
 	end
 
 endmodule

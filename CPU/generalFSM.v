@@ -1,17 +1,20 @@
 module generalFSM (
 	input clk,
 	input rst,
+	input [4:0] flags,
 	input [15:0] inst,
 	
 	output reg [15:0] Ren,
 	
-	output reg PCen, RorI, LScntl, we_a, IRenable, Alu_Mux_cntl,
+	output reg PCen, RorI, LScntl, we_a, Alu_Mux_cntl,
 	
 	output reg [7:0] opcode,
 	output reg [3:0] Rsrc,
 	output reg [3:0] Rdest,
-	output reg [15:0] imm
-
+	output reg [15:0] imm,
+	output reg [7:0] displacement,
+	output reg j_or_b_Sel,
+	output reg PCSel
 );
 
 
@@ -30,6 +33,8 @@ module generalFSM (
 	parameter S3_Store = 4'b0011;
 	parameter S4_Load = 4'b0100;
 	parameter S5_dataToReg = 4'b0101;
+	parameter S6_Jump = 4'b0110;
+	parameter S7_Branch = 4'b0111;
 
 	always @(posedge clk) begin
 	  if (~rst) state <= S0_Fetch;
@@ -43,6 +48,12 @@ module generalFSM (
 					end
 					else if (opcode == 8'b0100_0000) begin
 						state <= S4_Load;
+					end
+					else if (opcode == 8'b0100_1100) begin
+						state <= S6_Jump;
+					end
+					else if (opcode[7:4] == 4'b1100) begin
+						state <= S7_Branch;
 					end
 					else begin
 						state <= S2_Rtype;
@@ -71,8 +82,8 @@ module generalFSM (
 			S0_Fetch: begin
 				PCen = 0;
 				LScntl = 0;
+				PCSel = 1;
 				we_a = 0;
-				IRenable = 1;
 				Alu_Mux_cntl = 0;
 				Rdest = 4'bxxxx;
 				Rsrc = 4'bxxxx;
@@ -80,16 +91,19 @@ module generalFSM (
 				imm = 16'bx;
 				RorI = 1'bx;
 				Ren = 16'bx;
+				j_or_b_Sel = 1'bx;
+
 			
 			end
 			
 			S1_Decode: begin
 				
 				PCen = 0;
+				PCSel = 0;
 				LScntl = 0;
 				we_a = 0;
-				IRenable = 0;
 				Alu_Mux_cntl = 0;
+				j_or_b_Sel = 1'bx;
 				Rdest = inst[11:8];
 				Rsrc = inst[3:0];
 				Ren = 16'b0;
@@ -101,7 +115,7 @@ module generalFSM (
 					// if opcode = R-type or I-type, then Next State = S2 
 					// unsure how to implement
 					imm = 0;
-				end else if (inst[15:12] == 4'b0100) begin
+				end else if (inst[15:12] == 4'b0100 || inst[15:12] == 4'b1100) begin
 					opcode = {inst[15:12], inst[7:4]};
 					RorI = 0;
 					imm = 0;
@@ -115,29 +129,30 @@ module generalFSM (
 				savedRdest = Rdest;
 				savedRsrc = Rsrc;
 				savedAlu_Mux_ctrl = Alu_Mux_cntl;
+
 				
 			end
 			
 			S2_Rtype: begin 
 				
+				PCSel = 1'b0;
 				
 				
 				PCen = 1;
 				LScntl = 0;
 				we_a = 0;
-				IRenable = 0;
 				Alu_Mux_cntl = 0;
 				Ren= 16'b1 << Rdest; // wb to rdest register
+				j_or_b_Sel = 1'bx;
 				
 			end
 			
 			S3_Store: begin
 
-				IRenable = 0;
 				Alu_Mux_cntl = 0;
 				RorI = 0;
 				
-				
+				j_or_b_Sel = 1'bx;
 				Rdest = savedRsrc;
 				Rsrc = savedRdest;
 			
@@ -145,9 +160,10 @@ module generalFSM (
 				LScntl = 1;
 				we_a = 1;
 				
-				IRenable = 0;
 				Alu_Mux_cntl = 0;
 				Ren = 16'bx;
+				PCSel = 1'b0;
+
 				
 			end
 			
@@ -156,14 +172,16 @@ module generalFSM (
 				Rdest = savedRdest;
 				Alu_Mux_cntl = savedAlu_Mux_ctrl;
 				Rsrc = savedRsrc;
+				RorI = 0;
+				j_or_b_Sel = 1'bx;
 				
 				PCen = 0;
 				LScntl = 1;
 				we_a = 0;
-				IRenable = 0;
 				Alu_Mux_cntl = 0;
 				Ren = 16'bx;
-			
+				PCSel = 1'b0;
+
 			end
 			
 			S5_dataToReg: begin
@@ -171,18 +189,99 @@ module generalFSM (
 				Rdest = savedRdest; // to fix, get RSRC to hok up with memory
 				Alu_Mux_cntl = savedAlu_Mux_ctrl;
 				Rsrc = savedRsrc;
-				
+				RorI = 0;
+				j_or_b_Sel = 1'bx;
 				LScntl = 1;
 				we_a = 0;
-				IRenable = 0;
 				Alu_Mux_cntl = 1;
 				Ren= 16'b1 << Rsrc; // wb to rdest register
-				
+				PCSel = 1'b0;
+
 				PCen = 1;
-				
+			end
+			
+			S6_Jump: begin
+				// LSB =========================MSB
+				// [Carry, Low, Flag, Negative, Z]
+			
+				// checking for which jump condition
+				// jeq (jump if equal)
+				if(inst[11:8] == 4'b0000) begin
+					if( flags[4] == 1) begin
+						j_or_b_Sel = 1'b0;
+						PCSel = 1'b1;
+						PCen = 1'b1;
+					end
+					else begin
+						j_or_b_Sel = 1'bx;
+						PCSel = 1'b0;
+						PCen = 1'b1;
+
+					end
+				end
 			
 			end
 			
+			S7_Branch: begin
+				// LSB =========================MSB
+				// [Carry, Low, Flag, Negative, Z]
+			
+				displacement = inst[7:0];
+
+				// Check branch condition
+				case(inst[11:8])
+				
+					// BEQ
+					4'b0000: begin
+						if( flags[4] == 1) begin
+							j_or_b_Sel = 1'b1;
+							PCSel = 1'b1;
+							PCen = 1'b1;
+						end
+						else begin
+							j_or_b_Sel = 1'bx;
+							PCSel = 1'b0;
+							PCen = 1'b1;
+
+						end
+					end
+					
+					// BNE
+					4'b0001: begin
+						if( flags[4] == 0) begin
+							j_or_b_Sel = 1'b1;
+							PCSel = 1'b1;
+							PCen = 1'b1;
+						end
+						else begin
+							j_or_b_Sel = 1'bx;
+							PCSel = 1'b0;
+							PCen = 1'b1;
+
+						end
+					end
+					
+					// BGE
+					4'b0001: begin
+						if( flags[4] == 1 | flags[3] == 1) begin
+							j_or_b_Sel = 1'b1;
+							PCSel = 1'b1;
+							PCen = 1'b1;
+						end
+						else begin
+							j_or_b_Sel = 1'bx;
+							PCSel = 1'b0;
+							PCen = 1'b1;
+
+						end
+					end
+					
+					
+					
+					
+				endcase
+			end
+						
 			
 		endcase
 	end

@@ -62,11 +62,25 @@ wire [15:0] address;
 // alu bus mux
 wire Alu_Mux_cntl;
 
+wire [15:0] PCincr;
+wire [7:0] displacement;
+wire [15:0] jumpLocation;
+wire dispSel;
+wire jumpMux;
+
 // PC
-pc pc(.PCen(PCen), .clk(clk), .rst(rst), .outPC(PCvalue));
+pc pc(.PCen(PCen), .clk(clk), .rst(rst), .incr(PCincr), .outPC(PCvalue));
+
+// mux to either increment PC by 1 (go to next instruction) or go to a different location
+TwoInputMux pcincr(.i0(16'b1  + PCvalue), .i1(jumpLocation), .sel(jumpMux), .out(PCincr));
+
+// PC displacement calculator
+PCDisplacementCalculator dispCalc(.inPC(PCvalue), .Rtarget(rSrcMuxToImmMux), .disp(displacement), .target_or_disp(dispSel), .incr(jumpLocation));
+
+
 
 // call fsm2 test
-generalFSM fsm(.clk(clk), .rst(rst), .inst(instruction), .Ren(regEnable), .PCen(PCen), .RorI(immSel), .LScntl(LScntl), .we_a(we_a), .IRenable(IRenable), .Alu_Mux_cntl(Alu_Mux_cntl), .opcode(opcode), .Rsrc(srcSel), .Rdest(dstSel), .imm(immConnect));
+generalFSM fsm(.clk(clk), .rst(rst), .flags(flags), .inst(instruction), .Ren(regEnable), .PCen(PCen), .RorI(immSel), .LScntl(LScntl), .we_a(we_a), .Alu_Mux_cntl(Alu_Mux_cntl), .opcode(opcode), .Rsrc(srcSel), .Rdest(dstSel), .imm(immConnect), .displacement(displacement), .j_or_b_Sel(dispSel), .PCSel(jumpMux));
 
 //instantiating the ALU
 alu alu(.R1(R1), .R2(R2), .opcode(opcode), .aluOut(aluOut), .flags(flags), .cin(cin));
