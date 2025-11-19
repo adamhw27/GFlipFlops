@@ -6,7 +6,7 @@ module generalFSM (
 	
 	output reg [15:0] Ren,
 	
-	output reg PCen, RorI, LScntl, we_a, Alu_Mux_cntl, flagEn,
+	output reg PCen, RorI, LScntl, we_a, Alu_Mux_cntl, flagEn, RetAddrSave,
 	
 	output reg [7:0] opcode,
 	output reg [3:0] Rsrc,
@@ -17,7 +17,7 @@ module generalFSM (
 	output reg PCSel
 );
 
-
+	// output list: Ren, PCen, RorI, LScntl, we_a, Alu_Mux_cntl, flagEn, RetAddrSave, opcode, Rsrc, Rdest, imm, displacement, j_or_b_Sel, PCSel
 	// check opcodes for LOAD and STORE are okay
 	// do these need to be reg? do we even need these if we have the IR reg?
 	reg [3:0] savedRdest;
@@ -79,7 +79,8 @@ module generalFSM (
 		
 		
 		
-			S0_Fetch: begin
+			S0_Fetch: begin 	// output list: Ren, PCen, RorI, LScntl, we_a, Alu_Mux_cntl, flagEn, RetAddrSave, opcode, Rsrc, Rdest, imm, displacement, j_or_b_Sel, PCSel
+
 				PCen = 0;
 				LScntl = 0;
 				PCSel = 1;
@@ -93,11 +94,14 @@ module generalFSM (
 				RorI = 1'bx;
 				Ren = 16'bx;
 				j_or_b_Sel = 1'bx;
+				RetAddrSave = 0;
+				displacement = 16'bx;
 
 			
 			end
 			
-			S1_Decode: begin
+			S1_Decode: begin 	// output list: Ren, PCen, RorI, LScntl, we_a, Alu_Mux_cntl, flagEn, RetAddrSave, opcode, Rsrc, Rdest, imm, displacement, j_or_b_Sel, PCSel
+
 				
 				PCen = 0;
 				PCSel = 0;
@@ -109,15 +113,15 @@ module generalFSM (
 				Rdest = inst[11:8];
 				Rsrc = inst[3:0];
 				Ren = 16'b0;
-				if (inst[15:12] == 0) begin // true if not i-type instruction
+				RetAddrSave = 0;
+				
+				if (inst[15:12] == 0) begin // NON I TYPE INSTRUCTIONS
 					RorI = 0; // indicates to choose Rsrc
 					
-					
-					opcode = {inst[15:12], inst[7:4]}; // from lecture slides:
-					// if opcode = R-type or I-type, then Next State = S2 
-					// unsure how to implement
+					opcode = {inst[15:12], inst[7:4]}; 
 					imm = 0;
-				end else if (inst[15:12] == 4'b0100 || inst[15:12] == 4'b1100) begin
+					
+				end else if (inst[15:12] == 4'b0100 || inst[15:12] == 4'b1100) begin // indicates load, store, jump branch inst
 					opcode = {inst[15:12], inst[7:4]};
 					RorI = 0;
 					imm = 0;
@@ -130,7 +134,7 @@ module generalFSM (
 					else
 						imm = {8'h00, inst[7:0]};
 				end
-				
+				displacement = imm;
 				savedRdest = Rdest;
 				savedRsrc = Rsrc;
 				savedAlu_Mux_ctrl = Alu_Mux_cntl;
@@ -138,9 +142,17 @@ module generalFSM (
 				
 			end
 			
-			S2_Rtype: begin 
+			S2_Rtype: begin 	// output list: Ren, PCen, RorI, LScntl, we_a, Alu_Mux_cntl, flagEn, RetAddrSave, opcode, Rsrc, Rdest, imm, displacement, j_or_b_Sel, PCSel
+
 				
 				PCSel = 1'b0;
+				RorI = 0;
+				RetAddrSave = 0;
+				opcode = opcode;
+				Rsrc = savedRsrc;
+				Rdest = savedRdest;
+				imm = imm;
+				displacement = displacement;
 				
 				
 				PCen = 1;
@@ -153,7 +165,8 @@ module generalFSM (
 				
 			end
 			
-			S3_Store: begin
+			S3_Store: begin 	// output list: Ren, PCen, RorI, LScntl, we_a, Alu_Mux_cntl, flagEn, RetAddrSave, opcode, Rsrc, Rdest, imm, displacement, j_or_b_Sel, PCSel
+
 
 				Alu_Mux_cntl = 0;
 				RorI = 0;
@@ -170,11 +183,17 @@ module generalFSM (
 				Alu_Mux_cntl = 0;
 				Ren = 16'bx;
 				PCSel = 1'b0;
+				RetAddrSave = 0;
+				opcode = opcode;
+				imm = imm;
+				displacement = displacement;
+				
 
 				
 			end
 			
-			S4_Load: begin
+			S4_Load: begin 	// output list: Ren, PCen, RorI, LScntl, we_a, Alu_Mux_cntl, flagEn, RetAddrSave, opcode, Rsrc, Rdest, imm, displacement, j_or_b_Sel, PCSel
+
 				
 				Rdest = savedRdest;
 				Alu_Mux_cntl = savedAlu_Mux_ctrl;
@@ -189,12 +208,18 @@ module generalFSM (
 				Alu_Mux_cntl = 0;
 				Ren = 16'bx;
 				PCSel = 1'b0;
+				
+				RetAddrSave = 0;
+				opcode = 8'bx;
+				imm = 16'bx;
+				displacement = 16'bx;
+				
 
 			end
 			
-			S5_dataToReg: begin
-				
-				Rdest = savedRdest; // to fix, get RSRC to hok up with memory
+			S5_dataToReg: begin 	// output list: Ren, PCen, RorI, LScntl, we_a, Alu_Mux_cntl, flagEn, RetAddrSave, opcode, Rsrc, Rdest, imm, displacement, j_or_b_Sel, PCSel
+
+				Rdest = savedRdest; 
 				Alu_Mux_cntl = savedAlu_Mux_ctrl;
 				Rsrc = savedRsrc;
 				RorI = 0;
@@ -207,30 +232,129 @@ module generalFSM (
 				PCSel = 1'b0;
 
 				PCen = 1;
+				RetAddrSave = 0;
+				opcode = 8'bx;
+				imm = 16'bx;
+				displacement = 16'bx;
 			end
 			
-			S6_Jump: begin
+			S6_Jump: begin 	// output list: Ren, PCen, RorI, LScntl, we_a, Alu_Mux_cntl, flagEn, RetAddrSave, opcode, Rsrc, Rdest, imm, displacement, j_or_b_Sel, PCSel
+
 				// LSB =========================MSB
 				// [Carry, Low, Flag, Negative, Z]		
 				flagEn = 0;
+				j_or_b_Sel = 1'b0;
+				RorI = 1'bx;
+				LScntl = 1'bx;
+				we_a = 0;
+				Alu_Mux_cntl = 1'bx;
+				opcode = 8'bx;
+				Rsrc = savedRsrc;
+				Rdest = savedRdest;
+				displacement = displacement;
+				imm = 16'bx;
+				
 
-			
 				// checking for which jump condition
-				// jeq (jump if equal)
-				if(inst[11:8] == 4'b0000) begin
-					if( flags[4] == 1) begin
-						j_or_b_Sel = 1'b0;
+				
+				
+				case(inst[11:8])
+				
+					4'b0000: // jeq (jump if equal)
+					begin
+					Ren= 16'b0;
+					RetAddrSave = 0;
+						if( flags[4] == 1) begin
+							PCSel = 1'b1;
+							PCen = 1'b1;
+						end
+						else begin
+							PCSel = 1'b0;
+							PCen = 1'b1;
+						end
+					end
+					
+					4'b0001: begin // not equal
+					Ren= 16'b0;
+					RetAddrSave = 0;
+						if( flags[4] == 0) begin
+							PCSel = 1'b1;
+							PCen = 1'b1;
+						end
+						else begin
+							PCSel = 1'b0;
+							PCen = 1'b1;
+						end
+					end
+					
+					4'b1110: // unconditional jump IMPORTANT: sets r15 (return address register) with current PC + 1
+					begin
+						Ren= 16'b1 << 15;
+						RetAddrSave = 1;
 						PCSel = 1'b1;
 						PCen = 1'b1;
 					end
-					else begin
-						j_or_b_Sel = 1'bx;
-						PCSel = 1'b0;
-						PCen = 1'b1;
-
+					
+					4'b1100: // less than
+					
+					begin
+					Ren= 16'b0;
+					RetAddrSave = 0;
+						if( flags[3] == 0 && flags[4] == 0)begin
+							PCSel = 1'b1;
+							PCen = 1'b1;
+						end
+						else begin
+							PCSel = 1'b0;
+							PCen = 1'b1;
+						end
 					end
-				end
-			
+					
+					4'b1010: // lower than
+					
+					begin
+					Ren= 16'b0;
+					RetAddrSave = 0;
+						if(flags[1] == 0 && flags[4] == 0) begin
+							PCSel = 1'b1;
+							PCen = 1'b1;
+						end
+						else begin
+							PCSel = 1'b0;
+							PCen = 1'b1;
+						end
+					end
+					
+					4'b1101: // greater than or equal
+					
+					begin
+					Ren= 16'b0;
+					RetAddrSave = 0;
+						if(flags[4] == 1 || flags[3] ==1) begin
+							PCSel = 1'b1;
+							PCen = 1'b1;
+						end
+						else begin
+							PCSel = 1'b0;
+							PCen = 1'b1;
+						end
+					end
+					
+					4'b1011: //higher than or same as
+					begin
+					Ren= 16'b0;
+					RetAddrSave = 0;
+						if(flags[4] == 1 || flags[1] ==1) begin
+							PCSel = 1'b1;
+							PCen = 1'b1;
+						end
+						else begin
+							PCSel = 1'b0;
+							PCen = 1'b1;
+						end
+					end
+				
+				endcase
 			end
 			
 			S7_Branch: begin
@@ -238,59 +362,99 @@ module generalFSM (
 				// [Carry, Low, Flag, Negative, Z]
 			
 				displacement = inst[7:0];
+				j_or_b_Sel = 1'b1;
+				Ren= 16'bx;
+				RetAddrSave = 0;
+				
 				flagEn = 0;
+				RorI = 1'bx;
+				LScntl = 1'bx;
+				we_a = 0;
+				Alu_Mux_cntl = 1'bx;
+				opcode = 8'bx;
+				Rsrc = savedRsrc;
+				Rdest = savedRdest;
+				imm = 16'bx;
 
 				// Check branch condition
 				case(inst[11:8])
 				
-					// BEQ
-					4'b0000: begin
+					4'b0000: // beq (branch if equal)
+					begin
 						if( flags[4] == 1) begin
-							j_or_b_Sel = 1'b1;
 							PCSel = 1'b1;
 							PCen = 1'b1;
 						end
 						else begin
-							j_or_b_Sel = 1'bx;
 							PCSel = 1'b0;
 							PCen = 1'b1;
-
 						end
 					end
 					
-					// BNE
-					4'b0001: begin
+					4'b0001: begin // not equal
 						if( flags[4] == 0) begin
-							j_or_b_Sel = 1'b1;
 							PCSel = 1'b1;
 							PCen = 1'b1;
 						end
 						else begin
-							j_or_b_Sel = 1'bx;
 							PCSel = 1'b0;
 							PCen = 1'b1;
-
 						end
 					end
 					
-					// BGE
-					4'b1101: begin
-						if( flags[4] == 1 | flags[3] == 1) begin
-							j_or_b_Sel = 1'b1;
+					4'b1110: // unconditional branch
+					begin
+						PCSel = 1'b1;
+						PCen = 1'b1;
+					end
+					
+					4'b1100: // less than
+					begin
+						if( flags[3] == 0 && flags[4] == 0)begin
 							PCSel = 1'b1;
 							PCen = 1'b1;
 						end
 						else begin
-							j_or_b_Sel = 1'bx;
 							PCSel = 1'b0;
 							PCen = 1'b1;
-
 						end
 					end
 					
+					4'b1010: // lower than
+					begin
+						if(flags[1] == 0 && flags[4] == 0) begin
+							PCSel = 1'b1;
+							PCen = 1'b1;
+						end
+						else begin
+							PCSel = 1'b0;
+							PCen = 1'b1;
+						end
+					end
 					
+					4'b1101: // greater than or equal
+					begin
+						if(flags[4] == 1 || flags[3] ==1) begin
+							PCSel = 1'b1;
+							PCen = 1'b1;
+						end
+						else begin
+							PCSel = 1'b0;
+							PCen = 1'b1;
+						end
+					end
 					
-					
+					4'b1011: //higher than or same as
+					begin
+						if(flags[4] == 1 || flags[1] ==1) begin
+							PCSel = 1'b1;
+							PCen = 1'b1;
+						end
+						else begin
+							PCSel = 1'b0;
+							PCen = 1'b1;
+						end
+					end
 					
 				endcase
 			end

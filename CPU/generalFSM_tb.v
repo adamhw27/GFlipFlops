@@ -33,6 +33,7 @@ module generalFSM_tb ();
 
         // Run simulation for a while
         #10000;
+		  
 
         $display(segOut);
         $stop;
