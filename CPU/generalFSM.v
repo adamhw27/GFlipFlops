@@ -134,7 +134,7 @@ module generalFSM (
 					else
 						imm = {8'h00, inst[7:0]};
 				end
-				displacement = imm;
+				// displacement = imm;
 				savedRdest = Rdest;
 				savedRsrc = Rsrc;
 				savedAlu_Mux_ctrl = Alu_Mux_cntl;
@@ -146,13 +146,13 @@ module generalFSM (
 
 				
 				PCSel = 1'b0;
-				RorI = 0;
-				RetAddrSave = 0;
-				opcode = opcode;
-				Rsrc = savedRsrc;
-				Rdest = savedRdest;
-				imm = imm;
-				displacement = displacement;
+				//RorI = 0;
+				//RetAddrSave = 0;
+				//opcode = opcode;
+				//Rsrc = savedRsrc;
+				//Rdest = savedRdest;
+				//imm = imm;
+				//displacement = displacement;
 				
 				
 				PCen = 1;
@@ -183,10 +183,10 @@ module generalFSM (
 				Alu_Mux_cntl = 0;
 				Ren = 16'bx;
 				PCSel = 1'b0;
-				RetAddrSave = 0;
-				opcode = opcode;
-				imm = imm;
-				displacement = displacement;
+				//RetAddrSave = 0;
+				//opcode = opcode;
+				//imm = imm;
+				//displacement = displacement;
 				
 
 				
@@ -209,10 +209,10 @@ module generalFSM (
 				Ren = 16'bx;
 				PCSel = 1'b0;
 				
-				RetAddrSave = 0;
-				opcode = 8'bx;
-				imm = 16'bx;
-				displacement = 16'bx;
+				//RetAddrSave = 0;
+				//opcode = 8'bx;
+				//imm = 16'bx;
+				//displacement = 16'bx;
 				
 
 			end
@@ -232,10 +232,10 @@ module generalFSM (
 				PCSel = 1'b0;
 
 				PCen = 1;
-				RetAddrSave = 0;
-				opcode = 8'bx;
-				imm = 16'bx;
-				displacement = 16'bx;
+				//RetAddrSave = 0;
+				//opcode = 8'bx;
+				//imm = 16'bx;
+				//displacement = 16'bx;
 			end
 			
 			S6_Jump: begin 	// output list: Ren, PCen, RorI, LScntl, we_a, Alu_Mux_cntl, flagEn, RetAddrSave, opcode, Rsrc, Rdest, imm, displacement, j_or_b_Sel, PCSel

@@ -73,7 +73,7 @@ wire RetAddrSave;
 // PC
 pc pc(.PCen(PCen), .clk(clk), .rst(rst), .incr(PCincr), .outPC(PCvalue));
 
-wire nextpc = 16'b1 + PCvalue;
+wire [15:0] nextpc = 16'b1 + PCvalue;
 
 // mux to either increment PC by 1 (go to next instruction) or go to a different location
 TwoInputMux pcincr(.i0(nextpc), .i1(jumpLocation), .sel(jumpMux), .out(PCincr));
