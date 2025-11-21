@@ -15,7 +15,7 @@ initial ps2_clk = 0;
 reg rst = 0;
 reg ps2_dat = 1;
 wire new_avail, extra, break, parity_err;	// Output signals
-wire [7:0] code;									// Output scan code
+wire [7:0] code;
 
 // 4. Instantiate PS/2 interface
 ps2_interface ps2(
@@ -30,37 +30,39 @@ ps2_interface ps2(
 // 5. Driver task to simulate sending one PS/2 data byte to FPGA
 // Generated via ChatGPT
 task pulse_clk();
-begin
-	#20000 ps2_clk = ~ps2_clk;
-end
+	begin
+		#20000 ps2_clk = ~ps2_clk;
+	end
+endtask
 
 task send_ps2_byte(input [7:0] data);
 	integer i;
 	reg parity;
-begin
-	// Generate parity check bit
-	parity = ~(^data);
-	
-	// Start bit (ps2_dat[0])
-	force ps2_dat = 0;
-	pulse_clk();
-	
-	// Generate 8 data bits, LSB first
-	for (i = 0; i < 8; i = i + 1) begin
-		force ps2_dat = data[i];
+	begin
+		// Generate parity check bit
+		parity = ~(^data);
+		
+		// Start bit (ps2_dat[0])
+		force ps2_dat = 0;
 		pulse_clk();
+		
+		// Generate 8 data bits, LSB first
+		for (i = 0; i < 8; i = i + 1) begin
+			force ps2_dat = data[i];
+			pulse_clk();
+		end
+		
+		// Parity bit
+		force ps2_dat = parity;
+		pulse_clk();
+		
+		// Stop bit
+		force ps2_dat = 1;
+		pulse_clk();
+		
+		release ps2_dat;
 	end
-	
-	// Parity bit
-	force ps2_dat = parity;
-	pulse_clk();
-	
-	// Stop bit
-	force ps2_dat = 1;
-	pulse_clk();
-	
-	release ps2_dat;
-end
+endtask
 
 // 6. Initialize testing block
 initial begin
@@ -186,5 +188,6 @@ always @(posedge clk) begin
 					$time, code, extended, released, parity_error);
 	end
 end
+
 
 endmodule
