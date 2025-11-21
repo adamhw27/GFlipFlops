@@ -1,0 +1,6 @@
+module ps2_interface_tb();
+
+// 1. Define simulation timestep for readability
+`define STEP 1000000000	// Each test case will take 1 time unit
+
+endmodule
