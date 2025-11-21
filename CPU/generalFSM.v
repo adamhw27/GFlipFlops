@@ -72,11 +72,14 @@ module generalFSM (
 	end
 	
 	
-	always @(state)  begin
+	always @*  begin
 	
+	PCSel = 1'b0;
+	Ren = 16'b0;
+	RetAddrSave = 1'b0;
+
 	
 		case(state)
-		
 		
 		
 			S0_Fetch: begin 	// output list: Ren, PCen, RorI, LScntl, we_a, Alu_Mux_cntl, flagEn, RetAddrSave, opcode, Rsrc, Rdest, imm, displacement, j_or_b_Sel, PCSel
@@ -287,7 +290,7 @@ module generalFSM (
 						end
 					end
 					
-					4'b1110: // unconditional jump IMPORTANT: sets r15 (return address register) with current PC + 1
+					4'b1110: // ( jump and link ) unconditional jump IMPORTANT: sets r15 (return address register) with current PC + 1
 					begin
 						Ren= 16'b1 << 15;
 						RetAddrSave = 1;
@@ -352,6 +355,12 @@ module generalFSM (
 							PCSel = 1'b0;
 							PCen = 1'b1;
 						end
+					end
+					
+					default:
+					begin
+						PCSel = 1'b0;
+						PCen = 1'b1;
 					end
 				
 				endcase
@@ -455,7 +464,12 @@ module generalFSM (
 							PCen = 1'b1;
 						end
 					end
-					
+						
+					default:
+					begin
+						PCSel = 1'b0;
+						PCen = 1'b1;
+					end
 				endcase
 			end
 						
