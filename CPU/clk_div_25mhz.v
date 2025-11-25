@@ -1,6 +1,6 @@
 module clk_div(
 	input wire clk, rst,
-	output wire oclk
+	output reg oclk
 );
 	
 	

@@ -132,8 +132,7 @@ TwoInputMux ALUmux(.i0(aluOut), .i1(instruction), .sel(Alu_Mux_cntl), .out(ALUBu
 wire bright;
 wire hCount, vCount;
 
-VGAcontroller vga_control(.clk(clk), .rst(rst), .hs(hSync), .vs(vSync), .bright(bright), .hCount(hCount), .vCount(vCount));
-VGABitGen vga_bitgen(.bright(bright), .hCount(hCount), .vCount(vCount), .rgb(rgb));
+
 
 // Connect SegOut
 seven_seg_hex a(r5[3:0], segOut[6:0]);

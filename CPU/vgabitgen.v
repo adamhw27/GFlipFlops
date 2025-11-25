@@ -2,20 +2,23 @@ module VGABitGen(
 	input bright,
 	input [7:0] pixelData,
 	input [9:0] hCount, vCount,
-	output reg [7:0] rgb
+	output wire [5:0] rgb
 );
-parameter WHITE = 8'b111_111_11;
-parameter RED = 8'b111_000_00;
-parameter BLACK = 8'b000_000_00;
-
+reg [1:0] r, g, b;
+assign rgb = {r, g, b};
 
 always @(*)
 begin
-	if (~bright)
-		rgb = BLACK;
-	else
-		rgb = WHITE;
+	if (~bright) begin
+		r <= 2'd0;
+		g <= 2'd0;
+		b <= 2'd0;
 	end
-
+	else begin
+		r <= 2'd3;
+		g <= 2'd3;
+		b <= 2'd3;
+	end
+end
 
 endmodule

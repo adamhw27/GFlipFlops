@@ -1,116 +1,65 @@
 module VGAcontroller(
 	input wire clk, rst,
 	
-	output reg hs, vs, 
-	output wire bright,
+	output wire hs, vs, 
+	output reg bright,
 	output reg [9:0] hCount, vCount
 );
 
+localparam H_SYNC_PULSE_TIME = 10'd800;
+localparam H_DISPLAY_TIME = 10'd640;
+localparam H_PULSE_WIDTH = 10'd96;
+localparam H_FRONT_PORCH = 10'd16;
+localparam H_BACK_PORCH = 10'd48;
+
+localparam V_SYNC_PULSE_TIME = 10'd525;
+localparam V_DISPLAY_TIME = 10'd480;
+localparam V_PULSE_WIDTH = 10'd2;
+localparam V_FRONT_PORCH = 10'd10;
+localparam V_BACK_PORCH = 10'd33;
+
+assign hs = ~(hCount >= H_PULSE_WIDTH);
+assign vs = ~(vCount >= V_PULSE_WIDTH);
 
 wire new_clk;
-reg [15:0] count;
-
 clk_div divider(.clk(clk), .rst(rst), .oclk(new_clk));
 
-
-// hreset and vreset are active high
-wire [18:0] hlencount, vlencount;
-
-// hreset is set high once per line, so it is the clock at which vlencount should increment
-counter_19bit hcounter(.clk(count), .rst(hreset), .val(hlencount));
-counter_19bit vcounter(.clk(hreset), .rst(vreset), .val(vlencount));
-
-reg hbright, vbright, hreset, vreset;
-
-always @(posedge new_clk) begin
-	count <= count + 1'b1;
-end
-
-
-// need to count the number of count signals 
-
-
-
-always @(hlencount, hCount) 
+always @(posedge clk)
 begin
-	hreset <= 1'b0;
-		
-	if (hlencount < 96)
+	if(rst)
 	begin
-		hs <= 0;
-		hbright <= 0;
-		hCount <= 0;
+		if(new_clk)
+		begin
+			hCount <= hCount + 1'b1;
+			if(hCount == H_SYNC_PULSE_TIME)
+			begin
+				vCount <= vCount + 10'd1;
+				hCount <= 10'd0;
+				
+				if(vCount == V_SYNC_PULSE_TIME)
+				begin
+					vCount <= 10'd0;
+				end
+			end
+		end
 	end
-	else 
+	else
 	begin
-		hs <= 1;
-		if (hlencount < 144)
-		begin
-			hbright <= 0;
-			hCount <= 0;
-		end
-		else 
-		begin
-			if (hlencount < 784)
-			begin
-				hCount <= hCount + 1'b1;
-				hbright <= 1;
-			end
-			else if (hlencount < 800)
-			begin
-				hCount <= 0;
-				hbright <= 0;
-			end
-			else
-			begin
-				hbright <= 0;
-				hCount <= 10'b0;
-				hreset <= 1'b1;
-			end
-		end
+		hCount <= 10'd0;
+		vCount <= 10'd0;
 	end
 end
 
-
-always @(vlencount, vCount) 
+always @(hCount, vCount) 
 begin
-	vreset <= 1'b0;
-
-	if (vlencount < 2)
+	if((hCount >= H_PULSE_WIDTH + H_BACK_PORCH) &&
+			(hCount < H_SYNC_PULSE_TIME - H_FRONT_PORCH) &&
+			(vCount < V_DISPLAY_TIME))
 	begin
-		vs <= 0;
-		vbright <= 0;
-		vCount <= 0;
+		bright <= 1'b1;
 	end
-	else 
-	begin
-		vs <= 1;
-		if (vlencount < 35)
-		begin
-			vCount <= 0;
-			vbright <= 0;
-		end
-		else 
-		begin
-			if (vlencount < 515)
-			begin
-				vCount <= vCount + 1'b1;
-				vbright <= 1;
-			end
-			else if (vlencount < 525)
-			begin
-				vCount <= 0;
-				vbright <= 0;
-			end
-			else
-			begin
-				vbright <= 0;
-				vCount <= 0;
-				vreset <= 1'b1;
-			end
-		end
+	else begin
+		bright <= 1'b0;
 	end
 end
-
-assign bright = vbright & hbright;
 endmodule
