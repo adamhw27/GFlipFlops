@@ -1,7 +1,7 @@
 module HardCodedVga(
 	input clk, rst,
 	output vga_clk, vga_blank_n, vga_vs, vga_hs,
-	output [7:0] rgb
+	output [23:0] rgb
 );
 	
 	wire[9:0] hCount, vCount;
