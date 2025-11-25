@@ -2,7 +2,9 @@ module cpu (
 input cin,
 input clk, rst,
 
-output [27:0] segOut
+output [27:0] segOut,
+output hSync, vSync,
+output [7:0] rgb
 );
 
 // 16 bit instruction pulled from mem
@@ -125,6 +127,13 @@ true_dual_port_ram_single_clock memory(.data_a(R1), .data_b(data_b), .addr_a(add
 
 // Determine whether we are using aluout or data out	
 TwoInputMux ALUmux(.i0(aluOut), .i1(instruction), .sel(Alu_Mux_cntl), .out(ALUBus));
+
+// connect VGA
+wire bright;
+wire hCount, vCount;
+
+VGAcontroller vga_control(.clk(clk), .rst(rst), .hs(hSync), .vs(vSync), .bright(bright), .hCount(hCount), .vCount(vCount));
+VGABitGen vga_bitgen(.bright(bright), .hCount(hCount), .vCount(vCount), .rgb(rgb));
 
 // Connect SegOut
 seven_seg_hex a(r5[3:0], segOut[6:0]);
