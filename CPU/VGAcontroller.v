@@ -18,8 +18,8 @@ localparam V_PULSE_WIDTH = 10'd2;
 localparam V_FRONT_PORCH = 10'd10;
 localparam V_BACK_PORCH = 10'd33;
 
-assign hs = ~((hCount >= H_FRONT_PORCH) & (hCount < H_FRONT_PORCH + H_SYNC_PULSE_TIME));
-assign vs = ~((vCount >= V_DISPLAY_TIME + V_FRONT_PORCH) & (vCount < V_DISPLAY_TIME + V_FRONT_PORCH + V_SYNC_PULSE_TIME));
+assign hs = ~((hCount >= H_FRONT_PORCH)  & (hCount < H_FRONT_PORCH + H_SYNC_PULSE_TIME));
+assign vs = ~((vCount >= V_FRONT_PORCH) & (vCount < V_DISPLAY_TIME + V_FRONT_PORCH + V_SYNC_PULSE_TIME));
 
 wire new_clk;
 clk_div divider(.clk(clk), .rst(rst), .oclk(new_clk));
@@ -52,7 +52,7 @@ end
 
 always @(hCount, vCount) 
 begin
-	if((hCount >= H_PULSE_WIDTH + H_BACK_PORCH) &&
+	if((hCount >= H_PULSE_WIDTH + H_BACK_PORCH + H_FRONT_PORCH) &&
 			(hCount < H_SYNC_PULSE_TIME - H_FRONT_PORCH) &&
 			(vCount < V_DISPLAY_TIME))
 	begin
