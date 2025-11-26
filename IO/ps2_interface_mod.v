@@ -5,7 +5,7 @@ module ps2_interface_mod(
 );
 
 // Synchronize PS/2 clock with FPGA clock thru DFFs
-reg [2:0] ps2_clk_sync, ps_2_dat_sync;
+reg [2:0] ps2_clk_sync, ps2_dat_sync;
 always @(posedge clk) begin
 	ps2_clk_sync <= {ps2_clk_sync[1:0], ps2_clk};
 	ps2_dat_sync <= {ps2_dat_sync[1:0], ps2_dat};
@@ -15,10 +15,24 @@ end
 wire ps2_clk_fall = (ps2_clk_sync[2:1] == 2'b10);
 
 // Flags to facilitate proper checking of make/break codes
-reg break_flag;	// Break code (0xF0)
-reg extend_flag;	// Extended code (0xE0)
-reg parity_err;	// Flag for parity error
-reg new_avail;		// Flag for available new data
+reg break_flag;		// Break code (0xF0)
+reg break_pending;	// Break pending flag
+reg extend_flag;		// Extended code (0xE0)
+reg parity_err;		// Flag for parity error
+reg new_avail;			// Flag for available new data
+
+// Evaluation of PS/2 data bits
+wire start;
+wire [7:0] data_b;
+wire parity;
+wire stop;
+wire parity_check;
+
+assign start = shift_reg[0];
+assign data_b = shift_reg[8:1];
+assign parity = shift_reg[9];
+assign stop = shift_reg[10];
+assign parity_check = ((^data_b) ^ parity) == 1'b1;
 
 // Capture bits to be interpreted (11 bits total)
 reg [15:0] key_data;		// Main data bits, including E0 if applicable
@@ -28,13 +42,11 @@ reg [3:0] bit_count;		// Counter for no. of bits
 // Decoding bits from PS/2 keyboard
 always @(posedge clk or negedge rst) begin
 	// Case for reset signal
-	if (!rst) begin
-		// Output reset
-		key_enc <= 4'b0;
-		
+	if (!rst) begin		
 		// Flag reset
-		extra_flag <= 1'b0;
+		extend_flag <= 1'b0;
 		break_flag <= 1'b0;
+		break_pending <= 1'b0;
 		parity_err <= 1'b0;
 		new_avail <= 1'b0;
 		
@@ -43,6 +55,7 @@ always @(posedge clk or negedge rst) begin
 		shift_reg <= 11'b0;
 		bit_count <= 4'b0;
 	end else begin
+		new_avail <= 1'b0;
 		
 		// Sample data into shift_reg, indexed by bit_count
 		if (ps2_clk_fall) begin
@@ -52,12 +65,6 @@ always @(posedge clk or negedge rst) begin
 		
 		// Process bits from shift_reg
 		if (bit_count == 4'd11) begin
-			reg start = shift_reg[0];
-			reg data_b = shift_reg[8:1];
-			reg parity = shift_reg[9];
-			reg stop = shift_reg[10];
-			reg parity_check = ((^data_b) ^ parity) == 1'b1;	// Assisted from ChatGPT
-			
 			if ((start == 1'b0) && (stop == 1'b1) && parity_check) begin			
 				if (data_b == 8'hE0) begin	// Case 0xE0: Extended key prefix detected
 					extend_flag <= 1'b1;
@@ -66,6 +73,7 @@ always @(posedge clk or negedge rst) begin
 				end else begin	// Normal case: Send code to FPGA & clear flags
 					key_data <= extend_flag ? {8'hE0, data_b} : {8'h00, data_b};
 					new_avail <= 1'b1;
+					break_pending <= break_flag;
 					extend_flag <= 1'b0;
 					break_flag <= 1'b0;
 				end
@@ -87,7 +95,7 @@ always @(posedge clk or negedge rst) begin
 	if (!rst) begin
 		key_enc <= 4'b0;
 	end else if (new_avail) begin
-		key_enc[3] <= ~break_flag;
+		key_enc[3] <= ~break_pending;
 		case(key_data)
 			16'h001D : key_enc[2:0] <= 3'b000;	// W -> X000
 			16'h001C : key_enc[2:0] <= 3'b001;	// A -> X001
@@ -99,8 +107,6 @@ always @(posedge clk or negedge rst) begin
 			16'hE072 : key_enc[2:0] <= 3'b111;	// Down arrow -> X111
 			default	: key_enc[2:0] <= 3'bxxx;
 		endcase
-		key_data <= 16'b0;
-		new_avail <= 1'b0;
 	end
 end
 endmodule

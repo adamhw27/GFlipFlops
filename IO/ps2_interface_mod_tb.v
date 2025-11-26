@@ -5,7 +5,7 @@ module ps2_interface_mod_tb();
 // 1. Declaration of FPGA clock signal (50 MHz)
 reg clk;
 initial clk = 0;
-forever #10 clk = ~clk;
+always #10 clk = ~clk;
 
 // 2. Declaration of PS/2 clock signal (10 kHz)
 reg ps2_clk = 0;
