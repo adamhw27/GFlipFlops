@@ -2,7 +2,7 @@ module VGAcontroller(
 	input wire clk, rst,
 	
 	output wire hs, vs, 
-	output reg bright,
+	output reg bright, new_clk,
 	output reg [9:0] hCount, vCount
 );
 
@@ -18,15 +18,20 @@ localparam V_PULSE_WIDTH = 10'd2;
 localparam V_FRONT_PORCH = 10'd10;
 localparam V_BACK_PORCH = 10'd33;
 
-assign hs = ~((hCount >= H_FRONT_PORCH)  & (hCount < H_FRONT_PORCH + H_SYNC_PULSE_TIME));
-assign vs = ~((vCount >= V_FRONT_PORCH) & (vCount < V_DISPLAY_TIME + V_FRONT_PORCH + V_SYNC_PULSE_TIME));
+assign hs = ~((hCount >= H_FRONT_PORCH ) & (hCount < H_FRONT_PORCH + H_PULSE_WIDTH));
+assign vs = ~((vCount >= V_DISPLAY_TIME + V_FRONT_PORCH) & (vCount < V_DISPLAY_TIME + V_FRONT_PORCH + V_PULSE_WIDTH));
 
-wire new_clk;
-clk_div divider(.clk(clk), .rst(rst), .oclk(new_clk));
+//clk_div divider(.clk(clk), .rst(rst), .oclk(new_clk));
 
 always @(posedge clk)
 begin
-	if(rst)
+	if(~rst)
+	begin
+		hCount <= 10'd0;
+		vCount <= 10'd0;
+		new_clk <= 10'd0;
+	end
+	else
 	begin
 		if(new_clk)
 		begin
@@ -42,11 +47,7 @@ begin
 				end
 			end
 		end
-	end
-	else
-	begin
-		hCount <= 10'd0;
-		vCount <= 10'd0;
+	new_clk <= ~new_clk;
 	end
 end
 
