@@ -1,0 +1,16 @@
+module IRreg (
+    input clk,
+    input rst,
+    input IRenable,
+    input [15:0] instruction,
+    output reg [15:0] IR
+);
+
+	always @(posedge clk or negedge rst) begin
+		if (!rst)
+			IR <= 16'b0;
+		else if (IRenable)
+			IR <= instruction;
+	end
+
+endmodule
