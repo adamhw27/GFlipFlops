@@ -1,0 +1,51 @@
+
+
+start:
+    mov r1, 10
+    mov r2, 0
+    add r2, r1
+    cmp r2, 20
+    ble 67
+    sub r2, 5
+    bne 67
+    call subroutine
+
+loop1:
+    addi r1, 1
+    cmp r1, 15
+    blt 67
+    jmp r1
+
+check:
+    mov r3, r2
+    cmp r3, 10
+    bge 15
+    add r3, 2
+    call subroutine
+
+loop2:
+    subi r3, 1
+    cmp r3, 5
+    bgt 67
+    jmp r1
+
+done:
+    xor r4, r4
+    addc r4, r1
+    ret
+
+final:
+    movi r5, 100
+    addui r5, 50
+    cmp r5, 200
+    ble 67
+    sub r5, r2
+    bne 15
+
+subroutine:
+    and r6, r5
+    or r7, r6
+    xori r7, 1
+    lsh r8, 2
+    ashu r9, 1
+    ret

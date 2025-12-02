@@ -1,0 +1,8 @@
+addi r1 150
+mov r4 r1
+nop
+ret
+call hello
+
+
+hello:
