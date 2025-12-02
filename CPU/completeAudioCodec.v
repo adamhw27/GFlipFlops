@@ -9,7 +9,6 @@ module completeAudioCodec (
     inout  AUD_BCLK,
     output AUD_I2C_SCLK,
     inout  AUD_I2C_SDAT,
-    output AUD_MUTE,
 
     input  [3:0] KEY,
     input  [3:0] SW,
@@ -41,7 +40,6 @@ i2c_config av_config (
 );
 
 assign AUD_XCK = audio_clk;
-assign AUD_MUTE = (SW != 4'b0); // connect to somethign
 
 audio_transfer af (
     .clk (audio_clk),
@@ -59,13 +57,11 @@ audio_transfer af (
     .AUD_BCLK (AUD_BCLK)
 );
 
-audio_mem ae (
+bitStreamAudio ae (
     .clk (audio_clk),
-    .sample_end (sample_end[1]),
     .sample_req (sample_req[1]),
-    .audio_output (audio_output),
-    .audio_input  (audio_input),
-    .control (SW)
+	 .enable_mask (SW),
+    .audio_output (audio_output)
 );
 
 endmodule
