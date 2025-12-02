@@ -1,0 +1,35 @@
+module GlyphGen(
+	input [9:0] hCount, vCount,
+	input [15:0] tempo, cursorLoc, currentBeat,
+	input [63:0] beatArray,
+	output [2:0] pixColor
+);
+
+	localparam GLYPH_NUM = 20; // DETERMINE NUM  OF GLYPHS
+	
+	wire [9:0] currentGlyph = {hCount[9:5], vCount[9:5]};
+	reg [7:0] glyphs [0:GLYPH_NUM-1][0:31][0:31] // FIGURE OUT 
+	
+	integer fd;
+	initial
+	begin
+		fd = $fopen("glyphB.bin", "rb");
+		$fread(glyphs, fd);
+		$fclose(fd);
+		
+	end
+	
+
+	always @(*)
+	begin
+		case (currentGlyph)
+			default :
+				pix <= 3'b011;
+			
+			5'b00000:
+				
+		
+		endcase
+	end
+
+endmodule
