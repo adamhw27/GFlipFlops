@@ -57,6 +57,9 @@ module generalFSM (
 					else if (opcode == 8'b1111_1111) begin
 						state <= S8_Keypress;
 					end
+					else if (opcode == 8'b1111_1110) begin
+						state <= S9_Rstkey;
+					end
 					else if (opcode[7:4] == 4'b1100) begin
 						state <= S7_Branch;
 					end
@@ -467,7 +470,7 @@ module generalFSM (
 			end
 			
 			S8_Keypress: begin
-				Ren = 16'd5;
+				Ren = 16'd1 << 16'd6;
 				keySel = 1'b1;
 				rst_handle = 1'b0;
 

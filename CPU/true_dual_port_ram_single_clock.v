@@ -21,7 +21,7 @@ module true_dual_port_ram_single_clock
 		//for (i = 0; i < 65536; i = i + 1)
         //    ram[i] = 0;
 				
-		$readmemh("memH.hex", ram, 0, (2**ADDR_WIDTH)-1);
+		$readmemh("keydemo.hex", ram, 0, (2**ADDR_WIDTH)-1);
 	end
 
 	// Port A 

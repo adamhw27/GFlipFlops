@@ -2,8 +2,11 @@ module cpu (
 input cin,
 input clk, rst,
 input ps2_clk, ps2_dat,
+output vga_clk, vga_blank_n, vga_vs, vga_hs,
+output [7:0] r, g, b
 
-output [27:0] segOut
+
+//output [27:0] segOut
 );
 
 // 16 bit instruction pulled from mem
@@ -143,12 +146,18 @@ true_dual_port_ram_single_clock memory(.data_a(R1), .data_b(data_b), .addr_a(add
 // Determine whether we are using aluout or data out	
 TwoInputMux ALUmux(.i0(aluOut), .i1(instruction), .sel(Alu_Mux_cntl), .out(ALUBus));
 
+wire [15:0] cursor_loc;
+assign cursor_loc = r5;
+
+
+HardCodedVga vga_mod(.clk(clk), .rst(rst), .sys_data({80'd0, cursor_loc}), .vga_clk(vga_clk), .vga_blank_n(vga_blank_n), .vga_vs(vga_vs), .vga_hs(vga_hs), .r(r), .g(g), .b(b));
+
 
 
 // Connect SegOut
-seven_seg_hex a(r5[3:0], segOut[6:0]);
-seven_seg_hex b(r5[7:4], segOut[13:7]);
-seven_seg_hex c(r5[11:8], segOut[20:14]);
-seven_seg_hex d(r5[15:12], segOut[27:21]);
+//seven_seg_hex a(r5[3:0], segOut[6:0]);
+//seven_seg_hex b(r5[7:4], segOut[13:7]);
+//seven_seg_hex c(r5[11:8], segOut[20:14]);
+//seven_seg_hex d(r5[15:12], segOut[27:21]);
 
 endmodule
