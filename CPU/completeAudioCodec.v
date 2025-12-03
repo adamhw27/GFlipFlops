@@ -10,12 +10,12 @@ module completeAudioCodec (
     output AUD_I2C_SCLK,
     inout  AUD_I2C_SDAT,
 
-    input  [3:0] KEY,
+    input  rst,
     input  [3:0] SW,
     output [3:0] LED
 );
 
-wire reset = !KEY[0];
+wire reset = !rst;
 wire main_clk;
 wire audio_clk;
 

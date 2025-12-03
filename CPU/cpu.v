@@ -2,7 +2,15 @@ module cpu (
 input cin,
 input clk, rst,
 
-output [27:0] segOut
+inout  AUD_ADCLRCK,
+input  AUD_ADCDAT,
+inout  AUD_DACLRCK,
+output AUD_DACDAT,
+output AUD_XCK,
+inout  AUD_BCLK,
+output AUD_I2C_SCLK,
+inout  AUD_I2C_SDAT,
+
 );
 
 // 16 bit instruction pulled from mem
@@ -85,6 +93,18 @@ PCDisplacementCalculator dispCalc(.inPC(PCvalue), .Rtarget(rSrcMuxToImmMux), .di
 wire [4:0] currentFlags;
 wire flagEn;
 
+// audio wires
+wire reset = !rst;
+wire main_clk;
+wire audio_clk;
+
+wire [1:0] sample_end;
+wire [1:0] sample_req;
+wire [15:0] audio_output;
+wire [15:0] audio_input;
+wire [3:0] maskEn;
+wire [3:0] cnter;
+
 
 // call fsm2 test
 generalFSM fsm(.clk(clk), .rst(rst), .flags(currentFlags), .inst(instruction), .Ren(regEnable), .PCen(PCen), .RorI(immSel), .LScntl(LScntl), .we_a(we_a), .Alu_Mux_cntl(Alu_Mux_cntl), .flagEn(flagEn), .RetAddrSave(RetAddrSave), .opcode(opcode), .Rsrc(srcSel), .Rdest(dstSel), .imm(immConnect), .displacement(displacement), .j_or_b_Sel(dispSel), .PCSel(jumpMux));
@@ -126,10 +146,70 @@ true_dual_port_ram_single_clock memory(.data_a(R1), .data_b(data_b), .addr_a(add
 // Determine whether we are using aluout or data out	
 TwoInputMux ALUmux(.i0(aluOut), .i1(instruction), .sel(Alu_Mux_cntl), .out(ALUBus));
 
-// Connect SegOut
-seven_seg_hex a(r5[3:0], segOut[6:0]);
-seven_seg_hex b(r5[7:4], segOut[13:7]);
-seven_seg_hex c(r5[11:8], segOut[20:14]);
-seven_seg_hex d(r5[15:12], segOut[27:21]);
+
+pll pll (
+    .refclk (OSC_50_B8A), // change this
+    .rst (reset), 
+    .outclk_0 (main_clk),
+    .outclk_1 (audio_clk) 
+);
+
+i2c_config av_config (
+    .clk (main_clk),
+    .reset (reset),
+    .i2c_sclk (AUD_I2C_SCLK),
+    .i2c_sdat (AUD_I2C_SD AT),
+    .status (LED) // get rid of LED
+);
+
+assign AUD_XCK = audio_clk;
+
+audio_transfer af (
+    .clk (audio_clk),
+    .reset (reset),
+    .sample_end (sample_end),
+    .sample_req (sample_req),
+    .audio_output (audio_output),
+    .audio_input (audio_input),
+    .channel_sel (2'b10),
+
+    .AUD_ADCLRCK (AUD_ADCLRCK),
+    .AUD_ADCDAT (AUD_ADCDAT),
+    .AUD_DACLRCK (AUD_DACLRCK),
+    .AUD_DACDAT (AUD_DACDAT),
+    .AUD_BCLK (AUD_BCLK)
+);
+
+bitStreamControl (
+	.clk(clk),
+	.enable16(q_b),
+	.enable_mask(maskEn),
+	.address(addr_b),
+	.counter(cnter)
+);
+
+bitStreamAudio ae (
+    .clk (audio_clk),
+    .sample_req (sample_req[1]),
+	 .enable_mask (maskEn),
+    .audio_output (audio_output)
+);
+
+
+// PS2 Stuff
+
+ps2_top_test ps2(
+	.clk(clk), .rst(rst),				
+	.ps2_clk, ps2_dat,	
+	led				
+);
+
+
+
+
+
+
+
+
 
 endmodule
