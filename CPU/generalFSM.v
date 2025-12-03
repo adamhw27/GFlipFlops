@@ -6,7 +6,7 @@ module generalFSM (
 	
 	output reg [15:0] Ren,
 	
-	output reg PCen, RorI, LScntl, we_a, Alu_Mux_cntl, flagEn, RetAddrSave,
+	output reg PCen, RorI, LScntl, we_a, Alu_Mux_cntl, flagEn, RetAddrSave, keySel, rst_handle,
 	
 	output reg [7:0] opcode,
 	output reg [3:0] Rsrc,
@@ -35,6 +35,8 @@ module generalFSM (
 	parameter S5_dataToReg = 4'b0101;
 	parameter S6_Jump = 4'b0110;
 	parameter S7_Branch = 4'b0111;
+	parameter S8_Keypress = 4'b1000;
+	parameter S9_Rstkey = 4'b1001;
 
 	always @(posedge clk) begin
 	  if (~rst) state <= S0_Fetch;
@@ -51,6 +53,9 @@ module generalFSM (
 					end
 					else if (opcode == 8'b0100_1100) begin
 						state <= S6_Jump;
+					end
+					else if (opcode == 8'b1111_1111) begin
+						state <= S8_Keypress;
 					end
 					else if (opcode[7:4] == 4'b1100) begin
 						state <= S7_Branch;
@@ -96,6 +101,8 @@ module generalFSM (
 				j_or_b_Sel = 1'bx;
 				RetAddrSave = 0;
 				displacement = 16'bx;
+				rst_handle = 1'b0;
+
 
 			
 			end
@@ -458,6 +465,18 @@ module generalFSM (
 					
 				endcase
 			end
+			
+			S8_Keypress: begin
+				Ren = 16'd5;
+				keySel = 1'b1;
+				rst_handle = 1'b0;
+
+			end
+			
+			S9_Rstkey: begin
+				rst_handle = 1'b1;
+			end
+			
 						
 			
 		endcase

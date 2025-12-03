@@ -1,6 +1,7 @@
 module cpu (
 input cin,
 input clk, rst,
+input ps2_clk, ps2_dat,
 
 output [27:0] segOut
 );
@@ -85,9 +86,14 @@ PCDisplacementCalculator dispCalc(.inPC(PCvalue), .Rtarget(rSrcMuxToImmMux), .di
 wire [4:0] currentFlags;
 wire flagEn;
 
+wire keySel;
+wire [3:0] key_enc;
+wire [4:0] key_info;
+wire rst_handle;
+
 
 // call fsm2 test
-generalFSM fsm(.clk(clk), .rst(rst), .flags(currentFlags), .inst(instruction), .Ren(regEnable), .PCen(PCen), .RorI(immSel), .LScntl(LScntl), .we_a(we_a), .Alu_Mux_cntl(Alu_Mux_cntl), .flagEn(flagEn), .RetAddrSave(RetAddrSave), .opcode(opcode), .Rsrc(srcSel), .Rdest(dstSel), .imm(immConnect), .displacement(displacement), .j_or_b_Sel(dispSel), .PCSel(jumpMux));
+generalFSM fsm(.clk(clk), .rst(rst), .flags(currentFlags), .inst(instruction), .Ren(regEnable), .PCen(PCen), .RorI(immSel), .LScntl(LScntl), .we_a(we_a), .Alu_Mux_cntl(Alu_Mux_cntl), .flagEn(flagEn), .RetAddrSave(RetAddrSave), .keySel(keySel), .rst_handle(rst_handle), .opcode(opcode), .Rsrc(srcSel), .Rdest(dstSel), .imm(immConnect), .displacement(displacement), .j_or_b_Sel(dispSel), .PCSel(jumpMux));
 
 
 //instantiating the ALU
@@ -101,7 +107,18 @@ RegBank rb(.din(inputToRB), .r0(r0), .r1(r1), .r2(r2), .r3(r3), .r4(r4), .r5(r5)
 					.r7(r7), .r8(r8), .r9(r9), .r10(r10), .r11(r11), .r12(r12), .r13(r13), .r14(r14), .r15(r15), .regEnable(regEnable), .clk(clk), .rst(rst));
 					
 
-TwoInputMux returnAddress(.i0(ALUBus), .i1(nextpc), .sel(RetAddrSave), .out(inputToRB));
+wire ret_addr_or_alu;
+					
+TwoInputMux returnAddress(.i0(ALUBus), .i1(nextpc), .sel(RetAddrSave), .out(ret_addr_or_alu));
+
+// mux for checking if were writing to reg bank from keyboard or mem or alu
+TwoInputMux KeyMux(.i0(ret_addr_or_alu), .i1({key_info}), .sel(keySel), .out(inputToRB));
+
+
+
+KeyReg kreg(.clk(clk), .rst(rst), .rst_handle(rst_handle), .key_enc(key_enc), .key_info(key_info));
+
+ps2_interface_mod(.clk(clk), .rst(rst), .ps2_clk(ps2_clk), .ps2_dat(ps2_dat), .key_enc(key_enc));
 					
 					
 // Connect Rsrc to ALU via Mux
@@ -125,6 +142,8 @@ true_dual_port_ram_single_clock memory(.data_a(R1), .data_b(data_b), .addr_a(add
 
 // Determine whether we are using aluout or data out	
 TwoInputMux ALUmux(.i0(aluOut), .i1(instruction), .sel(Alu_Mux_cntl), .out(ALUBus));
+
+
 
 // Connect SegOut
 seven_seg_hex a(r5[3:0], segOut[6:0]);

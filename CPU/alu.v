@@ -59,9 +59,6 @@ always @(R1, R2, opcode, cin)
 		
 			aluOut = (R1 + R2);
 		
-			// Set overflow flag
-			if ( (~R1[15] & ~R2[15] & aluOut[15]) | (R1[15] & R2[15] & ~aluOut[15])) flags[2] = 1'b1;
-			else flags[2] = 1'b0;
 			
 		end
 		
@@ -69,7 +66,7 @@ always @(R1, R2, opcode, cin)
 		begin
 		
 			// Set carry bit and dst reg
-			{flags[0], aluOut} = (R1 + R2);
+			aluOut = (R1 + R2);
 			
 			// Overflow is ignored
 	
@@ -79,12 +76,8 @@ always @(R1, R2, opcode, cin)
 		begin 
 			
 			// Set carry flag and dst reg
-			{flags[0], aluOut} = (R1 + R2 + cin);
+			aluOut = (R1 + R2 + cin);
 			
-			// Set overflow flag
-			if ( (~R1[15] & ~R2[15] & aluOut[15]) | (R1[15] & R2[15] & ~aluOut[15])) flags[2] = 1'b1;
-			else flags[2] = 1'b0;
-	
 		end
 	
 	MUL : 
@@ -101,10 +94,6 @@ always @(R1, R2, opcode, cin)
 			
 			aluOut = (R2 - R1);
 
-			// Set overflow flag
-			if ( (R1[15] & ~R2[15] & aluOut[15]) | (~R1[15] & R2[15] & ~aluOut[15])) flags[2] = 1'b1;
-			else flags[2] = 1'b0;
-
 		end
 		
 	SUBC :
@@ -114,14 +103,6 @@ always @(R1, R2, opcode, cin)
 			
 			aluOut = (R2 - (R1 + cin));
 			
-			// set carry
-			flags[0] = R2 < (R1 + cin);
-			
-			// Set overflow flag
-			if ( (R1[15] & ~R2[15] & aluOut[15]) | (~R1[15] & R2[15] & ~aluOut[15])) flags[2] = 1'b1;
-			else flags[2] = 1'b0;
-			
-	
 		end
 	
 	CMP :
@@ -138,6 +119,11 @@ always @(R1, R2, opcode, cin)
 			// Compare unsigned
 			if (R1 > R2) flags[1] = 1'b1;
 			else flags[1] = 1'b0;
+			
+				// Set zero flag
+			if (aluOut == 16'h0000) flags[4] = 1'b1;
+			else flags[4] = 1'b0;
+		
 							
 		end
 		
@@ -191,9 +177,7 @@ always @(R1, R2, opcode, cin)
 		
   endcase
   
-		// Set zero flag
-		if (aluOut == 16'h0000) flags[4] = 1'b1;
-		else flags[4] = 1'b0;
+	
  end
  
 endmodule
