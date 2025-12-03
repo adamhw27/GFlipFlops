@@ -1,13 +1,15 @@
+0510	// li r5 7
+5507
 0E10	// call main_loop
-5E06
+5E07
 0020
 4ECE
 0E10	// call keypress
-5E0E
+5E0F
 0020
 4ECE
 0E10	// jx main_loop
-5E06
+5E07
 0020
 4ECE
 F0F0	//load ps2 into r6
@@ -16,7 +18,7 @@ F0F0	//load ps2 into r6
 1108	//andi r11 8          // r11 = r11 & 0b1000 (mask bit 3)
 B100	//cmpi r11 0          // Compare with 0
 0E10	// jx keypress_ret
-5E4A
+5E49
 0020
 4ECE
 0A10	// mov r10 r6
@@ -24,42 +26,42 @@ B100	//cmpi r11 0          // Compare with 0
 1107	//andi r10 7          // r10 = r10 & 0b0111 (get key code)
 B100	//cmpi r10 0
 0E10	// jx check_a
-5E29
+5E28
 0020
 4ECE
 9510	//subi r5 16          // Move cursor up one row
 0E10	// jx keypress_ret
-5E4A
+5E49
 0020
 4ECE
 B101	//cmpi r10 1
 0E10	// jx check_s
-5E34
+5E33
 0020
 4ECE
 9501	//subi r5 1           // Move cursor left
 0E10	// jx keypress_ret
-5E4A
+5E49
 0020
 4ECE
 B102	//cmpi r10 2
 0E10	// jx check_d
-5E3F
+5E3E
 0020
 4ECE
 5510	//addi r5 16          // Move cursor down one row
 0E10	// jx keypress_ret
-5E4A
+5E49
 0020
 4ECE
 B103	//cmpi r10 3
 0E10	// jx keypress_ret
-5E4A
+5E49
 0020
 4ECE
 5501	//addi r5 1           // Move cursor right
 0E10	// jx keypress_ret
-5E4A
+5E49
 0020
 4ECE
 F0E0	//handled keypress

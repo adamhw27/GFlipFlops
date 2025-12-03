@@ -198,9 +198,11 @@ def map_labels(input_path, output_path):
                 lineCount += 3
 
             elif args[0] == "mov":
-                lineCount += 3
+                lineCount += 2
             elif args[0][0] == "j":
                 lineCount += 4
+            elif args[0] == "li":
+                lineCount += 2
             else:
                 # regular instruciton, maps to one line
                 lineCount += 1
@@ -293,7 +295,23 @@ def psuedo(args):
         return bytecode + inst
 
     elif args[0] == "li":
-        pass
+        # 0 out reg with AND RTHIS R0
+        # add imm into this one
+
+        rdst = int(args[1][1:])  # grab everything after 'r'
+        imm = int(args[2])
+        rdst_hex = f"{rdst:X}"  # one hex digit 0–F
+        imm_hex = f"{imm:02X}"
+
+
+        inst = "0" + rdst_hex + "1" + '0' + f'\t// li {args[1]} {args[2]}' + '\n'     # and Rdst R0
+
+        bytecode += inst
+
+        inst = "5" + f"{rdst_hex}" + f"{imm_hex}\n"  # addi rdst rsrc
+
+        return bytecode + inst
+
 
     elif args[0] == "nop":
         inst = "0" + '0' + "2" + '0' + f'\t// nop' + '\n'  # OR R0 R0
