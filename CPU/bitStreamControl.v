@@ -4,15 +4,15 @@ module bitStreamControl (
     output reg [3:0] enable_mask,
     output reg [15:0] address,
 	 output reg [3:0] counter
-	 
+
 );
 
-    counter = 0;
+    initial counter = 0;
 	 
 	 reg [25:0] clkdiv  = 0; 
     reg enableIncrement = 0;
 
-    parameter BEGINENABLE = 1024;
+    parameter BEGINENABLE = 0;
 	 
 	 always @(posedge clk) begin
 	    if (clkdiv == 49_999_999) begin

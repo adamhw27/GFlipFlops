@@ -9,7 +9,7 @@ output AUD_DACDAT,
 output AUD_XCK,
 inout  AUD_BCLK,
 output AUD_I2C_SCLK,
-inout  AUD_I2C_SDAT,
+inout  AUD_I2C_SDAT
 
 );
 
@@ -105,6 +105,11 @@ wire [15:0] audio_input;
 wire [3:0] maskEn;
 wire [3:0] cnter;
 
+wire [15:0] data_b;
+wire [15:0] addr_b;
+wire we_b;
+wire [15:0] q_b;
+
 
 // call fsm2 test
 generalFSM fsm(.clk(clk), .rst(rst), .flags(currentFlags), .inst(instruction), .Ren(regEnable), .PCen(PCen), .RorI(immSel), .LScntl(LScntl), .we_a(we_a), .Alu_Mux_cntl(Alu_Mux_cntl), .flagEn(flagEn), .RetAddrSave(RetAddrSave), .opcode(opcode), .Rsrc(srcSel), .Rdest(dstSel), .imm(immConnect), .displacement(displacement), .j_or_b_Sel(dispSel), .PCSel(jumpMux));
@@ -148,18 +153,18 @@ TwoInputMux ALUmux(.i0(aluOut), .i1(instruction), .sel(Alu_Mux_cntl), .out(ALUBu
 
 
 pll pll (
-    .refclk (OSC_50_B8A), // change this
+    .refclk (clk),
     .rst (reset), 
     .outclk_0 (main_clk),
-    .outclk_1 (audio_clk) 
+    .outclk_1 (audio_clk)
 );
 
 i2c_config av_config (
     .clk (main_clk),
     .reset (reset),
     .i2c_sclk (AUD_I2C_SCLK),
-    .i2c_sdat (AUD_I2C_SD AT),
-    .status (LED) // get rid of LED
+    .i2c_sdat (AUD_I2C_SDAT),
+    .status () // get rid of LED
 );
 
 assign AUD_XCK = audio_clk;
@@ -180,8 +185,8 @@ audio_transfer af (
     .AUD_BCLK (AUD_BCLK)
 );
 
-bitStreamControl (
-	.clk(clk),
+bitStreamControl beatControl(
+	.clk(main_clk),
 	.enable16(q_b),
 	.enable_mask(maskEn),
 	.address(addr_b),
@@ -194,21 +199,6 @@ bitStreamAudio ae (
 	 .enable_mask (maskEn),
     .audio_output (audio_output)
 );
-
-
-// PS2 Stuff
-
-ps2_top_test ps2(
-	.clk(clk), .rst(rst),				
-	.ps2_clk, ps2_dat,	
-	led				
-);
-
-
-
-
-
-
 
 
 
