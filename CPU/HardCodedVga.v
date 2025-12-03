@@ -9,6 +9,10 @@ module HardCodedVga(
 	wire[63:0] beatArray;
 	wire[2:0] pixColor;
 	
+	assign beatArray = {8'b10100001, 8'b11111111, 8'b11111111, 8'b01001010, 8'b10100001, 8'b11111111, 8'b00000000, 8'b01001010};
+	assign cursorLoc = 6'd63;
+	assign currentBeat = 4'd2;
+	
 	
 	
 	VGAcontroller vga_control(.clk(clk), .rst(rst), .hs(vga_hs), .vs(vga_vs), .bright(vga_blank_n), .new_clk(vga_clk), .hCount(hCount), .vCount(vCount));

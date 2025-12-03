@@ -1,11 +1,11 @@
-Fitter Status : Successful - Tue Dec  2 21:19:11 2025
+Fitter Status : Successful - Wed Dec  3 13:39:06 2025
 Quartus Prime Version : 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 Revision Name : HardCodedVga
 Top-level Entity Name : HardCodedVga
 Family : Cyclone V
 Device : 5CSEMA5F31C6
 Timing Models : Final
-Logic utilization (in ALMs) : 193 / 32,070 ( < 1 % )
+Logic utilization (in ALMs) : 238 / 32,070 ( < 1 % )
 Total registers : 24
 Total pins : 30 / 457 ( 7 % )
 Total virtual pins : 0

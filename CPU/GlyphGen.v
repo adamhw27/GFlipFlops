@@ -5,19 +5,19 @@ module GlyphGen(
 	input [63:0] beatArray,
 	output reg [2:0] pixColor
 );
-	localparam GLYPH_DATA_LENGTH = 4 * 32 * 32;
+	localparam GLYPH_DATA_LENGTH = 5 * 32 * 32;
 	localparam GLYPH_NUM = 10; // DETERMINE NUM  OF GLYPHS
 	
 	localparam BG = 5'd0; // correct d0
-	localparam OFFBEAT = 5'd2;
-	localparam ONBEAT = 5'd4; // correct d4
+	localparam OFFBEAT = 5'd1;
+	localparam ONBEAT = 5'd2; // correct d4
 	localparam S_OFFBEAT = 5'd3; // correct d3
-	localparam S_ONBEAT = 5'd8;
-	localparam BEAT_IND = 5'd9;	// correct d9
-	localparam TITLE_16 = 5'd5; // correct d5
-	localparam TITLE_BIT = 5'd6; // correct d6
-	localparam TITLE_BO = 5'd7;	// correct d7
-	localparam TITLE_X = 5'd8;	
+	localparam S_ONBEAT = 5'd4;
+	localparam BEAT_IND = 5'd5;	// correct d9
+	localparam TITLE_16 = 5'd6; // correct d5
+	localparam TITLE_BIT = 5'd7; // correct d6
+	localparam TITLE_BO = 5'd8;	// correct d7
+	localparam TITLE_X = 5'd9;	
 	
 	
 	wire [9:0] x_y_glyph = {hCount[9:5], vCount[9:5]} - 10'd160 ;
@@ -28,7 +28,7 @@ module GlyphGen(
 	
 	initial
 	begin
-		$readmemh("glyph_mem.hex", glyphs);
+		$readmemh("glyph_new2_mem.hex", glyphs);
 	end
 	
 	always @(posedge clk)
@@ -55,13 +55,6 @@ module GlyphGen(
 	always @(*)
 	begin
 	
-	
-		// Check for beat indicator first (highest priority)
-		 if (x_y_glyph == {{1'b0, currentBeat[3:0]} + 5'd3, 5'd2}) begin
-			  current_glyph = BEAT_IND;
-		 end
-	
-	
 
 		case (x_y_glyph)
 			{5'd1, 5'd0}: begin
@@ -75,6 +68,9 @@ module GlyphGen(
 			end
 			{5'd4, 5'd0}: begin
 				current_glyph = TITLE_X;
+			end
+			{{1'b0, currentBeat[3:0]} + 5'd3, 5'd2}: begin
+				current_glyph = BEAT_IND;
 			end
 			
 			

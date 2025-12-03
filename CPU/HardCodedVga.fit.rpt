@@ -1,5 +1,5 @@
 Fitter report for HardCodedVga
-Tue Dec  2 21:19:11 2025
+Wed Dec  3 13:39:06 2025
 Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 
 
@@ -34,7 +34,9 @@ Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
  26. I/O Rules Matrix
  27. Fitter Device Options
  28. Operating Settings and Conditions
- 29. Fitter Messages
+ 29. Estimated Delay Added for Hold Timing Summary
+ 30. Estimated Delay Added for Hold Timing Details
+ 31. Fitter Messages
 
 
 
@@ -61,14 +63,14 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Fitter Summary                                                                   ;
 +---------------------------------+------------------------------------------------+
-; Fitter Status                   ; Successful - Tue Dec  2 21:19:11 2025          ;
+; Fitter Status                   ; Successful - Wed Dec  3 13:39:06 2025          ;
 ; Quartus Prime Version           ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
 ; Revision Name                   ; HardCodedVga                                   ;
 ; Top-level Entity Name           ; HardCodedVga                                   ;
 ; Family                          ; Cyclone V                                      ;
 ; Device                          ; 5CSEMA5F31C6                                   ;
 ; Timing Models                   ; Final                                          ;
-; Logic utilization (in ALMs)     ; 193 / 32,070 ( < 1 % )                         ;
+; Logic utilization (in ALMs)     ; 238 / 32,070 ( < 1 % )                         ;
 ; Total registers                 ; 24                                             ;
 ; Total pins                      ; 30 / 457 ( 7 % )                               ;
 ; Total virtual pins              ; 0                                              ;
@@ -151,7 +153,7 @@ https://fpgasoftware.intel.com/eula.
 ; Number detected on machine ; 4           ;
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
-; Average used               ; 1.02        ;
+; Average used               ; 1.03        ;
 ; Maximum used               ; 4           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
@@ -188,8 +190,8 @@ https://fpgasoftware.intel.com/eula.
 ; Type                ; Total [A + B]      ; From Design Partitions [A] ; From Rapid Recompile [B] ;
 +---------------------+--------------------+----------------------------+--------------------------+
 ; Placement (by node) ;                    ;                            ;                          ;
-;     -- Requested    ; 0.00 % ( 0 / 330 ) ; 0.00 % ( 0 / 330 )         ; 0.00 % ( 0 / 330 )       ;
-;     -- Achieved     ; 0.00 % ( 0 / 330 ) ; 0.00 % ( 0 / 330 )         ; 0.00 % ( 0 / 330 )       ;
+;     -- Requested    ; 0.00 % ( 0 / 403 ) ; 0.00 % ( 0 / 403 )         ; 0.00 % ( 0 / 403 )       ;
+;     -- Achieved     ; 0.00 % ( 0 / 403 ) ; 0.00 % ( 0 / 403 )         ; 0.00 % ( 0 / 403 )       ;
 ;                     ;                    ;                            ;                          ;
 ; Routing (by net)    ;                    ;                            ;                          ;
 ;     -- Requested    ; 0.00 % ( 0 / 0 )   ; 0.00 % ( 0 / 0 )           ; 0.00 % ( 0 / 0 )         ;
@@ -212,7 +214,7 @@ https://fpgasoftware.intel.com/eula.
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
 ; Partition Name                 ; Preservation Achieved ; Preservation Level Used ; Netlist Type Used ; Preservation Method ; Notes ;
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
-; Top                            ; 0.00 % ( 0 / 330 )    ; N/A                     ; Source File       ; N/A                 ;       ;
+; Top                            ; 0.00 % ( 0 / 403 )    ; N/A                     ; Source File       ; N/A                 ;       ;
 ; hard_block:auto_generated_inst ; 0.00 % ( 0 / 0 )      ; N/A                     ; Source File       ; N/A                 ;       ;
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
 
@@ -228,32 +230,32 @@ The pin-out file can be found in /home/u1456456/Desktop/vga/GFlipFlops/CPU/HardC
 +-------------------------------------------------------------+--------------------+-------+
 ; Resource                                                    ; Usage              ; %     ;
 +-------------------------------------------------------------+--------------------+-------+
-; Logic utilization (ALMs needed / total ALMs on device)      ; 193 / 32,070       ; < 1 % ;
-; ALMs needed [=A-B+C]                                        ; 193                ;       ;
-;     [A] ALMs used in final placement [=a+b+c+d]             ; 197 / 32,070       ; < 1 % ;
+; Logic utilization (ALMs needed / total ALMs on device)      ; 238 / 32,070       ; < 1 % ;
+; ALMs needed [=A-B+C]                                        ; 238                ;       ;
+;     [A] ALMs used in final placement [=a+b+c+d]             ; 247 / 32,070       ; < 1 % ;
 ;         [a] ALMs used for LUT logic and registers           ; 12                 ;       ;
-;         [b] ALMs used for LUT logic                         ; 184                ;       ;
-;         [c] ALMs used for registers                         ; 1                  ;       ;
+;         [b] ALMs used for LUT logic                         ; 235                ;       ;
+;         [c] ALMs used for registers                         ; 0                  ;       ;
 ;         [d] ALMs used for memory (up to half of total ALMs) ; 0                  ;       ;
-;     [B] Estimate of ALMs recoverable by dense packing       ; 4 / 32,070         ; < 1 % ;
-;     [C] Estimate of ALMs unavailable [=a+b+c+d]             ; 0 / 32,070         ; 0 %   ;
+;     [B] Estimate of ALMs recoverable by dense packing       ; 10 / 32,070        ; < 1 % ;
+;     [C] Estimate of ALMs unavailable [=a+b+c+d]             ; 1 / 32,070         ; < 1 % ;
 ;         [a] Due to location constrained logic               ; 0                  ;       ;
 ;         [b] Due to LAB-wide signal conflicts                ; 0                  ;       ;
-;         [c] Due to LAB input limits                         ; 0                  ;       ;
+;         [c] Due to LAB input limits                         ; 1                  ;       ;
 ;         [d] Due to virtual I/Os                             ; 0                  ;       ;
 ;                                                             ;                    ;       ;
 ; Difficulty packing design                                   ; Low                ;       ;
 ;                                                             ;                    ;       ;
-; Total LABs:  partially or completely used                   ; 27 / 3,207         ; < 1 % ;
-;     -- Logic LABs                                           ; 27                 ;       ;
+; Total LABs:  partially or completely used                   ; 29 / 3,207         ; < 1 % ;
+;     -- Logic LABs                                           ; 29                 ;       ;
 ;     -- Memory LABs (up to half of total LABs)               ; 0                  ;       ;
 ;                                                             ;                    ;       ;
-; Combinational ALUT usage for logic                          ; 245                ;       ;
-;     -- 7 input functions                                    ; 22                 ;       ;
-;     -- 6 input functions                                    ; 121                ;       ;
-;     -- 5 input functions                                    ; 32                 ;       ;
-;     -- 4 input functions                                    ; 26                 ;       ;
-;     -- <=3 input functions                                  ; 44                 ;       ;
+; Combinational ALUT usage for logic                          ; 318                ;       ;
+;     -- 7 input functions                                    ; 28                 ;       ;
+;     -- 6 input functions                                    ; 135                ;       ;
+;     -- 5 input functions                                    ; 65                 ;       ;
+;     -- 4 input functions                                    ; 37                 ;       ;
+;     -- <=3 input functions                                  ; 53                 ;       ;
 ; Combinational ALUT usage for route-throughs                 ; 0                  ;       ;
 ;                                                             ;                    ;       ;
 ; Dedicated logic registers                                   ; 24                 ;       ;
@@ -318,11 +320,11 @@ The pin-out file can be found in /home/u1456456/Desktop/vga/GFlipFlops/CPU/HardC
 ; Impedance control blocks                                    ; 0 / 4              ; 0 %   ;
 ; Hard Memory Controllers                                     ; 0 / 2              ; 0 %   ;
 ; Average interconnect usage (total/H/V)                      ; 0.1% / 0.1% / 0.1% ;       ;
-; Peak interconnect usage (total/H/V)                         ; 2.1% / 2.2% / 1.8% ;       ;
-; Maximum fan-out                                             ; 112                ;       ;
-; Highest non-global fan-out                                  ; 112                ;       ;
-; Total fan-out                                               ; 1368               ;       ;
-; Average fan-out                                             ; 4.15               ;       ;
+; Peak interconnect usage (total/H/V)                         ; 2.3% / 2.4% / 2.1% ;       ;
+; Maximum fan-out                                             ; 132                ;       ;
+; Highest non-global fan-out                                  ; 132                ;       ;
+; Total fan-out                                               ; 1724               ;       ;
+; Average fan-out                                             ; 4.28               ;       ;
 +-------------------------------------------------------------+--------------------+-------+
 
 
@@ -331,32 +333,32 @@ The pin-out file can be found in /home/u1456456/Desktop/vga/GFlipFlops/CPU/HardC
 +-------------------------------------------------------------+-----------------------+--------------------------------+
 ; Statistic                                                   ; Top                   ; hard_block:auto_generated_inst ;
 +-------------------------------------------------------------+-----------------------+--------------------------------+
-; Logic utilization (ALMs needed / total ALMs on device)      ; 193 / 32070 ( < 1 % ) ; 0 / 32070 ( 0 % )              ;
-; ALMs needed [=A-B+C]                                        ; 193                   ; 0                              ;
-;     [A] ALMs used in final placement [=a+b+c+d]             ; 197 / 32070 ( < 1 % ) ; 0 / 32070 ( 0 % )              ;
+; Logic utilization (ALMs needed / total ALMs on device)      ; 238 / 32070 ( < 1 % ) ; 0 / 32070 ( 0 % )              ;
+; ALMs needed [=A-B+C]                                        ; 238                   ; 0                              ;
+;     [A] ALMs used in final placement [=a+b+c+d]             ; 247 / 32070 ( < 1 % ) ; 0 / 32070 ( 0 % )              ;
 ;         [a] ALMs used for LUT logic and registers           ; 12                    ; 0                              ;
-;         [b] ALMs used for LUT logic                         ; 184                   ; 0                              ;
-;         [c] ALMs used for registers                         ; 1                     ; 0                              ;
+;         [b] ALMs used for LUT logic                         ; 235                   ; 0                              ;
+;         [c] ALMs used for registers                         ; 0                     ; 0                              ;
 ;         [d] ALMs used for memory (up to half of total ALMs) ; 0                     ; 0                              ;
-;     [B] Estimate of ALMs recoverable by dense packing       ; 4 / 32070 ( < 1 % )   ; 0 / 32070 ( 0 % )              ;
-;     [C] Estimate of ALMs unavailable [=a+b+c+d]             ; 0 / 32070 ( 0 % )     ; 0 / 32070 ( 0 % )              ;
+;     [B] Estimate of ALMs recoverable by dense packing       ; 10 / 32070 ( < 1 % )  ; 0 / 32070 ( 0 % )              ;
+;     [C] Estimate of ALMs unavailable [=a+b+c+d]             ; 1 / 32070 ( < 1 % )   ; 0 / 32070 ( 0 % )              ;
 ;         [a] Due to location constrained logic               ; 0                     ; 0                              ;
 ;         [b] Due to LAB-wide signal conflicts                ; 0                     ; 0                              ;
-;         [c] Due to LAB input limits                         ; 0                     ; 0                              ;
+;         [c] Due to LAB input limits                         ; 1                     ; 0                              ;
 ;         [d] Due to virtual I/Os                             ; 0                     ; 0                              ;
 ;                                                             ;                       ;                                ;
 ; Difficulty packing design                                   ; Low                   ; Low                            ;
 ;                                                             ;                       ;                                ;
-; Total LABs:  partially or completely used                   ; 27 / 3207 ( < 1 % )   ; 0 / 3207 ( 0 % )               ;
-;     -- Logic LABs                                           ; 27                    ; 0                              ;
+; Total LABs:  partially or completely used                   ; 29 / 3207 ( < 1 % )   ; 0 / 3207 ( 0 % )               ;
+;     -- Logic LABs                                           ; 29                    ; 0                              ;
 ;     -- Memory LABs (up to half of total LABs)               ; 0                     ; 0                              ;
 ;                                                             ;                       ;                                ;
-; Combinational ALUT usage for logic                          ; 245                   ; 0                              ;
-;     -- 7 input functions                                    ; 22                    ; 0                              ;
-;     -- 6 input functions                                    ; 121                   ; 0                              ;
-;     -- 5 input functions                                    ; 32                    ; 0                              ;
-;     -- 4 input functions                                    ; 26                    ; 0                              ;
-;     -- <=3 input functions                                  ; 44                    ; 0                              ;
+; Combinational ALUT usage for logic                          ; 318                   ; 0                              ;
+;     -- 7 input functions                                    ; 28                    ; 0                              ;
+;     -- 6 input functions                                    ; 135                   ; 0                              ;
+;     -- 5 input functions                                    ; 65                    ; 0                              ;
+;     -- 4 input functions                                    ; 37                    ; 0                              ;
+;     -- <=3 input functions                                  ; 53                    ; 0                              ;
 ; Combinational ALUT usage for route-throughs                 ; 0                     ; 0                              ;
 ; Memory ALUT usage                                           ; 0                     ; 0                              ;
 ;     -- 64-address deep                                      ; 0                     ; 0                              ;
@@ -385,8 +387,8 @@ The pin-out file can be found in /home/u1456456/Desktop/vga/GFlipFlops/CPU/HardC
 ;     -- Registered Output Connections                        ; 0                     ; 0                              ;
 ;                                                             ;                       ;                                ;
 ; Internal Connections                                        ;                       ;                                ;
-;     -- Total Connections                                    ; 1368                  ; 0                              ;
-;     -- Registered Connections                               ; 920                   ; 0                              ;
+;     -- Total Connections                                    ; 1724                  ; 0                              ;
+;     -- Registered Connections                               ; 1118                  ; 0                              ;
 ;                                                             ;                       ;                                ;
 ; External Connections                                        ;                       ;                                ;
 ;     -- Top                                                  ; 0                     ; 0                              ;
@@ -1427,9 +1429,9 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 +--------------------------------+----------------------+----------------------------------+---------------------------------------------------+----------------------------------+----------------------+---------------------+---------------------------+---------------+-------------------+-------+------------+------+--------------+-----------------------------------------+---------------+--------------+
 ; Compilation Hierarchy Node     ; ALMs needed [=A-B+C] ; [A] ALMs used in final placement ; [B] Estimate of ALMs recoverable by dense packing ; [C] Estimate of ALMs unavailable ; ALMs used for memory ; Combinational ALUTs ; Dedicated Logic Registers ; I/O Registers ; Block Memory Bits ; M10Ks ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                     ; Entity Name   ; Library Name ;
 +--------------------------------+----------------------+----------------------------------+---------------------------------------------------+----------------------------------+----------------------+---------------------+---------------------------+---------------+-------------------+-------+------------+------+--------------+-----------------------------------------+---------------+--------------+
-; |HardCodedVga                  ; 193.0 (0.5)          ; 195.5 (0.5)                      ; 2.5 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 245 (1)             ; 24 (0)                    ; 0 (0)         ; 0                 ; 0     ; 0          ; 30   ; 0            ; |HardCodedVga                           ; HardCodedVga  ; work         ;
-;    |GlyphGen:ggen|             ; 172.3 (172.3)        ; 174.2 (174.2)                    ; 1.8 (1.8)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 209 (209)           ; 3 (3)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |HardCodedVga|GlyphGen:ggen             ; GlyphGen      ; work         ;
-;    |VGAcontroller:vga_control| ; 20.2 (20.2)          ; 20.8 (20.8)                      ; 0.7 (0.7)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 35 (35)             ; 21 (21)                   ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |HardCodedVga|VGAcontroller:vga_control ; VGAcontroller ; work         ;
+; |HardCodedVga                  ; 237.5 (0.5)          ; 246.5 (0.5)                      ; 9.5 (0.0)                                         ; 0.5 (0.0)                        ; 0.0 (0.0)            ; 318 (1)             ; 24 (0)                    ; 0 (0)         ; 0                 ; 0     ; 0          ; 30   ; 0            ; |HardCodedVga                           ; HardCodedVga  ; work         ;
+;    |GlyphGen:ggen|             ; 215.7 (215.7)        ; 225.0 (225.0)                    ; 9.8 (9.8)                                         ; 0.5 (0.5)                        ; 0.0 (0.0)            ; 282 (282)           ; 3 (3)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |HardCodedVga|GlyphGen:ggen             ; GlyphGen      ; work         ;
+;    |VGAcontroller:vga_control| ; 21.0 (21.0)          ; 21.0 (21.0)                      ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 35 (35)             ; 21 (21)                   ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |HardCodedVga|VGAcontroller:vga_control ; VGAcontroller ; work         ;
 +--------------------------------+----------------------+----------------------------------+---------------------------------------------------+----------------------------------+----------------------+---------------------+---------------------------+---------------+-------------------+-------+------------+------+--------------+-----------------------------------------+---------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -1491,10 +1493,10 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +---------------------------------------+---------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
 ; Name                                  ; Location            ; Fan-Out ; Usage        ; Global ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
 +---------------------------------------+---------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
-; VGAcontroller:vga_control|hCount[9]~0 ; LABCELL_X33_Y78_N42 ; 10      ; Sync. clear  ; no     ; --                   ; --               ; --                        ;
-; VGAcontroller:vga_control|new_clk~0   ; LABCELL_X33_Y78_N45 ; 11      ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; VGAcontroller:vga_control|vCount[0]~0 ; LABCELL_X33_Y78_N30 ; 10      ; Sync. clear  ; no     ; --                   ; --               ; --                        ;
-; VGAcontroller:vga_control|vCount[0]~1 ; LABCELL_X33_Y78_N9  ; 10      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; VGAcontroller:vga_control|hCount[9]~0 ; LABCELL_X31_Y77_N36 ; 10      ; Sync. clear  ; no     ; --                   ; --               ; --                        ;
+; VGAcontroller:vga_control|new_clk~0   ; LABCELL_X31_Y77_N39 ; 11      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; VGAcontroller:vga_control|vCount[0]~0 ; LABCELL_X31_Y77_N48 ; 10      ; Sync. clear  ; no     ; --                   ; --               ; --                        ;
+; VGAcontroller:vga_control|vCount[0]~1 ; LABCELL_X31_Y77_N27 ; 10      ; Clock enable ; no     ; --                   ; --               ; --                        ;
 ; clk                                   ; PIN_AF14            ; 24      ; Clock        ; yes    ; Global Clock         ; GCLK5            ; --                        ;
 +---------------------------------------+---------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
 
@@ -1513,14 +1515,14 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +---------------------------------------------+-------------------------+
 ; Routing Resource Type                       ; Usage                   ;
 +---------------------------------------------+-------------------------+
-; Block interconnects                         ; 444 / 289,320 ( < 1 % ) ;
+; Block interconnects                         ; 550 / 289,320 ( < 1 % ) ;
 ; C12 interconnects                           ; 7 / 13,420 ( < 1 % )    ;
-; C2 interconnects                            ; 111 / 119,108 ( < 1 % ) ;
-; C4 interconnects                            ; 33 / 56,300 ( < 1 % )   ;
+; C2 interconnects                            ; 131 / 119,108 ( < 1 % ) ;
+; C4 interconnects                            ; 44 / 56,300 ( < 1 % )   ;
 ; DQS bus muxes                               ; 0 / 25 ( 0 % )          ;
 ; DQS-18 I/O buses                            ; 0 / 25 ( 0 % )          ;
 ; DQS-9 I/O buses                             ; 0 / 25 ( 0 % )          ;
-; Direct links                                ; 43 / 289,320 ( < 1 % )  ;
+; Direct links                                ; 49 / 289,320 ( < 1 % )  ;
 ; Global clocks                               ; 1 / 16 ( 6 % )          ;
 ; HPS SDRAM PLL inputs                        ; 0 / 1 ( 0 % )           ;
 ; HPS SDRAM PLL outputs                       ; 0 / 1 ( 0 % )           ;
@@ -1576,12 +1578,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; HPS_INTERFACE_TPIU_TRACE_INPUTs             ; 0 / 2 ( 0 % )           ;
 ; HPS_INTERFACE_TPIU_TRACE_OUTPUTs            ; 0 / 33 ( 0 % )          ;
 ; Horizontal periphery clocks                 ; 0 / 72 ( 0 % )          ;
-; Local interconnects                         ; 147 / 84,580 ( < 1 % )  ;
+; Local interconnects                         ; 184 / 84,580 ( < 1 % )  ;
 ; Quadrant clocks                             ; 0 / 66 ( 0 % )          ;
-; R14 interconnects                           ; 5 / 12,676 ( < 1 % )    ;
-; R14/C12 interconnect drivers                ; 11 / 20,720 ( < 1 % )   ;
-; R3 interconnects                            ; 139 / 130,992 ( < 1 % ) ;
-; R6 interconnects                            ; 155 / 266,960 ( < 1 % ) ;
+; R14 interconnects                           ; 4 / 12,676 ( < 1 % )    ;
+; R14/C12 interconnect drivers                ; 10 / 20,720 ( < 1 % )   ;
+; R3 interconnects                            ; 175 / 130,992 ( < 1 % ) ;
+; R6 interconnects                            ; 171 / 266,960 ( < 1 % ) ;
 ; Spine clocks                                ; 1 / 360 ( < 1 % )       ;
 ; Wire stub REs                               ; 0 / 15,858 ( 0 % )      ;
 +---------------------------------------------+-------------------------+
@@ -1721,6 +1723,25 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +---------------------------+--------+
 
 
++------------------------------------------------------------+
+; Estimated Delay Added for Hold Timing Summary              ;
++-----------------+----------------------+-------------------+
+; Source Clock(s) ; Destination Clock(s) ; Delay Added in ns ;
++-----------------+----------------------+-------------------+
+Note: For more information on problematic transfers, consider running the Fitter again with the Optimize hold timing option (Settings Menu) turned off.
+This will disable optimization of problematic paths and expose them for further analysis using the Timing Analyzer.
+
+
++---------------------------------------------------------------------------------------------+
+; Estimated Delay Added for Hold Timing Details                                               ;
++-----------------------------------+-------------------------------------+-------------------+
+; Source Register                   ; Destination Register                ; Delay Added in ns ;
++-----------------------------------+-------------------------------------+-------------------+
+; VGAcontroller:vga_control|new_clk ; VGAcontroller:vga_control|hCount[9] ; 0.202             ;
++-----------------------------------+-------------------------------------+-------------------+
+Note: This table only shows the top 1 path(s) that have the largest delay added for hold.
+
+
 +-----------------+
 ; Fitter Messages ;
 +-----------------+
@@ -1747,7 +1768,7 @@ Info (176235): Finished register packing
 Info (11798): Fitter preparation operations ending: elapsed time is 00:00:11
 Info (170189): Fitter placement preparation operations beginning
 Info (14951): The Fitter is using Advanced Physical Optimization.
-Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:01
+Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:02
 Info (170191): Fitter placement operations beginning
 Info (170137): Fitter placement was successful
 Info (170192): Fitter placement operations ending: elapsed time is 00:00:01
@@ -1756,8 +1777,8 @@ Info (170195): Router estimated average interconnect usage is 0% of the availabl
     Info (170196): Router estimated peak interconnect usage is 1% of the available device resources in the region that extends from location X33_Y70 to location X44_Y81
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
-Info (170194): Fitter routing operations ending: elapsed time is 00:00:03
-Info (11888): Total time spent on timing analysis during the Fitter is 0.50 seconds.
+Info (170194): Fitter routing operations ending: elapsed time is 00:00:02
+Info (11888): Total time spent on timing analysis during the Fitter is 0.69 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
@@ -1766,8 +1787,8 @@ Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:03
 Warning (171167): Found invalid Fitter assignments. See the Ignored Assignments panel in the Fitter Compilation Report for more information.
 Info: Quartus Prime Fitter was successful. 0 errors, 5 warnings
     Info: Peak virtual memory: 1814 megabytes
-    Info: Processing ended: Tue Dec  2 21:19:11 2025
-    Info: Elapsed time: 00:00:33
-    Info: Total CPU time (on all processors): 00:00:54
+    Info: Processing ended: Wed Dec  3 13:39:07 2025
+    Info: Elapsed time: 00:00:35
+    Info: Total CPU time (on all processors): 00:00:58
 
 
