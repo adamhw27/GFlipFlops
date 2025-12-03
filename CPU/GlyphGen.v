@@ -5,10 +5,10 @@ module GlyphGen(
 	input [63:0] beatArray,
 	output reg [2:0] pixColor
 );
-	localparam GLYPH_DATA_LENGTH = 35840;
-	localparam GLYPH_NUM = 35; // DETERMINE NUM  OF GLYPHS
+	localparam GLYPH_DATA_LENGTH = 18432;
+	localparam GLYPH_NUM = 18; // DETERMINE NUM  OF GLYPHS
 	
-	localparam BG = 5'd35;
+	localparam BG = 5'd17;
 	localparam OFFBEAT = 5'd0;
 	localparam ONBEAT = 5'd1;
 	localparam S_OFFBEAT = 5'd2;
@@ -18,39 +18,18 @@ module GlyphGen(
 	localparam TITLE_BIT = 5'd6;
 	localparam TITLE_BO = 5'd7;
 	localparam TITLE_X = 5'd8;
-	localparam TEMPO_TEM = 5'd9;
-	localparam TEMPO_PO = 5'd10;
-	localparam TEMPO_PBOTTOM = 5'd11;
-	localparam CHAR_UL_S1 = 5'd12;
-	localparam CHAR_UR_S1 = 5'd13;
-	localparam CHAR_BL_S1 = 5'd14;
-	localparam CHAR_BR_S1 = 5'd15;
-	localparam CHAR_UL_S2 = 5'd16;
-	localparam CHAR_UR_S2 = 5'd17;
-	localparam CHAR_BL_S2 = 5'd18;
-	localparam CHAR_BR_S2 = 5'd19;
-	localparam TEMPO_60 = 5'd20;
-	localparam TEMPO_65 = 5'd21;
-	localparam TEMPO_70 = 5'd22;
-	localparam TEMPO_75 = 5'd23;
-	localparam TEMPO_80 = 5'd24;
-	localparam TEMPO_85 = 5'd25;
-	localparam TEMPO_90 = 5'd26;
-	localparam TEMPO_95 = 5'd27;
-	localparam TEMPO_100 = 5'd28;
-	localparam TEMPO_105 = 5'd29;
-	localparam TEMPO_110 = 5'd30;
-	localparam TEMPO_115 = 5'd31;
-	localparam TEMPO_120 = 5'd32;
-	localparam TEMPO_125 = 5'd33;
-	localparam TEMPO_130 = 5'd34;
-
-
+	localparam CHAR_UL_S1 = 5'd9;
+	localparam CHAR_UR_S1 = 5'd10;
+	localparam CHAR_BL_S1 = 5'd11;
+	localparam CHAR_BR_S1 = 5'd12;
+	localparam CHAR_UL_S2 = 5'd13;
+	localparam CHAR_UR_S2 = 5'd14;
+	localparam CHAR_BL_S2 = 5'd15;
+	localparam CHAR_BR_S2 = 5'd16;
 	
 	wire [9:0] x_y_glyph = {hCount[9:5], vCount[9:5]};
-	reg [7:0] glyphs [0:5][0:31][0:31]; // FIGURE OUT 
-	reg [5:0] current_glyph;
-	
+	reg [7:0] glyphs [0 : GLYPH_DATA_LENGTH - 1]; // FIGURE OUT 
+	reg [4:0] current_glyph;
 	
 	initial
 	begin
@@ -59,7 +38,7 @@ module GlyphGen(
 	
 	always @(posedge clk)
 	begin
-		pixColor <= glyphs[current_glyph][hCount[0:4]][vCount[0:4]][2:0];
+		pixColor <= glyphs[{current_glyph, hCount[4:0], vCount[4:0]}][2:0];
 	end
 	
 	reg [1:0] dance_state_indicator;
@@ -89,69 +68,6 @@ module GlyphGen(
 			end
 			{5'd4, 5'd0}: begin
 				current_glyph = TITLE_X;
-			end
-			{5'd16, 5'd0}: begin
-				current_glyph = TEMPO_TEM;
-			end
-			{5'd17, 5'd0}: begin
-				current_glyph = TEMPO_PO;
-			end
-			{5'd18, 5'd0}: begin
-				case(tempo)
-					15'd60:	begin			
-						current_glyph = TEMPO_60;
-					end
-					15'd65: begin			
-						current_glyph = TEMPO_65;
-					end
-					15'd70: begin			
-						current_glyph = TEMPO_70;
-					end
-					15'd75: begin			
-						current_glyph = TEMPO_75;
-					end
-					15'd80: begin			
-						current_glyph = TEMPO_80;
-					end
-					15'd85: begin			
-						current_glyph = TEMPO_85;
-					end
-					15'd90: begin			
-						current_glyph = TEMPO_90;
-					end
-					15'd95: begin			
-						current_glyph = TEMPO_95;
-					end
-					15'd100: begin			
-						current_glyph = TEMPO_100;
-					end
-					15'd105: begin			
-						current_glyph = TEMPO_105;
-					end
-					15'd110: begin			
-						current_glyph = TEMPO_110;
-					end
-					15'd115: begin			
-						current_glyph = TEMPO_115;
-					end
-					15'd120: begin			
-						current_glyph = TEMPO_120;
-					end
-					15'd125: begin			
-						current_glyph = TEMPO_125;
-					end
-					15'd130: begin			
-						current_glyph = TEMPO_130;
-					end
-					default: begin
-						current_glyph = BG;
-					end
-				endcase
-				
-			end
-			
-			{5'd17, 5'd1}: begin
-				current_glyph = TEMPO_PBOTTOM;
 			end
 			
 			{{1'b0, currentBeat[3:0]} + 5'd3, 5'd2}:begin
