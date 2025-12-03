@@ -5,40 +5,38 @@ module GlyphGen(
 	input [63:0] beatArray,
 	output reg [2:0] pixColor
 );
-	localparam GLYPH_DATA_LENGTH = 18432;
-	localparam GLYPH_NUM = 18; // DETERMINE NUM  OF GLYPHS
+	localparam GLYPH_DATA_LENGTH = 4 * 32 * 32;
+	localparam GLYPH_NUM = 10; // DETERMINE NUM  OF GLYPHS
 	
-	localparam BG = 5'd17;
-	localparam OFFBEAT = 5'd0;
-	localparam ONBEAT = 5'd1;
-	localparam S_OFFBEAT = 5'd2;
-	localparam S_ONBEAT = 5'd3;
-	localparam BEAT_IND = 5'd4;
-	localparam TITLE_16 = 5'd5;
-	localparam TITLE_BIT = 5'd6;
-	localparam TITLE_BO = 5'd7;
-	localparam TITLE_X = 5'd8;
-	localparam CHAR_UL_S1 = 5'd9;
-	localparam CHAR_UR_S1 = 5'd10;
-	localparam CHAR_BL_S1 = 5'd11;
-	localparam CHAR_BR_S1 = 5'd12;
-	localparam CHAR_UL_S2 = 5'd13;
-	localparam CHAR_UR_S2 = 5'd14;
-	localparam CHAR_BL_S2 = 5'd15;
-	localparam CHAR_BR_S2 = 5'd16;
+	localparam BG = 5'd0; // correct d0
+	localparam OFFBEAT = 5'd2;
+	localparam ONBEAT = 5'd4; // correct d4
+	localparam S_OFFBEAT = 5'd3; // correct d3
+	localparam S_ONBEAT = 5'd8;
+	localparam BEAT_IND = 5'd9;	// correct d9
+	localparam TITLE_16 = 5'd5; // correct d5
+	localparam TITLE_BIT = 5'd6; // correct d6
+	localparam TITLE_BO = 5'd7;	// correct d7
+	localparam TITLE_X = 5'd8;	
 	
-	wire [9:0] x_y_glyph = {hCount[9:5], vCount[9:5]};
+	
+	wire [9:0] x_y_glyph = {hCount[9:5], vCount[9:5]} - 10'd160 ;
+
+	
 	reg [7:0] glyphs [0 : GLYPH_DATA_LENGTH - 1]; // FIGURE OUT 
-	reg [4:0] current_glyph;
+	reg [3:0] current_glyph;
 	
 	initial
 	begin
-		$readmemh("glyphH.hex", glyphs, 0, GLYPH_DATA_LENGTH - 1);
+		$readmemh("glyph_mem.hex", glyphs);
 	end
 	
 	always @(posedge clk)
 	begin
-		pixColor <= glyphs[{current_glyph, hCount[4:0], vCount[4:0]}][2:0];
+		if (hCount[0])
+			pixColor <= glyphs[{current_glyph, vCount[4:0], hCount[4:1]}][3:0];
+		else
+			pixColor <= glyphs[{current_glyph, vCount[4:0], hCount[4:1]}][7:4];
 	end
 	
 	reg [1:0] dance_state_indicator;
@@ -56,6 +54,15 @@ module GlyphGen(
 	
 	always @(*)
 	begin
+	
+	
+		// Check for beat indicator first (highest priority)
+		 if (x_y_glyph == {{1'b0, currentBeat[3:0]} + 5'd3, 5'd2}) begin
+			  current_glyph = BEAT_IND;
+		 end
+	
+	
+
 		case (x_y_glyph)
 			{5'd1, 5'd0}: begin
 				current_glyph = TITLE_16;
@@ -70,152 +77,8 @@ module GlyphGen(
 				current_glyph = TITLE_X;
 			end
 			
-			{{1'b0, currentBeat[3:0]} + 5'd3, 5'd2}:begin
-				current_glyph = BEAT_IND;
-			end
-			
-			// character 1
-			{5'd1, 5'd3}: begin
-				if(dance_state == 0) begin
-					current_glyph = CHAR_UL_S1;
-				end
-				else begin
-					current_glyph = CHAR_UL_S2;
-				end
-			end
-			
-			{5'd2, 5'd3}: begin
-				if(dance_state == 0) begin
-					current_glyph = CHAR_UR_S1;
-				end
-				else begin
-					current_glyph = CHAR_UR_S2;
-				end
-			end
-			{5'd1, 5'd4}: begin
-				if(dance_state == 0) begin
-					current_glyph = CHAR_BL_S1;
-				end
-				else begin
-					current_glyph = CHAR_BL_S2;
-				end
-			end
-			{5'd2, 5'd4}: begin
-				if(dance_state == 0) begin
-					current_glyph = CHAR_BR_S1;
-				end
-				else begin
-					current_glyph = CHAR_BR_S2;
-				end
-			end
-			
-			//character 2
-			{5'd1, 5'd6}: begin
-				if(dance_state == 0) begin
-					current_glyph = CHAR_UL_S1;
-				end
-				else begin
-					current_glyph = CHAR_UL_S2;
-				end
-			end
-			
-			{5'd2, 5'd6}: begin
-				if(dance_state == 0) begin
-					current_glyph = CHAR_UR_S1;
-				end
-				else begin
-					current_glyph = CHAR_UR_S2;
-				end
-			end
-			{5'd1, 5'd7}: begin
-				if(dance_state == 0) begin
-					current_glyph = CHAR_BL_S1;
-				end
-				else begin
-					current_glyph = CHAR_BL_S2;
-				end
-			end
-			{5'd2, 5'd7}: begin
-				if(dance_state == 0) begin
-					current_glyph = CHAR_BR_S1;
-				end
-				else begin
-					current_glyph = CHAR_BR_S2;
-				end
-			end
-			
-			// character 3
-			{5'd1, 5'd9}: begin
-				if(dance_state == 0) begin
-					current_glyph = CHAR_UL_S1;
-				end
-				else begin
-					current_glyph = CHAR_UL_S2;
-				end
-			end
-			
-			{5'd2, 5'd9}: begin
-				if(dance_state == 0) begin
-					current_glyph = CHAR_UR_S1;
-				end
-				else begin
-					current_glyph = CHAR_UR_S2;
-				end
-			end
-			{5'd1, 5'd10}: begin
-				if(dance_state == 0) begin
-					current_glyph = CHAR_BL_S1;
-				end
-				else begin
-					current_glyph = CHAR_BL_S2;
-				end
-			end
-			{5'd2, 5'd10}: begin
-				if(dance_state == 0) begin
-					current_glyph = CHAR_BR_S1;
-				end
-				else begin
-					current_glyph = CHAR_BR_S2;
-				end
-			end
-			
-			// character 4
-			{5'd1, 5'd12}: begin
-				if(dance_state == 0) begin
-					current_glyph = CHAR_UL_S1;
-				end
-				else begin
-					current_glyph = CHAR_UL_S2;
-				end
-			end
-			
-			{5'd2, 5'd12}: begin
-				if(dance_state == 0) begin
-					current_glyph = CHAR_UR_S1;
-				end
-				else begin
-					current_glyph = CHAR_UR_S2;
-				end
-			end
-			{5'd1, 5'd13}: begin
-				if(dance_state == 0) begin
-					current_glyph = CHAR_BL_S1;
-				end
-				else begin
-					current_glyph = CHAR_BL_S2;
-				end
-			end
-			{5'd2, 5'd13}: begin
-				if(dance_state == 0) begin
-					current_glyph = CHAR_BR_S1;
-				end
-				else begin
-					current_glyph = CHAR_BR_S2;
-				end
-			end
 			
 			// beat array
-			
 			// BEAT 1
 			{5'd3, 5'd3}: begin
 				case ({6'd0 == cursorLoc, beatArray[6'd0]})
@@ -811,7 +674,7 @@ module GlyphGen(
 				current_glyph = BG;
 		endcase
 	
-	
+
 	end
 
 endmodule

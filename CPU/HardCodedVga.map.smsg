@@ -1,0 +1,15 @@
+Warning (10268): Verilog HDL information at vgabitgen.v(14): always construct contains both blocking and non-blocking assignments File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/vgabitgen.v Line: 14
+Warning (10268): Verilog HDL information at twoInputMuxv.v(9): always construct contains both blocking and non-blocking assignments File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/twoInputMuxv.v Line: 9
+Warning (10273): Verilog HDL warning at generalFSM.v(96): extended using "x" or "z" File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/generalFSM.v Line: 96
+Warning (10273): Verilog HDL warning at generalFSM.v(98): extended using "x" or "z" File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/generalFSM.v Line: 98
+Warning (10273): Verilog HDL warning at generalFSM.v(101): extended using "x" or "z" File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/generalFSM.v Line: 101
+Warning (10273): Verilog HDL warning at generalFSM.v(187): extended using "x" or "z" File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/generalFSM.v Line: 187
+Warning (10273): Verilog HDL warning at generalFSM.v(212): extended using "x" or "z" File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/generalFSM.v Line: 212
+Warning (10273): Verilog HDL warning at generalFSM.v(254): extended using "x" or "z" File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/generalFSM.v Line: 254
+Warning (10273): Verilog HDL warning at generalFSM.v(258): extended using "x" or "z" File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/generalFSM.v Line: 258
+Warning (10273): Verilog HDL warning at generalFSM.v(375): extended using "x" or "z" File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/generalFSM.v Line: 375
+Warning (10273): Verilog HDL warning at generalFSM.v(383): extended using "x" or "z" File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/generalFSM.v Line: 383
+Warning (10273): Verilog HDL warning at generalFSM.v(386): extended using "x" or "z" File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/generalFSM.v Line: 386
+Info (10281): Verilog HDL Declaration information at cpu.v(15): object "r1" differs only in case from object "R1" in the same scope File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/cpu.v Line: 15
+Info (10281): Verilog HDL Declaration information at cpu.v(15): object "r2" differs only in case from object "R2" in the same scope File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/cpu.v Line: 15
+Info (10281): Verilog HDL Declaration information at cpu.v(67): object "PCincr" differs only in case from object "pcincr" in the same scope File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/cpu.v Line: 67

@@ -1,0 +1,745 @@
+Analysis & Synthesis report for HardCodedVga
+Tue Dec  2 21:18:37 2025
+Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. General Register Statistics
+  9. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 10. Port Connectivity Checks: "VGABitGen:vga_bitgen"
+ 11. Post-Synthesis Netlist Statistics for Top Partition
+ 12. Elapsed Time Per Partition
+ 13. Analysis & Synthesis Messages
+ 14. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2024  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++---------------------------------+------------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Tue Dec  2 21:18:37 2025          ;
+; Quartus Prime Version           ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
+; Revision Name                   ; HardCodedVga                                   ;
+; Top-level Entity Name           ; HardCodedVga                                   ;
+; Family                          ; Cyclone V                                      ;
+; Logic utilization (in ALMs)     ; N/A                                            ;
+; Total registers                 ; 24                                             ;
+; Total pins                      ; 30                                             ;
+; Total virtual pins              ; 0                                              ;
+; Total block memory bits         ; 0                                              ;
+; Total DSP Blocks                ; 0                                              ;
+; Total HSSI RX PCSs              ; 0                                              ;
+; Total HSSI PMA RX Deserializers ; 0                                              ;
+; Total HSSI TX PCSs              ; 0                                              ;
+; Total HSSI PMA TX Serializers   ; 0                                              ;
+; Total PLLs                      ; 0                                              ;
+; Total DLLs                      ; 0                                              ;
++---------------------------------+------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSEMA5F31C6       ;                    ;
+; Top-level entity name                                                           ; HardCodedVga       ; HardCodedVga       ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-4         ;   0.0%      ;
++----------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                           ;
++----------------------------------+-----------------+---------------------------------------+-----------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                             ; File Name with Absolute Path                              ; Library ;
++----------------------------------+-----------------+---------------------------------------+-----------------------------------------------------------+---------+
+; glyph_mem.hex                    ; yes             ; User Hexadecimal (Intel-Format) File  ; /home/u1456456/Desktop/vga/GFlipFlops/CPU/glyph_mem.hex   ;         ;
+; vgabitgen.v                      ; yes             ; User Verilog HDL File                 ; /home/u1456456/Desktop/vga/GFlipFlops/CPU/vgabitgen.v     ;         ;
+; VGAcontroller.v                  ; yes             ; User Verilog HDL File                 ; /home/u1456456/Desktop/vga/GFlipFlops/CPU/VGAcontroller.v ;         ;
+; HardCodedVga.v                   ; yes             ; User Verilog HDL File                 ; /home/u1456456/Desktop/vga/GFlipFlops/CPU/HardCodedVga.v  ;         ;
+; GlyphGen.v                       ; yes             ; User Verilog HDL File                 ; /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v      ;         ;
++----------------------------------+-----------------+---------------------------------------+-----------------------------------------------------------+---------+
+
+
++-----------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                       ;
++---------------------------------------------+-------------------------------------+
+; Resource                                    ; Usage                               ;
++---------------------------------------------+-------------------------------------+
+; Estimate of Logic utilization (ALMs needed) ; 194                                 ;
+;                                             ;                                     ;
+; Combinational ALUT usage for logic          ; 244                                 ;
+;     -- 7 input functions                    ; 22                                  ;
+;     -- 6 input functions                    ; 121                                 ;
+;     -- 5 input functions                    ; 32                                  ;
+;     -- 4 input functions                    ; 26                                  ;
+;     -- <=3 input functions                  ; 43                                  ;
+;                                             ;                                     ;
+; Dedicated logic registers                   ; 24                                  ;
+;                                             ;                                     ;
+; I/O pins                                    ; 30                                  ;
+;                                             ;                                     ;
+; Total DSP Blocks                            ; 0                                   ;
+;                                             ;                                     ;
+; Maximum fan-out node                        ; VGAcontroller:vga_control|hCount[1] ;
+; Maximum fan-out                             ; 112                                 ;
+; Total fan-out                               ; 1367                                ;
+; Average fan-out                             ; 4.17                                ;
++---------------------------------------------+-------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                              ;
++--------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------+---------------+--------------+
+; Compilation Hierarchy Node     ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                     ; Entity Name   ; Library Name ;
++--------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------+---------------+--------------+
+; |HardCodedVga                  ; 244 (0)             ; 24 (0)                    ; 0                 ; 0          ; 30   ; 0            ; |HardCodedVga                           ; HardCodedVga  ; work         ;
+;    |GlyphGen:ggen|             ; 209 (209)           ; 3 (3)                     ; 0                 ; 0          ; 0    ; 0            ; |HardCodedVga|GlyphGen:ggen             ; GlyphGen      ; work         ;
+;    |VGAcontroller:vga_control| ; 35 (35)             ; 21 (21)                   ; 0                 ; 0          ; 0    ; 0            ; |HardCodedVga|VGAcontroller:vga_control ; VGAcontroller ; work         ;
++--------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------+---------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 24    ;
+; Number of registers using Synchronous Clear  ; 20    ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 20    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                        ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------+
+; 4:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |HardCodedVga|VGAcontroller:vga_control|hCount[9] ;
+; 4:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |HardCodedVga|VGAcontroller:vga_control|vCount[0] ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "VGABitGen:vga_bitgen"                                                                                                                            ;
++-----------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port      ; Type  ; Severity ; Details                                                                                                                                      ;
++-----------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; pixelData ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
++-----------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 24                          ;
+;     ENA SCLR          ; 20                          ;
+;     plain             ; 4                           ;
+; arriav_lcell_comb     ; 245                         ;
+;     arith             ; 20                          ;
+;         1 data inputs ; 20                          ;
+;     extend            ; 22                          ;
+;         7 data inputs ; 22                          ;
+;     normal            ; 203                         ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 1                           ;
+;         2 data inputs ; 7                           ;
+;         3 data inputs ; 15                          ;
+;         4 data inputs ; 26                          ;
+;         5 data inputs ; 32                          ;
+;         6 data inputs ; 121                         ;
+; boundary_port         ; 30                          ;
+;                       ;                             ;
+; Max LUT depth         ; 7.00                        ;
+; Average LUT depth     ; 4.31                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:01     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+    Info: Processing started: Tue Dec  2 21:18:28 2025
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off vga -c HardCodedVga
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file vgabitgen.v
+    Info (12023): Found entity 1: VGABitGen File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/vgabitgen.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file clk_div_25mhz.v
+    Info (12023): Found entity 1: clk_div File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/clk_div_25mhz.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file VGAcontroller_tb.v
+    Info (12023): Found entity 1: VGAcontroller_tb File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/VGAcontroller_tb.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file VGAcontroller.v
+    Info (12023): Found entity 1: VGAcontroller File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/VGAcontroller.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file HardCodedVga.v
+    Info (12023): Found entity 1: HardCodedVga File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/HardCodedVga.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file GlyphGen.v
+    Info (12023): Found entity 1: GlyphGen File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file twoInputMuxv.v
+    Info (12023): Found entity 1: TwoInputMux File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/twoInputMuxv.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file true_dual_port_ram_single_clock.v
+    Info (12023): Found entity 1: true_dual_port_ram_single_clock File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/true_dual_port_ram_single_clock.v Line: 4
+Info (12021): Found 1 design units, including 1 entities, in source file tb_hardcoded_FSM_test.v
+    Info (12023): Found entity 1: tb_hardcoded_FSM_test File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/tb_hardcoded_FSM_test.v Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file seven_seg_hex.v
+    Info (12023): Found entity 1: seven_seg_hex File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/seven_seg_hex.v Line: 1
+Info (12021): Found 2 design units, including 2 entities, in source file regfile.v
+    Info (12023): Found entity 1: Register File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/regfile.v Line: 23
+    Info (12023): Found entity 2: RegBank File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/regfile.v Line: 54
+Info (12021): Found 1 design units, including 1 entities, in source file pc.v
+    Info (12023): Found entity 1: pc File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/pc.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file generalFSM_tb.v
+    Info (12023): Found entity 1: generalFSM_tb File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/generalFSM_tb.v Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file generalFSM.v
+    Info (12023): Found entity 1: generalFSM File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/generalFSM.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file cpu.v
+    Info (12023): Found entity 1: cpu File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/cpu.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file alu.v
+    Info (12023): Found entity 1: alu File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/alu.v Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file PCDisplacementCalculator.v
+    Info (12023): Found entity 1: PCDisplacementCalculator File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/PCDisplacementCalculator.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file Mux.v
+    Info (12023): Found entity 1: RegMux File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/Mux.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file IRreg.v
+    Info (12023): Found entity 1: IRreg File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/IRreg.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file FlagReg.v
+    Info (12023): Found entity 1: FlagReg File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/FlagReg.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file FSM_test2.v
+    Info (12023): Found entity 1: FSM_test2 File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/FSM_test2.v Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file FSM_test1.v
+    Info (12023): Found entity 1: FSM_test1 File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/FSM_test1.v Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file ALU_tb.v
+    Info (12023): Found entity 1: ALU_tb File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/ALU_tb.v Line: 2
+Warning (10236): Verilog HDL Implicit Net warning at cpu.v(126): created implicit net for "data_b" File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/cpu.v Line: 126
+Warning (10236): Verilog HDL Implicit Net warning at cpu.v(126): created implicit net for "addr_b" File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/cpu.v Line: 126
+Warning (10236): Verilog HDL Implicit Net warning at cpu.v(126): created implicit net for "we_b" File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/cpu.v Line: 126
+Warning (10236): Verilog HDL Implicit Net warning at cpu.v(126): created implicit net for "q_b" File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/cpu.v Line: 126
+Info (12127): Elaborating entity "HardCodedVga" for the top level hierarchy
+Info (12128): Elaborating entity "VGAcontroller" for hierarchy "VGAcontroller:vga_control" File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/HardCodedVga.v Line: 14
+Warning (10230): Verilog HDL assignment warning at VGAcontroller.v(32): truncated value with size 10 to match size of target (1) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/VGAcontroller.v Line: 32
+Info (12128): Elaborating entity "VGABitGen" for hierarchy "VGABitGen:vga_bitgen" File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/HardCodedVga.v Line: 15
+Warning (10036): Verilog HDL or VHDL warning at vgabitgen.v(8): object "r" assigned a value but never read File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/vgabitgen.v Line: 8
+Warning (10036): Verilog HDL or VHDL warning at vgabitgen.v(8): object "g" assigned a value but never read File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/vgabitgen.v Line: 8
+Warning (10036): Verilog HDL or VHDL warning at vgabitgen.v(8): object "b" assigned a value but never read File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/vgabitgen.v Line: 8
+Warning (10036): Verilog HDL or VHDL warning at vgabitgen.v(11): object "vTitleOffset" assigned a value but never read File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/vgabitgen.v Line: 11
+Info (12128): Elaborating entity "GlyphGen" for hierarchy "GlyphGen:ggen" File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/HardCodedVga.v Line: 16
+Warning (10036): Verilog HDL or VHDL warning at GlyphGen.v(43): object "dance_state" assigned a value but never read File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 43
+Warning (10850): Verilog HDL warning at GlyphGen.v(31): number of words (5120) in memory file does not match the number of elements in the address range [0:4095] File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 31
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(37): truncated value with size 4 to match size of target (3) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 37
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(39): truncated value with size 4 to match size of target (3) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 39
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(47): truncated value with size 32 to match size of target (2) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 47
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(61): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 61
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(68): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 68
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(71): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 71
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(74): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 74
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(77): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 77
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(85): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 85
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(86): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 86
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(87): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 87
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(88): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 88
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(89): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 89
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(94): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 94
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(95): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 95
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(96): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 96
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(97): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 97
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(98): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 98
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(103): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 103
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(104): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 104
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(105): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 105
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(106): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 106
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(107): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 107
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(112): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 112
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(113): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 113
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(114): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 114
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(115): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 115
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(116): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 116
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(123): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 123
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(124): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 124
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(125): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 125
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(126): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 126
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(127): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 127
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(132): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 132
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(133): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 133
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(134): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 134
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(135): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 135
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(136): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 136
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(141): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 141
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(142): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 142
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(143): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 143
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(144): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 144
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(145): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 145
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(150): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 150
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(151): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 151
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(152): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 152
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(153): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 153
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(154): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 154
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(160): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 160
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(161): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 161
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(162): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 162
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(163): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 163
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(164): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 164
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(169): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 169
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(170): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 170
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(171): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 171
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(172): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 172
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(173): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 173
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(178): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 178
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(179): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 179
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(180): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 180
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(181): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 181
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(182): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 182
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(187): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 187
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(188): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 188
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(189): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 189
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(190): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 190
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(191): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 191
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(197): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 197
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(198): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 198
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(199): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 199
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(200): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 200
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(201): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 201
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(206): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 206
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(207): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 207
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(208): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 208
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(209): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 209
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(210): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 210
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(215): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 215
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(216): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 216
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(217): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 217
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(218): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 218
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(219): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 219
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(224): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 224
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(225): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 225
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(226): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 226
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(227): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 227
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(228): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 228
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(234): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 234
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(235): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 235
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(236): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 236
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(237): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 237
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(238): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 238
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(243): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 243
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(244): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 244
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(245): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 245
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(246): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 246
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(247): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 247
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(252): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 252
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(253): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 253
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(254): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 254
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(255): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 255
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(256): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 256
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(261): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 261
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(262): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 262
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(263): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 263
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(264): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 264
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(265): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 265
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(271): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 271
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(272): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 272
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(273): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 273
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(274): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 274
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(275): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 275
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(280): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 280
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(281): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 281
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(282): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 282
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(283): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 283
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(284): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 284
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(289): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 289
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(290): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 290
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(291): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 291
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(292): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 292
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(293): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 293
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(298): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 298
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(299): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 299
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(300): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 300
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(301): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 301
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(302): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 302
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(308): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 308
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(309): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 309
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(310): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 310
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(311): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 311
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(312): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 312
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(317): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 317
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(318): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 318
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(319): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 319
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(320): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 320
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(321): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 321
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(326): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 326
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(327): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 327
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(328): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 328
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(329): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 329
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(330): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 330
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(335): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 335
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(336): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 336
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(337): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 337
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(338): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 338
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(339): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 339
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(344): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 344
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(345): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 345
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(346): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 346
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(347): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 347
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(348): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 348
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(353): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 353
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(354): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 354
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(355): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 355
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(356): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 356
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(357): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 357
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(362): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 362
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(363): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 363
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(364): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 364
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(365): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 365
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(366): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 366
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(371): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 371
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(372): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 372
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(373): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 373
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(374): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 374
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(375): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 375
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(380): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 380
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(381): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 381
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(382): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 382
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(383): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 383
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(384): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 384
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(389): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 389
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(390): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 390
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(391): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 391
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(392): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 392
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(393): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 393
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(398): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 398
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(399): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 399
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(400): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 400
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(401): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 401
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(402): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 402
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(407): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 407
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(408): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 408
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(409): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 409
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(410): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 410
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(411): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 411
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(416): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 416
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(417): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 417
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(418): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 418
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(419): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 419
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(420): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 420
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(425): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 425
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(426): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 426
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(427): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 427
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(428): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 428
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(429): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 429
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(434): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 434
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(435): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 435
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(436): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 436
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(437): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 437
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(438): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 438
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(443): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 443
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(444): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 444
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(445): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 445
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(446): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 446
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(447): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 447
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(453): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 453
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(454): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 454
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(455): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 455
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(456): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 456
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(457): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 457
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(462): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 462
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(463): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 463
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(464): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 464
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(465): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 465
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(466): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 466
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(471): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 471
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(472): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 472
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(473): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 473
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(474): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 474
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(475): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 475
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(480): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 480
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(481): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 481
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(482): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 482
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(483): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 483
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(484): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 484
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(490): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 490
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(491): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 491
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(492): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 492
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(493): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 493
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(494): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 494
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(499): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 499
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(500): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 500
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(501): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 501
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(502): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 502
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(503): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 503
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(508): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 508
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(509): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 509
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(510): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 510
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(511): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 511
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(512): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 512
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(517): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 517
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(518): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 518
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(519): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 519
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(520): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 520
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(521): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 521
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(527): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 527
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(528): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 528
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(529): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 529
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(530): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 530
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(531): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 531
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(536): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 536
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(537): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 537
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(538): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 538
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(539): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 539
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(540): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 540
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(545): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 545
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(546): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 546
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(547): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 547
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(548): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 548
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(549): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 549
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(554): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 554
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(555): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 555
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(556): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 556
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(557): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 557
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(558): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 558
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(564): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 564
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(565): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 565
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(566): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 566
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(567): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 567
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(568): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 568
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(573): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 573
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(574): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 574
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(575): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 575
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(576): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 576
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(577): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 577
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(582): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 582
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(583): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 583
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(584): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 584
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(585): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 585
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(586): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 586
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(591): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 591
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(592): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 592
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(593): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 593
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(594): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 594
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(595): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 595
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(601): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 601
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(602): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 602
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(603): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 603
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(604): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 604
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(605): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 605
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(610): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 610
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(611): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 611
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(612): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 612
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(613): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 613
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(614): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 614
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(619): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 619
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(620): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 620
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(621): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 621
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(622): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 622
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(623): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 623
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(628): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 628
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(629): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 629
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(630): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 630
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(631): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 631
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(632): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 632
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(638): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 638
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(639): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 639
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(640): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 640
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(641): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 641
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(642): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 642
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(647): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 647
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(648): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 648
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(649): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 649
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(650): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 650
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(651): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 651
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(656): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 656
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(657): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 657
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(658): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 658
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(659): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 659
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(660): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 660
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(665): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 665
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(666): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 666
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(667): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 667
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(668): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 668
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(669): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 669
+Warning (10230): Verilog HDL assignment warning at GlyphGen.v(674): truncated value with size 5 to match size of target (4) File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 674
+Warning (10030): Net "glyphs.data_a" at GlyphGen.v(26) has no driver or initial value, using a default initial value '0' File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 26
+Warning (10030): Net "glyphs.waddr_a" at GlyphGen.v(26) has no driver or initial value, using a default initial value '0' File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 26
+Warning (10030): Net "glyphs.we_a" at GlyphGen.v(26) has no driver or initial value, using a default initial value '0' File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 26
+Info (276014): Found 1 instances of uninferred RAM logic
+    Info (276007): RAM logic "GlyphGen:ggen|glyphs" is uninferred due to asynchronous read logic File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/GlyphGen.v Line: 26
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "r[0]" is stuck at GND File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/HardCodedVga.v Line: 4
+    Warning (13410): Pin "r[1]" is stuck at GND File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/HardCodedVga.v Line: 4
+    Warning (13410): Pin "r[2]" is stuck at GND File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/HardCodedVga.v Line: 4
+    Warning (13410): Pin "r[3]" is stuck at GND File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/HardCodedVga.v Line: 4
+    Warning (13410): Pin "r[4]" is stuck at GND File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/HardCodedVga.v Line: 4
+    Warning (13410): Pin "r[5]" is stuck at GND File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/HardCodedVga.v Line: 4
+    Warning (13410): Pin "r[6]" is stuck at GND File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/HardCodedVga.v Line: 4
+    Warning (13410): Pin "g[0]" is stuck at GND File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/HardCodedVga.v Line: 4
+    Warning (13410): Pin "g[1]" is stuck at GND File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/HardCodedVga.v Line: 4
+    Warning (13410): Pin "g[2]" is stuck at GND File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/HardCodedVga.v Line: 4
+    Warning (13410): Pin "g[3]" is stuck at GND File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/HardCodedVga.v Line: 4
+    Warning (13410): Pin "g[4]" is stuck at GND File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/HardCodedVga.v Line: 4
+    Warning (13410): Pin "g[5]" is stuck at GND File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/HardCodedVga.v Line: 4
+    Warning (13410): Pin "g[6]" is stuck at GND File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/HardCodedVga.v Line: 4
+    Warning (13410): Pin "b[0]" is stuck at GND File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/HardCodedVga.v Line: 5
+    Warning (13410): Pin "b[1]" is stuck at GND File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/HardCodedVga.v Line: 5
+    Warning (13410): Pin "b[2]" is stuck at GND File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/HardCodedVga.v Line: 5
+    Warning (13410): Pin "b[3]" is stuck at GND File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/HardCodedVga.v Line: 5
+    Warning (13410): Pin "b[4]" is stuck at GND File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/HardCodedVga.v Line: 5
+    Warning (13410): Pin "b[5]" is stuck at GND File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/HardCodedVga.v Line: 5
+    Warning (13410): Pin "b[6]" is stuck at GND File: /home/u1456456/Desktop/vga/GFlipFlops/CPU/HardCodedVga.v Line: 5
+Info (286030): Timing-Driven Synthesis is running
+Info (144001): Generated suppressed messages file /home/u1456456/Desktop/vga/GFlipFlops/CPU/HardCodedVga.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 274 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 2 input pins
+    Info (21059): Implemented 28 output pins
+    Info (21061): Implemented 244 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 367 warnings
+    Info: Peak virtual memory: 467 megabytes
+    Info: Processing ended: Tue Dec  2 21:18:37 2025
+    Info: Elapsed time: 00:00:09
+    Info: Total CPU time (on all processors): 00:00:15
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in /home/u1456456/Desktop/vga/GFlipFlops/CPU/HardCodedVga.map.smsg.
+
+
