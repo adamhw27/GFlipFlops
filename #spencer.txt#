@@ -1,0 +1,11 @@
+x5196	//addi r1 150
+0410	// mov r4 r1
+0451
+0020	// nop
+0E10	// ret
+0E5F
+4ECE
+0E10	// call hello
+5E0C
+0020
+4ECE

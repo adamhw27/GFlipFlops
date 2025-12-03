@@ -17,7 +17,46 @@ R4 = Last beat
 R5 = Cursor coordinates
     For vga
 
+R6 = Recent Keypress (inclu
+Psuedocode for reference
+
+Reserved Registers:
+
+R0 = 0
+
+R1 = Return
+R2 = Jump target
+
+R3 = BPM Clock
+    Counts from 1 to 16 (for each beat through the program) at the specified BPM
+R4 = Last beat
+    We need to keep track of the last beet on every iteration of our main loop so we know when
+    we've entered a new beat. Once entering a new beat, some processes need to be updated (ie bitstream module)
+
+R5 = Cursor coordinates
+    For vga
+
 R6 = Recent Keypress (including new key status)
+
+R7 = play/pause
+
+Reserved bram addresses:
+
+mem(0-15):
+    Words 0-15 hold information about each individual beat, 1-16, for the audio output.
+
+    This includes but is not limited to:
+        - What sounds are muted/unmuted
+
+    On every new beat, the bitstream audio generator will load one of these words and output audio accordingly
+
+mem[16-19]
+    Words 16-19 hold information about which beats are toggled on the entire array, this information
+    is loaded by the VGA
+
+r8
+    Holds the current bpm, for modification by keypress
+ding new key status)
 
 R7 = play/pause
 

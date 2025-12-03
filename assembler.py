@@ -8,8 +8,9 @@ lineCount = 0   # Number of pure bytecode lines
 def assemble_line(line):
     args = line.split()
 
+    print(line)
     # Return empty for \n or labels
-    if len(args) == 0 or args[-1].endswith(":"):
+    if len(args) == 0 or args[0].endswith(":") or args[0] == '//':
         return ""
 
     opcode = args[0]
@@ -77,8 +78,9 @@ def assemble_line(line):
     elif opcode == "store":
         opcode = "44"
     elif opcode == "lps2":
-        opcode = ""
-
+        return "F0F0\t//load ps2 into r6\n"
+    elif opcode == "hdl":
+        return "F0E0\t//handled keypress\n"
 
     elif opcode[0] == "b" or opcode[0] == "j":
 
@@ -115,8 +117,6 @@ def assemble_line(line):
         print(f"Unknown opcode {opcode}")
         sys.exit(1)
 
-    # Rdst
-    rdst = int(args[1][1])
 
     # Rsrc
     rsrc = ""
@@ -129,26 +129,26 @@ def assemble_line(line):
             imm = True
             immVal = int(args[2])
 
-    # Two input instructions
-    elif jump:
-        rsrc = int(args[1][1])
-
     elif branch:
         immVal = int(args[1])
-        imm = True
 
     # Concatenate
     bytecode = ""
 
     # Imm or branch
     if imm or branch:
+        rdst = args[1][1]
         bytecode += opcode[0]
-        bytecode += f"{rdst:X}"
+        bytecode += f"{int(rdst):X}"
         bytecode += f"{immVal:02X}"
         bytecode += f"\t//{line}\n"
 
-    # Rtype or jump
+    elif jump:
+        return jump_gen(rdst, args)
+
+    # Rtype
     else:
+        rdst = int(args[1][1])
         bytecode += opcode[0]
         bytecode += f"{rdst:X}"
         bytecode += opcode[1]
@@ -184,7 +184,7 @@ def map_labels(input_path, output_path):
             if len(args) == 0:
                 # dont increment, empty line
                 pass
-            elif args[-1].endswith(":"):
+            elif args[0].endswith(":"):
                 # increment and map where label is
                 labels[line] = lineCount
 
@@ -199,6 +199,8 @@ def map_labels(input_path, output_path):
 
             elif args[0] == "mov":
                 lineCount += 3
+            elif args[0][0] == "j":
+                lineCount += 4
             else:
                 # regular instruciton, maps to one line
                 lineCount += 1
@@ -299,6 +301,45 @@ def psuedo(args):
         return inst
 
     return bytecode
+
+def jump_gen(rdst, args):
+
+    # Load label address into TA
+    # J r14
+
+    ta = labels[args[1] + ':']
+    bytecode = ""
+
+    if ta > 255:    # Label address is too large for 2 digit hex
+        ta -= 255
+        ta_hex = f"{labels[args[1] + ':']:02X}"
+
+        # move r14 TA
+
+        inst = "0" + 'E' + "1" + '0' + f'\t// jx {args[1]} -- using DOUBLE ADD for address > FF' + '\n'  # AND r14 R0
+        bytecode += inst
+        inst = "5" + 'E' + f'{ta_hex}' + '\n'  # addi r14 TA
+        bytecode += inst
+        inst = "5" + 'E' + 'FF' + '\n'  # addi r14 FF
+        bytecode += inst
+
+    else:
+        ta_hex = f"{labels[args[1] + ':']:02X}"   # Target address at label
+
+        # move r14 TA
+
+        inst = "0" + 'E' + "1" + '0' + f'\t// jx {args[1]}' + '\n'  # AND r14 R0
+        bytecode += inst
+        inst = "5" + 'E' +  f'{ta_hex}' + '\n'  # addi r14 TA
+        bytecode += inst
+        inst = "0" + '0' + "2" + '0' + '\n' # OR R0 R0 ---- NOP so that call psuedos are always same length
+        bytecode += inst
+
+    # j r14
+
+    inst = "4" + f"{rdst}" + 'C' + 'E' + '\n'  # jx r14
+
+    return bytecode + inst
 
 
 def main():
