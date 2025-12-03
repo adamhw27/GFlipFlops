@@ -76,6 +76,8 @@ def assemble_line(line):
         opcode = "40"
     elif opcode == "store":
         opcode = "44"
+    elif opcode == "lps2":
+        opcode = ""
 
 
     elif opcode[0] == "b" or opcode[0] == "j":

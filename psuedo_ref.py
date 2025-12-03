@@ -150,6 +150,9 @@ def keypress(key):
 
     match key:
         case 0b1000:  # w
+
+
+
             if r[5] >= 16:  # Check if not in top row
                 r[5] -= 16
         case 0b1001:  # a
