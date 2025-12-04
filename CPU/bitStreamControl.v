@@ -7,7 +7,7 @@ module bitStreamControl (
 
 );
 
-    initial counter = 0;
+    initial counter = 2;
 	 
 	 reg [25:0] clkdiv  = 0; 
     reg enableIncrement = 0;

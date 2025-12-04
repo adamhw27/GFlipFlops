@@ -5,7 +5,7 @@ module bitStreamAudio (
     output reg  [15:0] audio_output
 );
 
-    parameter SAMPLE_COUNT = 32768;
+    parameter SAMPLE_COUNT = 100;
 
     reg signed [15:0] clip0 [0:SAMPLE_COUNT-1];
     reg signed [15:0] clip1 [0:SAMPLE_COUNT-1];

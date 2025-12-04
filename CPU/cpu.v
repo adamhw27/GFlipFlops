@@ -2,6 +2,9 @@ module cpu (
 input cin,
 input clk, rst,
 
+output vga_clk, vga_blank_n, vga_vs, vga_hs,
+output [7:0] r, g, b,
+
 inout  AUD_ADCLRCK,
 input  AUD_ADCDAT,
 inout  AUD_DACLRCK,
