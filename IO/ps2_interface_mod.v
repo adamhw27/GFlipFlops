@@ -105,7 +105,7 @@ always @(posedge clk or negedge rst) begin
 			16'h0029 : key_enc[2:0] <= 3'b101;	// Space -> X101
 			16'hE075 : key_enc[2:0] <= 3'b110;	// Up arrow -> X110
 			16'hE072 : key_enc[2:0] <= 3'b111;	// Down arrow -> X111
-			default	: key_enc[2:0] <= 3'bxxx;
+			default	: key_enc		<= 4'b0;
 		endcase
 	end
 end
