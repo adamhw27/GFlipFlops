@@ -38,4 +38,13 @@ seven_seg[2]		Output		PIN_E16
 seven_seg[1]		Output		PIN_D17
 seven_seg[0]		Output		PIN_C17
 
+seven_seg[6]		Output		PIN_AE26
+seven_seg[5]		Output		PIN_AE27
+seven_seg[4]		Output		PIN_AE28
+seven_seg[3]		Output		PIN_AG27
+seven_seg[2]		Output		PIN_AF28
+seven_seg[1]		Output		PIN_AG28
+seven_seg[0]		Output		PIN_AH28
+
+
 */

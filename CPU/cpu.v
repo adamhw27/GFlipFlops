@@ -1,12 +1,12 @@
 module cpu (
 input cin,
 input clk, rst,
+input button_clk,
 input ps2_clk, ps2_dat,
 output vga_clk, vga_blank_n, vga_vs, vga_hs,
-output [7:0] r, g, b
+output [7:0] r, g, b,
 
-
-//output [27:0] segOut
+output [27:0] segOut
 );
 
 // 16 bit instruction pulled from mem
@@ -75,7 +75,7 @@ wire [15:0] inputToRB;
 wire RetAddrSave;
 
 // PC
-pc pc(.PCen(PCen), .clk(clk), .rst(rst), .incr(PCincr), .outPC(PCvalue));
+pc pc(.PCen(PCen), .clk(button_clk), .rst(rst), .incr(PCincr), .outPC(PCvalue));
 
 wire [15:0] nextpc = 16'b1 + PCvalue;
 
@@ -96,7 +96,7 @@ wire rst_handle;
 
 
 // call fsm2 test
-generalFSM fsm(.clk(clk), .rst(rst), .flags(currentFlags), .inst(instruction), .Ren(regEnable), .PCen(PCen), .RorI(immSel), .LScntl(LScntl), .we_a(we_a), .Alu_Mux_cntl(Alu_Mux_cntl), .flagEn(flagEn), .RetAddrSave(RetAddrSave), .keySel(keySel), .rst_handle(rst_handle), .opcode(opcode), .Rsrc(srcSel), .Rdest(dstSel), .imm(immConnect), .displacement(displacement), .j_or_b_Sel(dispSel), .PCSel(jumpMux));
+generalFSM fsm(.clk(button_clock), .rst(rst), .flags(currentFlags), .inst(instruction), .Ren(regEnable), .PCen(PCen), .RorI(immSel), .LScntl(LScntl), .we_a(we_a), .Alu_Mux_cntl(Alu_Mux_cntl), .flagEn(flagEn), .RetAddrSave(RetAddrSave), .keySel(keySel), .rst_handle(rst_handle), .opcode(opcode), .Rsrc(srcSel), .Rdest(dstSel), .imm(immConnect), .displacement(displacement), .j_or_b_Sel(dispSel), .PCSel(jumpMux));
 
 
 //instantiating the ALU
@@ -121,7 +121,7 @@ TwoInputMux KeyMux(.i0(ret_addr_or_alu), .i1({key_info}), .sel(keySel), .out(inp
 
 KeyReg kreg(.clk(clk), .rst(rst), .rst_handle(rst_handle), .key_enc(key_enc), .key_info(key_info));
 
-ps2_interface_mod(.clk(clk), .rst(rst), .ps2_clk(ps2_clk), .ps2_dat(ps2_dat), .key_enc(key_enc));
+ps2_interface_mod ps2(.clk(clk), .rst(rst), .ps2_clk(ps2_clk), .ps2_dat(ps2_dat), .key_enc(key_enc));
 					
 					
 // Connect Rsrc to ALU via Mux
@@ -150,14 +150,24 @@ wire [15:0] cursor_loc;
 assign cursor_loc = r5;
 
 
-HardCodedVga vga_mod(.clk(clk), .rst(rst), .sys_data({80'd0, cursor_loc}), .vga_clk(vga_clk), .vga_blank_n(vga_blank_n), .vga_vs(vga_vs), .vga_hs(vga_hs), .r(r), .g(g), .b(b));
+HardCodedVga vga_mod(.clk(clk), .rst(rst), .sys_data({80'd0, balls}), .vga_clk(vga_clk), .vga_blank_n(vga_blank_n), .vga_vs(vga_vs), .vga_hs(vga_hs), .r(r), .g(g), .b(b));
 
 
 
 // Connect SegOut
-//seven_seg_hex a(r5[3:0], segOut[6:0]);
-//seven_seg_hex b(r5[7:4], segOut[13:7]);
+seven_seg_hex a(pc[3:0], segOut[6:0]);
+seven_seg_hex sb(r5[3:0], segOut[13:7]);
 //seven_seg_hex c(r5[11:8], segOut[20:14]);
 //seven_seg_hex d(r5[15:12], segOut[27:21]);
+reg [15:0] balls;
+
+always @(negedge button_clk, negedge rst)begin
+	if(~rst) begin
+		balls <= 16'd0;
+	end
+	else if (~button_clk) begin
+		balls <= balls + 16'd1;
+	end
+end
 
 endmodule
