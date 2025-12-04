@@ -1,7 +1,7 @@
 module KeyReg(
 input clk, rst, rst_handle,
 input [3:0] key_enc,
-output reg [3:0] key_info
+output reg [4:0] key_info
 );
 	
 	reg [3:0] prev_press;
