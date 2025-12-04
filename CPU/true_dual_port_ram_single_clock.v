@@ -16,13 +16,9 @@ module true_dual_port_ram_single_clock
 	reg [DATA_WIDTH-1:0] ram[MEM_DEPTH-1:0];
 	integer i;
 	
-	//initial
-	//begin
-		//for (i = 0; i < 65536; i = i + 1)
-        //    ram[i] = 0;
-				
-	//	$readmemh("simple_keydemo.hex", ram, 0, (2**ADDR_WIDTH)-1);
-	//end
+	initial begin
+		$readmemh("keydemo.hex", ram);
+	end
 
 	// Port A 
 	always @ (posedge clk)

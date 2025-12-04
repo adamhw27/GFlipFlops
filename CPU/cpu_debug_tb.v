@@ -1,6 +1,6 @@
 `timescale 1ns/1ps
 
-module generalFSM_tb ();
+module cpu_debug_tb;
 
 reg clk;
 reg rst;
@@ -28,27 +28,36 @@ cpu dut (
     .segOut(segOut)
 );
 
-    // Clock generation
-    initial begin
-        clk = 0;
-        forever #5 clk = ~clk;
+//
+// Clock Generation
+//
+
+// system clock (50 MHz sim equivalent)
+always #10 clk = ~clk;
+
+
+//
+// Sim timeline
+//
+
+initial begin
+    // Initialize signals
+    clk = 0;
+    rst = 1;
+    cin = 0;
+
+    // Apply reset for 100 ns
+    #50;
+    rst = 0;
+    #50;
+	 rst = 1;
+
+    // Run simulation for N instructions
+    repeat(20) begin
+        @(negedge clk);
     end
 
-    // Test stimulus
-    initial begin
-        // Initialize inputs
-        cin = 0;
-        rst = 0;          // Apply reset
-        #15;
-        rst = 1;          // Release reset
-
-        // Run simulation for a while
-        #10000;
-		  
-		  
-
-        $display(segOut);
-        $stop;
-    end
+    $stop;
+end
 
 endmodule

@@ -124,6 +124,7 @@ module generalFSM (
 				Rsrc = inst[3:0];
 				Ren = 16'b0;
 				RetAddrSave = 0;
+				keySel = 0;
 				
 				if (inst[15:12] == 0) begin // NON I TYPE INSTRUCTIONS
 					RorI = 0; // indicates to choose Rsrc
@@ -138,7 +139,7 @@ module generalFSM (
 		
 				end else begin// not sure if this handles unsigned operations correctly
 					RorI = 1; // indicates to choose immediate
-					opcode = inst[15:12];
+					opcode = inst[15:12]; 
 					if (inst[7])
 						imm = {8'hff, inst[7:0]};
 					else
@@ -159,10 +160,6 @@ module generalFSM (
 				//RorI = 0;
 				//RetAddrSave = 0;
 				//opcode = opcode;
-				//Rsrc = savedRsrc;
-				//Rdest = savedRdest;
-				//imm = imm;
-				//displacement = displacement;
 				
 				
 				PCen = 1;

@@ -1,7 +1,14 @@
+// TODO
+// 1. Figure out how to integrate ps2 to control r5. Asm currently properly updates r5.
+// 2. integrate global memory, demo.hex (asm), vga_arr, and aud_arr need to be declared in dual port so asm can access and manipulate.
+// 3. integrate audio
+// DEMO
+
+
+
 module cpu (
 input cin,
 input clk, rst,
-input button_clk,
 input ps2_clk, ps2_dat,
 output vga_clk, vga_blank_n, vga_vs, vga_hs,
 output [7:0] r, g, b,
@@ -75,7 +82,7 @@ wire [15:0] inputToRB;
 wire RetAddrSave;
 
 // PC
-pc pc(.PCen(PCen), .clk(button_clk), .rst(rst), .incr(PCincr), .outPC(PCvalue));
+pc pc(.PCen(PCen), .clk(clk), .rst(rst), .incr(PCincr), .outPC(PCvalue));
 
 wire [15:0] nextpc = 16'b1 + PCvalue;
 
@@ -94,9 +101,15 @@ wire [3:0] key_enc;
 wire [4:0] key_info;
 wire rst_handle;
 
+// for dual port
+wire [15:0] data_b = 16'd0;
+wire [15:0] addr_b = 16'd0;
+wire we_b = 1'b0;
+wire [15:0] q_b;
+
 
 // call fsm2 test
-generalFSM fsm(.clk(button_clock), .rst(rst), .flags(currentFlags), .inst(instruction), .Ren(regEnable), .PCen(PCen), .RorI(immSel), .LScntl(LScntl), .we_a(we_a), .Alu_Mux_cntl(Alu_Mux_cntl), .flagEn(flagEn), .RetAddrSave(RetAddrSave), .keySel(keySel), .rst_handle(rst_handle), .opcode(opcode), .Rsrc(srcSel), .Rdest(dstSel), .imm(immConnect), .displacement(displacement), .j_or_b_Sel(dispSel), .PCSel(jumpMux));
+generalFSM fsm(.clk(clk), .rst(rst), .flags(currentFlags), .inst(instruction), .Ren(regEnable), .PCen(PCen), .RorI(immSel), .LScntl(LScntl), .we_a(we_a), .Alu_Mux_cntl(Alu_Mux_cntl), .flagEn(flagEn), .RetAddrSave(RetAddrSave), .keySel(keySel), .rst_handle(rst_handle), .opcode(opcode), .Rsrc(srcSel), .Rdest(dstSel), .imm(immConnect), .displacement(displacement), .j_or_b_Sel(dispSel), .PCSel(jumpMux));
 
 
 //instantiating the ALU
@@ -110,7 +123,7 @@ RegBank rb(.din(inputToRB), .r0(r0), .r1(r1), .r2(r2), .r3(r3), .r4(r4), .r5(r5)
 					.r7(r7), .r8(r8), .r9(r9), .r10(r10), .r11(r11), .r12(r12), .r13(r13), .r14(r14), .r15(r15), .regEnable(regEnable), .clk(clk), .rst(rst));
 					
 
-wire ret_addr_or_alu;
+wire [15:0] ret_addr_or_alu;
 					
 TwoInputMux returnAddress(.i0(ALUBus), .i1(nextpc), .sel(RetAddrSave), .out(ret_addr_or_alu));
 
@@ -119,9 +132,9 @@ TwoInputMux KeyMux(.i0(ret_addr_or_alu), .i1({key_info}), .sel(keySel), .out(inp
 
 
 
-KeyReg kreg(.clk(clk), .rst(rst), .rst_handle(rst_handle), .key_enc(key_enc), .key_info(key_info));
+//KeyReg kreg(.clk(clk), .rst(rst), .rst_handle(rst_handle), .key_enc(key_enc), .key_info(key_info));
 
-ps2_interface_mod ps2(.clk(clk), .rst(rst), .ps2_clk(ps2_clk), .ps2_dat(ps2_dat), .key_enc(key_enc));
+//ps2_interface_mod ps2(.clk(clk), .rst(rst), .ps2_clk(ps2_clk), .ps2_dat(ps2_dat), .key_enc(key_enc));
 					
 					
 // Connect Rsrc to ALU via Mux
@@ -150,24 +163,29 @@ wire [15:0] cursor_loc;
 assign cursor_loc = r5;
 
 
-HardCodedVga vga_mod(.clk(clk), .rst(rst), .sys_data({80'd0, balls}), .vga_clk(vga_clk), .vga_blank_n(vga_blank_n), .vga_vs(vga_vs), .vga_hs(vga_hs), .r(r), .g(g), .b(b));
+HardCodedVga vga_mod(.clk(clk), .rst(rst), .sys_data({80'd0, r5}), .vga_clk(vga_clk), .vga_blank_n(vga_blank_n), .vga_vs(vga_vs), .vga_hs(vga_hs), .r(r), .g(g), .b(b));
 
 
 
 // Connect SegOut
-seven_seg_hex a(pc[3:0], segOut[6:0]);
+seven_seg_hex a(PCvalue[3:0], segOut[6:0]);
 seven_seg_hex sb(r5[3:0], segOut[13:7]);
 //seven_seg_hex c(r5[11:8], segOut[20:14]);
 //seven_seg_hex d(r5[15:12], segOut[27:21]);
-reg [15:0] balls;
 
-always @(negedge button_clk, negedge rst)begin
-	if(~rst) begin
-		balls <= 16'd0;
-	end
-	else if (~button_clk) begin
-		balls <= balls + 16'd1;
-	end
-end
+
+
+// Balls tester
+
+///reg [15:0] balls;
+//
+//always @(negedge button_clk, negedge rst)begin
+//	if(~rst) begin
+//		balls <= 16'd0;
+//	end
+//	else if (~button_clk) begin
+//		balls <= balls + 16'd1;
+//	end
+//end
 
 endmodule
