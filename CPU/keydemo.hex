@@ -1,11 +1,11 @@
 0510	// li r5 7
 5507
 0E10	// call main_loop
-5E07
+5E06
 0020
 4ECE
 0E10	// call keypress
-5E0F
+5E0E
 0020
 4ECE
 0E10	// jx main_loop

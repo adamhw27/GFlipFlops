@@ -136,6 +136,10 @@ module generalFSM (
 					opcode = {inst[15:12], inst[7:4]};
 					RorI = 0;
 					imm = 0;
+				end else if (inst[15:12] == 4'b1111) begin //indicates key[ress
+					opcode = {inst[15:12], inst[7:4]};
+					RorI = 0;
+					imm = 0;
 		
 				end else begin// not sure if this handles unsigned operations correctly
 					RorI = 1; // indicates to choose immediate
@@ -467,6 +471,8 @@ module generalFSM (
 			end
 			
 			S8_Keypress: begin
+				PCSel = 1'b0;
+				PCen = 1'b1;
 				Ren = 16'd1 << 16'd6;
 				keySel = 1'b1;
 				rst_handle = 1'b0;

@@ -3,13 +3,13 @@ Warning (10268): Verilog HDL information at twoInputMuxv.v(9): always construct 
 Warning (10273): Verilog HDL warning at generalFSM.v(101): extended using "x" or "z" File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 101
 Warning (10273): Verilog HDL warning at generalFSM.v(103): extended using "x" or "z" File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 103
 Warning (10273): Verilog HDL warning at generalFSM.v(106): extended using "x" or "z" File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 106
-Warning (10273): Verilog HDL warning at generalFSM.v(191): extended using "x" or "z" File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 191
-Warning (10273): Verilog HDL warning at generalFSM.v(216): extended using "x" or "z" File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 216
-Warning (10273): Verilog HDL warning at generalFSM.v(258): extended using "x" or "z" File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 258
+Warning (10273): Verilog HDL warning at generalFSM.v(195): extended using "x" or "z" File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 195
+Warning (10273): Verilog HDL warning at generalFSM.v(220): extended using "x" or "z" File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 220
 Warning (10273): Verilog HDL warning at generalFSM.v(262): extended using "x" or "z" File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 262
-Warning (10273): Verilog HDL warning at generalFSM.v(373): extended using "x" or "z" File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 373
-Warning (10273): Verilog HDL warning at generalFSM.v(381): extended using "x" or "z" File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 381
-Warning (10273): Verilog HDL warning at generalFSM.v(384): extended using "x" or "z" File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 384
-Info (10281): Verilog HDL Declaration information at cpu.v(16): object "r1" differs only in case from object "R1" in the same scope File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 16
-Info (10281): Verilog HDL Declaration information at cpu.v(16): object "r2" differs only in case from object "R2" in the same scope File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 16
-Info (10281): Verilog HDL Declaration information at cpu.v(68): object "PCincr" differs only in case from object "pcincr" in the same scope File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 68
+Warning (10273): Verilog HDL warning at generalFSM.v(266): extended using "x" or "z" File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 266
+Warning (10273): Verilog HDL warning at generalFSM.v(377): extended using "x" or "z" File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 377
+Warning (10273): Verilog HDL warning at generalFSM.v(385): extended using "x" or "z" File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 385
+Warning (10273): Verilog HDL warning at generalFSM.v(388): extended using "x" or "z" File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 388
+Info (10281): Verilog HDL Declaration information at cpu.v(24): object "r1" differs only in case from object "R1" in the same scope File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 24
+Info (10281): Verilog HDL Declaration information at cpu.v(24): object "r2" differs only in case from object "R2" in the same scope File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 24
+Info (10281): Verilog HDL Declaration information at cpu.v(76): object "PCincr" differs only in case from object "pcincr" in the same scope File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 76

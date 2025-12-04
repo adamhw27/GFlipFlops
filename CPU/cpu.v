@@ -128,7 +128,7 @@ wire [15:0] ret_addr_or_alu;
 TwoInputMux returnAddress(.i0(ALUBus), .i1(nextpc), .sel(RetAddrSave), .out(ret_addr_or_alu));
 
 // mux for checking if were writing to reg bank from keyboard or mem or alu
-TwoInputMux KeyMux(.i0(ret_addr_or_alu), .i1({key_info}), .sel(keySel), .out(inputToRB));
+TwoInputMux KeyMux(.i0(ret_addr_or_alu), .i1(4'b1011), .sel(keySel), .out(inputToRB));
 
 
 

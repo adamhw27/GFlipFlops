@@ -1,5 +1,5 @@
 Flow report for HardCodedVga
-Thu Dec  4 02:28:37 2025
+Thu Dec  4 12:25:53 2025
 Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 
 
@@ -41,7 +41,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +---------------------------------+------------------------------------------------+
-; Flow Status                     ; Successful - Thu Dec  4 02:28:36 2025          ;
+; Flow Status                     ; Successful - Thu Dec  4 12:25:53 2025          ;
 ; Quartus Prime Version           ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
 ; Revision Name                   ; HardCodedVga                                   ;
 ; Top-level Entity Name           ; cpu                                            ;
@@ -49,7 +49,7 @@ https://fpgasoftware.intel.com/eula.
 ; Device                          ; 5CSEMA5F31C6                                   ;
 ; Timing Models                   ; Final                                          ;
 ; Logic utilization (in ALMs)     ; N/A                                            ;
-; Total registers                 ; 327                                            ;
+; Total registers                 ; 329                                            ;
 ; Total pins                      ; 61                                             ;
 ; Total virtual pins              ; 0                                              ;
 ; Total block memory bits         ; 1,048,576                                      ;
@@ -68,7 +68,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 12/04/2025 02:27:21 ;
+; Start date & time ; 12/04/2025 12:24:56 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; HardCodedVga        ;
 +-------------------+---------------------+
@@ -79,7 +79,7 @@ https://fpgasoftware.intel.com/eula.
 +--------------------------------------+----------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                      ; Value                                  ; Default Value ; Entity Name ; Section Id     ;
 +--------------------------------------+----------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID                ; 27214213951901.176484044047072         ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID                ; 27214213951882.176487629539643         ; --            ; --          ; --             ;
 ; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --          ; cpu_debug_tb   ;
 ; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --          ; generalFSM_tb  ;
 ; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; generalFSM_tb                          ; --            ; --          ; eda_simulation ;
@@ -157,8 +157,8 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:01:16     ; 1.0                     ; 874 MB              ; 00:01:22                           ;
-; Total                ; 00:01:16     ; --                      ; --                  ; 00:01:22                           ;
+; Analysis & Synthesis ; 00:00:57     ; 1.0                     ; 917 MB              ; 00:01:03                           ;
+; Total                ; 00:00:57     ; --                      ; --                  ; 00:01:03                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -167,7 +167,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+----------------------+---------+------------+----------------+
 ; Module Name          ; Machine Hostname     ; OS Name ; OS Version ; Processor type ;
 +----------------------+----------------------+---------+------------+----------------+
-; Analysis & Synthesis ; lab1-16.eng.utah.edu ; Red Hat ; Red Hat    ; x86_64         ;
+; Analysis & Synthesis ; lab1-13.eng.utah.edu ; Red Hat ; Red Hat    ; x86_64         ;
 +----------------------+----------------------+---------+------------+----------------+
 
 

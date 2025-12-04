@@ -1,0 +1,245 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1100mV 85C Model Setup 'generalFSM:fsm|state.S1_Decode'
+Slack : -14.584
+TNS   : -238.496
+
+Type  : Slow 1100mV 85C Model Setup 'generalFSM:fsm|state.S0_Fetch'
+Slack : -14.259
+TNS   : -225.697
+
+Type  : Slow 1100mV 85C Model Setup 'true_dual_port_ram_single_clock:memory|altsyncram:ram_rtl_0|altsyncram_phq1:auto_generated|address_reg_b[0]'
+Slack : -14.097
+TNS   : -175.671
+
+Type  : Slow 1100mV 85C Model Setup 'generalFSM:fsm|state.S2_Rtype'
+Slack : -11.261
+TNS   : -91.476
+
+Type  : Slow 1100mV 85C Model Setup 'clk'
+Slack : -11.085
+TNS   : -48214.402
+
+Type  : Slow 1100mV 85C Model Hold 'true_dual_port_ram_single_clock:memory|altsyncram:ram_rtl_0|altsyncram_phq1:auto_generated|address_reg_b[0]'
+Slack : -0.296
+TNS   : -0.873
+
+Type  : Slow 1100mV 85C Model Hold 'clk'
+Slack : -0.283
+TNS   : -0.283
+
+Type  : Slow 1100mV 85C Model Hold 'generalFSM:fsm|state.S0_Fetch'
+Slack : 0.154
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'generalFSM:fsm|state.S1_Decode'
+Slack : 0.398
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'generalFSM:fsm|state.S2_Rtype'
+Slack : 0.740
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'clk'
+Slack : -2.174
+TNS   : -18842.199
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'true_dual_port_ram_single_clock:memory|altsyncram:ram_rtl_0|altsyncram_phq1:auto_generated|address_reg_b[0]'
+Slack : -2.120
+TNS   : -149.513
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'generalFSM:fsm|state.S0_Fetch'
+Slack : 0.114
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'generalFSM:fsm|state.S1_Decode'
+Slack : 0.148
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'generalFSM:fsm|state.S2_Rtype'
+Slack : 0.269
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'generalFSM:fsm|state.S1_Decode'
+Slack : -14.517
+TNS   : -241.872
+
+Type  : Slow 1100mV 0C Model Setup 'generalFSM:fsm|state.S0_Fetch'
+Slack : -14.182
+TNS   : -228.204
+
+Type  : Slow 1100mV 0C Model Setup 'true_dual_port_ram_single_clock:memory|altsyncram:ram_rtl_0|altsyncram_phq1:auto_generated|address_reg_b[0]'
+Slack : -14.031
+TNS   : -173.480
+
+Type  : Slow 1100mV 0C Model Setup 'generalFSM:fsm|state.S2_Rtype'
+Slack : -11.323
+TNS   : -92.314
+
+Type  : Slow 1100mV 0C Model Setup 'clk'
+Slack : -10.999
+TNS   : -46283.232
+
+Type  : Slow 1100mV 0C Model Hold 'true_dual_port_ram_single_clock:memory|altsyncram:ram_rtl_0|altsyncram_phq1:auto_generated|address_reg_b[0]'
+Slack : -0.522
+TNS   : -2.449
+
+Type  : Slow 1100mV 0C Model Hold 'clk'
+Slack : -0.500
+TNS   : -0.500
+
+Type  : Slow 1100mV 0C Model Hold 'generalFSM:fsm|state.S0_Fetch'
+Slack : 0.140
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'generalFSM:fsm|state.S1_Decode'
+Slack : 0.412
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'generalFSM:fsm|state.S2_Rtype'
+Slack : 0.700
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'clk'
+Slack : -2.174
+TNS   : -18843.776
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'true_dual_port_ram_single_clock:memory|altsyncram:ram_rtl_0|altsyncram_phq1:auto_generated|address_reg_b[0]'
+Slack : -2.010
+TNS   : -141.690
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'generalFSM:fsm|state.S0_Fetch'
+Slack : 0.124
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'generalFSM:fsm|state.S1_Decode'
+Slack : 0.185
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'generalFSM:fsm|state.S2_Rtype'
+Slack : 0.294
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'generalFSM:fsm|state.S1_Decode'
+Slack : -8.762
+TNS   : -133.409
+
+Type  : Fast 1100mV 85C Model Setup 'true_dual_port_ram_single_clock:memory|altsyncram:ram_rtl_0|altsyncram_phq1:auto_generated|address_reg_b[0]'
+Slack : -8.499
+TNS   : -106.200
+
+Type  : Fast 1100mV 85C Model Setup 'generalFSM:fsm|state.S0_Fetch'
+Slack : -8.359
+TNS   : -123.853
+
+Type  : Fast 1100mV 85C Model Setup 'clk'
+Slack : -6.731
+TNS   : -29556.709
+
+Type  : Fast 1100mV 85C Model Setup 'generalFSM:fsm|state.S2_Rtype'
+Slack : -6.252
+TNS   : -49.441
+
+Type  : Fast 1100mV 85C Model Hold 'true_dual_port_ram_single_clock:memory|altsyncram:ram_rtl_0|altsyncram_phq1:auto_generated|address_reg_b[0]'
+Slack : -0.155
+TNS   : -0.241
+
+Type  : Fast 1100mV 85C Model Hold 'clk'
+Slack : -0.017
+TNS   : -0.017
+
+Type  : Fast 1100mV 85C Model Hold 'generalFSM:fsm|state.S0_Fetch'
+Slack : 0.065
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'generalFSM:fsm|state.S1_Decode'
+Slack : 0.114
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'generalFSM:fsm|state.S2_Rtype'
+Slack : 0.641
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'clk'
+Slack : -2.174
+TNS   : -18589.294
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'true_dual_port_ram_single_clock:memory|altsyncram:ram_rtl_0|altsyncram_phq1:auto_generated|address_reg_b[0]'
+Slack : -1.356
+TNS   : -69.755
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'generalFSM:fsm|state.S1_Decode'
+Slack : 0.177
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'generalFSM:fsm|state.S0_Fetch'
+Slack : 0.253
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'generalFSM:fsm|state.S2_Rtype'
+Slack : 0.275
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'generalFSM:fsm|state.S1_Decode'
+Slack : -8.073
+TNS   : -126.549
+
+Type  : Fast 1100mV 0C Model Setup 'true_dual_port_ram_single_clock:memory|altsyncram:ram_rtl_0|altsyncram_phq1:auto_generated|address_reg_b[0]'
+Slack : -7.812
+TNS   : -96.608
+
+Type  : Fast 1100mV 0C Model Setup 'generalFSM:fsm|state.S0_Fetch'
+Slack : -7.664
+TNS   : -116.272
+
+Type  : Fast 1100mV 0C Model Setup 'clk'
+Slack : -6.025
+TNS   : -25366.172
+
+Type  : Fast 1100mV 0C Model Setup 'generalFSM:fsm|state.S2_Rtype'
+Slack : -5.833
+TNS   : -46.455
+
+Type  : Fast 1100mV 0C Model Hold 'true_dual_port_ram_single_clock:memory|altsyncram:ram_rtl_0|altsyncram_phq1:auto_generated|address_reg_b[0]'
+Slack : -0.207
+TNS   : -0.484
+
+Type  : Fast 1100mV 0C Model Hold 'clk'
+Slack : -0.202
+TNS   : -0.202
+
+Type  : Fast 1100mV 0C Model Hold 'generalFSM:fsm|state.S0_Fetch'
+Slack : 0.079
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'generalFSM:fsm|state.S1_Decode'
+Slack : 0.140
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'generalFSM:fsm|state.S2_Rtype'
+Slack : 0.582
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'clk'
+Slack : -2.174
+TNS   : -18593.659
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'true_dual_port_ram_single_clock:memory|altsyncram:ram_rtl_0|altsyncram_phq1:auto_generated|address_reg_b[0]'
+Slack : -1.104
+TNS   : -55.797
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'generalFSM:fsm|state.S1_Decode'
+Slack : 0.237
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'generalFSM:fsm|state.S0_Fetch'
+Slack : 0.296
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'generalFSM:fsm|state.S2_Rtype'
+Slack : 0.324
+TNS   : 0.000
+
+------------------------------------------------------------

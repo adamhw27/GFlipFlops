@@ -17,7 +17,7 @@ module true_dual_port_ram_single_clock
 	integer i;
 	
 	initial begin
-		$readmemh("keydemo.hex", ram);
+		$readmemh("key_demo_fix.hex", ram);
 	end
 
 	// Port A 

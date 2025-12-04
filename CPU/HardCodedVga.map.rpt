@@ -1,5 +1,5 @@
 Analysis & Synthesis report for HardCodedVga
-Thu Dec  4 02:28:37 2025
+Thu Dec  4 12:25:53 2025
 Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 
 
@@ -64,13 +64,13 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +---------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Thu Dec  4 02:28:36 2025          ;
+; Analysis & Synthesis Status     ; Successful - Thu Dec  4 12:25:53 2025          ;
 ; Quartus Prime Version           ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
 ; Revision Name                   ; HardCodedVga                                   ;
 ; Top-level Entity Name           ; cpu                                            ;
 ; Family                          ; Cyclone V                                      ;
 ; Logic utilization (in ALMs)     ; N/A                                            ;
-; Total registers                 ; 327                                            ;
+; Total registers                 ; 329                                            ;
 ; Total pins                      ; 61                                             ;
 ; Total virtual pins              ; 0                                              ;
 ; Total block memory bits         ; 1,048,576                                      ;
@@ -199,7 +199,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------+-----------------+-------------------------------------------------------+------------------------------------------------------------------------------------------------------------+---------+
 ; File Name with User-Entered Path                                     ; Used in Netlist ; File Type                                             ; File Name with Absolute Path                                                                               ; Library ;
 +----------------------------------------------------------------------+-----------------+-------------------------------------------------------+------------------------------------------------------------------------------------------------------------+---------+
-; keydemo.hex                                                          ; yes             ; User Hexadecimal (Intel-Format) File                  ; /home/u1460207/Desktop/GFlipFlops/CPU/keydemo.hex                                                          ;         ;
+; key_demo_fix.hex                                                     ; yes             ; User Hexadecimal (Intel-Format) File                  ; /home/u1460207/Desktop/GFlipFlops/CPU/key_demo_fix.hex                                                     ;         ;
 ; ../VGA/VGAcontroller.v                                               ; yes             ; User Verilog HDL File                                 ; /home/u1460207/Desktop/GFlipFlops/VGA/VGAcontroller.v                                                      ;         ;
 ; ../VGA/vgabitgen.v                                                   ; yes             ; User Verilog HDL File                                 ; /home/u1460207/Desktop/GFlipFlops/VGA/vgabitgen.v                                                          ;         ;
 ; ../VGA/HardCodedVga.v                                                ; yes             ; User Verilog HDL File                                 ; /home/u1460207/Desktop/GFlipFlops/VGA/HardCodedVga.v                                                       ;         ;
@@ -238,16 +238,16 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimate of Logic utilization (ALMs needed) ; 857       ;
+; Estimate of Logic utilization (ALMs needed) ; 976       ;
 ;                                             ;           ;
-; Combinational ALUT usage for logic          ; 1168      ;
-;     -- 7 input functions                    ; 37        ;
-;     -- 6 input functions                    ; 482       ;
-;     -- 5 input functions                    ; 175       ;
-;     -- 4 input functions                    ; 140       ;
-;     -- <=3 input functions                  ; 334       ;
+; Combinational ALUT usage for logic          ; 1365      ;
+;     -- 7 input functions                    ; 43        ;
+;     -- 6 input functions                    ; 516       ;
+;     -- 5 input functions                    ; 214       ;
+;     -- 4 input functions                    ; 177       ;
+;     -- <=3 input functions                  ; 415       ;
 ;                                             ;           ;
-; Dedicated logic registers                   ; 327       ;
+; Dedicated logic registers                   ; 329       ;
 ;                                             ;           ;
 ; I/O pins                                    ; 61        ;
 ; Total MLAB memory bits                      ; 0         ;
@@ -256,9 +256,9 @@ https://fpgasoftware.intel.com/eula.
 ; Total DSP Blocks                            ; 1         ;
 ;                                             ;           ;
 ; Maximum fan-out node                        ; clk~input ;
-; Maximum fan-out                             ; 455       ;
-; Total fan-out                               ; 9059      ;
-; Average fan-out                             ; 5.19      ;
+; Maximum fan-out                             ; 457       ;
+; Total fan-out                               ; 9869      ;
+; Average fan-out                             ; 5.07      ;
 +---------------------------------------------+-----------+
 
 
@@ -267,10 +267,10 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------------------------------------+---------------------------------+--------------+
 ; Compilation Hierarchy Node                  ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                      ; Entity Name                     ; Library Name ;
 +---------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------------------------------------+---------------------------------+--------------+
-; |cpu                                        ; 1168 (16)           ; 327 (0)                   ; 1048576           ; 1          ; 61   ; 0            ; |cpu                                                                                                                     ; cpu                             ; work         ;
+; |cpu                                        ; 1365 (16)           ; 329 (0)                   ; 1048576           ; 1          ; 61   ; 0            ; |cpu                                                                                                                     ; cpu                             ; work         ;
 ;    |FlagReg:flagReg|                        ; 0 (0)               ; 3 (3)                     ; 0                 ; 0          ; 0    ; 0            ; |cpu|FlagReg:flagReg                                                                                                     ; FlagReg                         ; work         ;
-;    |HardCodedVga:vga_mod|                   ; 317 (0)             ; 24 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |cpu|HardCodedVga:vga_mod                                                                                                ; HardCodedVga                    ; work         ;
-;       |GlyphGen:ggen|                       ; 282 (282)           ; 3 (3)                     ; 0                 ; 0          ; 0    ; 0            ; |cpu|HardCodedVga:vga_mod|GlyphGen:ggen                                                                                  ; GlyphGen                        ; work         ;
+;    |HardCodedVga:vga_mod|                   ; 495 (0)             ; 24 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |cpu|HardCodedVga:vga_mod                                                                                                ; HardCodedVga                    ; work         ;
+;       |GlyphGen:ggen|                       ; 460 (460)           ; 3 (3)                     ; 0                 ; 0          ; 0    ; 0            ; |cpu|HardCodedVga:vga_mod|GlyphGen:ggen                                                                                  ; GlyphGen                        ; work         ;
 ;       |VGAcontroller:vga_control|           ; 35 (35)             ; 21 (21)                   ; 0                 ; 0          ; 0    ; 0            ; |cpu|HardCodedVga:vga_mod|VGAcontroller:vga_control                                                                      ; VGAcontroller                   ; work         ;
 ;    |PCDisplacementCalculator:dispCalc|      ; 16 (16)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |cpu|PCDisplacementCalculator:dispCalc                                                                                   ; PCDisplacementCalculator        ; work         ;
 ;    |RegBank:rb|                             ; 16 (0)              ; 256 (0)                   ; 0                 ; 0          ; 0    ; 0            ; |cpu|RegBank:rb                                                                                                          ; RegBank                         ; work         ;
@@ -292,13 +292,12 @@ https://fpgasoftware.intel.com/eula.
 ;       |Register:Inst9|                      ; 1 (1)               ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |cpu|RegBank:rb|Register:Inst9                                                                                           ; Register                        ; work         ;
 ;    |RegMux:RDstMux|                         ; 80 (80)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |cpu|RegMux:RDstMux                                                                                                      ; RegMux                          ; work         ;
 ;    |RegMux:RSrcMux|                         ; 80 (80)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |cpu|RegMux:RSrcMux                                                                                                      ; RegMux                          ; work         ;
-;    |TwoInputMux:KeyMux|                     ; 128 (128)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |cpu|TwoInputMux:KeyMux                                                                                                  ; TwoInputMux                     ; work         ;
+;    |TwoInputMux:KeyMux|                     ; 149 (149)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |cpu|TwoInputMux:KeyMux                                                                                                  ; TwoInputMux                     ; work         ;
 ;    |TwoInputMux:LScntlMux|                  ; 16 (16)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |cpu|TwoInputMux:LScntlMux                                                                                               ; TwoInputMux                     ; work         ;
 ;    |TwoInputMux:immMux|                     ; 16 (16)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |cpu|TwoInputMux:immMux                                                                                                  ; TwoInputMux                     ; work         ;
 ;    |TwoInputMux:pcincr|                     ; 16 (16)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |cpu|TwoInputMux:pcincr                                                                                                  ; TwoInputMux                     ; work         ;
-;    |TwoInputMux:returnAddress|              ; 12 (12)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |cpu|TwoInputMux:returnAddress                                                                                           ; TwoInputMux                     ; work         ;
-;    |alu:alu|                                ; 246 (246)           ; 0 (0)                     ; 0                 ; 1          ; 0    ; 0            ; |cpu|alu:alu                                                                                                             ; alu                             ; work         ;
-;    |generalFSM:fsm|                         ; 131 (131)           ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |cpu|generalFSM:fsm                                                                                                      ; generalFSM                      ; work         ;
+;    |alu:alu|                                ; 236 (236)           ; 0 (0)                     ; 0                 ; 1          ; 0    ; 0            ; |cpu|alu:alu                                                                                                             ; alu                             ; work         ;
+;    |generalFSM:fsm|                         ; 151 (151)           ; 10 (10)                   ; 0                 ; 0          ; 0    ; 0            ; |cpu|generalFSM:fsm                                                                                                      ; generalFSM                      ; work         ;
 ;    |pc:pc|                                  ; 0 (0)               ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |cpu|pc:pc                                                                                                               ; pc                              ; work         ;
 ;    |seven_seg_hex:a|                        ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |cpu|seven_seg_hex:a                                                                                                     ; seven_seg_hex                   ; work         ;
 ;    |seven_seg_hex:sb|                       ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |cpu|seven_seg_hex:sb                                                                                                    ; seven_seg_hex                   ; work         ;
@@ -357,19 +356,31 @@ Encoding Type:  One-Hot
 +-----------------------------------------------------+--------------------------------+------------------------+
 ; Latch Name                                          ; Latch Enable Signal            ; Free of Timing Hazards ;
 +-----------------------------------------------------+--------------------------------+------------------------+
-; generalFSM:fsm|Rsrc[0]                              ; generalFSM:fsm|state.S2_Rtype  ; yes                    ;
-; generalFSM:fsm|Rsrc[1]                              ; generalFSM:fsm|state.S2_Rtype  ; yes                    ;
-; generalFSM:fsm|Rsrc[2]                              ; generalFSM:fsm|state.S2_Rtype  ; yes                    ;
-; generalFSM:fsm|Rsrc[3]                              ; generalFSM:fsm|state.S2_Rtype  ; yes                    ;
+; generalFSM:fsm|Rsrc[0]                              ; generalFSM:fsm|WideOr11        ; yes                    ;
+; generalFSM:fsm|Rsrc[1]                              ; generalFSM:fsm|WideOr11        ; yes                    ;
+; generalFSM:fsm|Rsrc[2]                              ; generalFSM:fsm|WideOr11        ; yes                    ;
+; generalFSM:fsm|Rsrc[3]                              ; generalFSM:fsm|WideOr11        ; yes                    ;
+; generalFSM:fsm|j_or_b_Sel                           ; generalFSM:fsm|LScntl          ; yes                    ;
 ; generalFSM:fsm|PCSel                                ; generalFSM:fsm|Selector73      ; yes                    ;
 ; generalFSM:fsm|PCen                                 ; generalFSM:fsm|Selector73      ; yes                    ;
+; generalFSM:fsm|keySel                               ; generalFSM:fsm|WideOr17        ; yes                    ;
+; generalFSM:fsm|opcode[4]                            ; generalFSM:fsm|WideOr14        ; yes                    ;
+; generalFSM:fsm|opcode[5]                            ; generalFSM:fsm|WideOr14        ; yes                    ;
 ; generalFSM:fsm|opcode[6]                            ; generalFSM:fsm|WideOr14        ; yes                    ;
+; generalFSM:fsm|opcode[0]                            ; generalFSM:fsm|WideOr14        ; yes                    ;
 ; generalFSM:fsm|opcode[1]                            ; generalFSM:fsm|WideOr14        ; yes                    ;
+; generalFSM:fsm|Rdest[0]                             ; generalFSM:fsm|WideOr11        ; yes                    ;
+; generalFSM:fsm|Rdest[1]                             ; generalFSM:fsm|WideOr11        ; yes                    ;
+; generalFSM:fsm|Rdest[2]                             ; generalFSM:fsm|WideOr11        ; yes                    ;
+; generalFSM:fsm|Rdest[3]                             ; generalFSM:fsm|WideOr11        ; yes                    ;
 ; generalFSM:fsm|opcode[2]                            ; generalFSM:fsm|WideOr14        ; yes                    ;
 ; generalFSM:fsm|opcode[3]                            ; generalFSM:fsm|WideOr14        ; yes                    ;
-; generalFSM:fsm|opcode[7]                            ; generalFSM:fsm|WideOr14        ; yes                    ;
+; generalFSM:fsm|imm[0]                               ; generalFSM:fsm|WideOr14        ; yes                    ;
+; generalFSM:fsm|RorI                                 ; generalFSM:fsm|WideOr11        ; yes                    ;
+; generalFSM:fsm|imm[1]                               ; generalFSM:fsm|WideOr14        ; yes                    ;
+; generalFSM:fsm|imm[2]                               ; generalFSM:fsm|WideOr14        ; yes                    ;
+; generalFSM:fsm|imm[3]                               ; generalFSM:fsm|WideOr14        ; yes                    ;
 ; generalFSM:fsm|imm[4]                               ; generalFSM:fsm|WideOr14        ; yes                    ;
-; generalFSM:fsm|RorI                                 ; generalFSM:fsm|state.S2_Rtype  ; yes                    ;
 ; generalFSM:fsm|imm[5]                               ; generalFSM:fsm|WideOr14        ; yes                    ;
 ; generalFSM:fsm|imm[6]                               ; generalFSM:fsm|WideOr14        ; yes                    ;
 ; generalFSM:fsm|imm[7]                               ; generalFSM:fsm|WideOr14        ; yes                    ;
@@ -381,36 +392,29 @@ Encoding Type:  One-Hot
 ; generalFSM:fsm|imm[13]                              ; generalFSM:fsm|WideOr14        ; yes                    ;
 ; generalFSM:fsm|imm[14]                              ; generalFSM:fsm|WideOr14        ; yes                    ;
 ; generalFSM:fsm|imm[15]                              ; generalFSM:fsm|WideOr14        ; yes                    ;
-; generalFSM:fsm|imm[2]                               ; generalFSM:fsm|WideOr14        ; yes                    ;
-; generalFSM:fsm|imm[3]                               ; generalFSM:fsm|WideOr14        ; yes                    ;
-; generalFSM:fsm|imm[0]                               ; generalFSM:fsm|WideOr14        ; yes                    ;
-; generalFSM:fsm|imm[1]                               ; generalFSM:fsm|WideOr14        ; yes                    ;
-; generalFSM:fsm|Rdest[0]                             ; generalFSM:fsm|state.S2_Rtype  ; yes                    ;
-; generalFSM:fsm|Rdest[1]                             ; generalFSM:fsm|state.S2_Rtype  ; yes                    ;
-; generalFSM:fsm|Rdest[2]                             ; generalFSM:fsm|state.S2_Rtype  ; yes                    ;
-; generalFSM:fsm|Rdest[3]                             ; generalFSM:fsm|state.S2_Rtype  ; yes                    ;
-; generalFSM:fsm|opcode[0]                            ; generalFSM:fsm|WideOr14        ; yes                    ;
+; generalFSM:fsm|opcode[7]                            ; generalFSM:fsm|WideOr14        ; yes                    ;
+; generalFSM:fsm|Alu_Mux_cntl                         ; generalFSM:fsm|LScntl          ; yes                    ;
 ; generalFSM:fsm|RetAddrSave                          ; generalFSM:fsm|Selector14      ; yes                    ;
-; generalFSM:fsm|Ren[5]                               ; generalFSM:fsm|Selector73      ; yes                    ;
-; generalFSM:fsm|Ren[0]                               ; generalFSM:fsm|Selector73      ; yes                    ;
-; generalFSM:fsm|Ren[1]                               ; generalFSM:fsm|Selector73      ; yes                    ;
-; generalFSM:fsm|Ren[2]                               ; generalFSM:fsm|Selector73      ; yes                    ;
-; generalFSM:fsm|Ren[3]                               ; generalFSM:fsm|Selector73      ; yes                    ;
+; generalFSM:fsm|Ren[5]                               ; generalFSM:fsm|Selector33      ; yes                    ;
+; generalFSM:fsm|Ren[0]                               ; generalFSM:fsm|Selector33      ; yes                    ;
+; generalFSM:fsm|Ren[1]                               ; generalFSM:fsm|Selector33      ; yes                    ;
+; generalFSM:fsm|Ren[2]                               ; generalFSM:fsm|Selector33      ; yes                    ;
+; generalFSM:fsm|Ren[3]                               ; generalFSM:fsm|Selector33      ; yes                    ;
 ; generalFSM:fsm|savedRdest[0]                        ; generalFSM:fsm|state.S1_Decode ; yes                    ;
 ; generalFSM:fsm|savedRsrc[0]                         ; generalFSM:fsm|state.S1_Decode ; yes                    ;
 ; generalFSM:fsm|savedRdest[1]                        ; generalFSM:fsm|state.S1_Decode ; yes                    ;
 ; generalFSM:fsm|savedRsrc[1]                         ; generalFSM:fsm|state.S1_Decode ; yes                    ;
-; generalFSM:fsm|Ren[4]                               ; generalFSM:fsm|Selector73      ; yes                    ;
-; generalFSM:fsm|Ren[6]                               ; generalFSM:fsm|Selector73      ; yes                    ;
-; generalFSM:fsm|Ren[7]                               ; generalFSM:fsm|Selector73      ; yes                    ;
-; generalFSM:fsm|Ren[8]                               ; generalFSM:fsm|Selector73      ; yes                    ;
-; generalFSM:fsm|Ren[9]                               ; generalFSM:fsm|Selector73      ; yes                    ;
-; generalFSM:fsm|Ren[10]                              ; generalFSM:fsm|Selector73      ; yes                    ;
-; generalFSM:fsm|Ren[11]                              ; generalFSM:fsm|Selector73      ; yes                    ;
-; generalFSM:fsm|Ren[12]                              ; generalFSM:fsm|Selector73      ; yes                    ;
-; generalFSM:fsm|Ren[13]                              ; generalFSM:fsm|Selector73      ; yes                    ;
-; generalFSM:fsm|Ren[14]                              ; generalFSM:fsm|Selector73      ; yes                    ;
-; generalFSM:fsm|Ren[15]                              ; generalFSM:fsm|Selector73      ; yes                    ;
+; generalFSM:fsm|Ren[4]                               ; generalFSM:fsm|Selector33      ; yes                    ;
+; generalFSM:fsm|Ren[6]                               ; generalFSM:fsm|Selector33      ; yes                    ;
+; generalFSM:fsm|Ren[7]                               ; generalFSM:fsm|Selector33      ; yes                    ;
+; generalFSM:fsm|Ren[8]                               ; generalFSM:fsm|Selector33      ; yes                    ;
+; generalFSM:fsm|Ren[9]                               ; generalFSM:fsm|Selector33      ; yes                    ;
+; generalFSM:fsm|Ren[10]                              ; generalFSM:fsm|Selector33      ; yes                    ;
+; generalFSM:fsm|Ren[11]                              ; generalFSM:fsm|Selector33      ; yes                    ;
+; generalFSM:fsm|Ren[12]                              ; generalFSM:fsm|Selector33      ; yes                    ;
+; generalFSM:fsm|Ren[13]                              ; generalFSM:fsm|Selector33      ; yes                    ;
+; generalFSM:fsm|Ren[14]                              ; generalFSM:fsm|Selector33      ; yes                    ;
+; generalFSM:fsm|Ren[15]                              ; generalFSM:fsm|Selector33      ; yes                    ;
 ; generalFSM:fsm|savedRdest[2]                        ; generalFSM:fsm|state.S1_Decode ; yes                    ;
 ; generalFSM:fsm|savedRsrc[2]                         ; generalFSM:fsm|state.S1_Decode ; yes                    ;
 ; generalFSM:fsm|savedRdest[3]                        ; generalFSM:fsm|state.S1_Decode ; yes                    ;
@@ -419,11 +423,14 @@ Encoding Type:  One-Hot
 ; generalFSM:fsm|displacement[1]                      ; generalFSM:fsm|WideOr15        ; yes                    ;
 ; generalFSM:fsm|displacement[2]                      ; generalFSM:fsm|WideOr15        ; yes                    ;
 ; generalFSM:fsm|displacement[3]                      ; generalFSM:fsm|WideOr15        ; yes                    ;
+; generalFSM:fsm|LScntl                               ; generalFSM:fsm|LScntl          ; yes                    ;
+; generalFSM:fsm|we_a                                 ; generalFSM:fsm|LScntl          ; yes                    ;
+; generalFSM:fsm|flagEn                               ; generalFSM:fsm|LScntl          ; yes                    ;
 ; generalFSM:fsm|displacement[7]                      ; generalFSM:fsm|WideOr15        ; yes                    ;
 ; generalFSM:fsm|displacement[4]                      ; generalFSM:fsm|WideOr15        ; yes                    ;
 ; generalFSM:fsm|displacement[5]                      ; generalFSM:fsm|WideOr15        ; yes                    ;
 ; generalFSM:fsm|displacement[6]                      ; generalFSM:fsm|WideOr15        ; yes                    ;
-; Number of user-specified and inferred latches = 66  ;                                ;                        ;
+; Number of user-specified and inferred latches = 74  ;                                ;                        ;
 +-----------------------------------------------------+--------------------------------+------------------------+
 Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
 
@@ -433,13 +440,11 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +---------------------------------------+--------------------+
 ; Register name                         ; Reason for Removal ;
 +---------------------------------------+--------------------+
-; generalFSM:fsm|state.S8_Keypress      ; Lost fanout        ;
-; generalFSM:fsm|state.S9_Rstkey        ; Lost fanout        ;
 ; generalFSM:fsm|state~3                ; Lost fanout        ;
 ; generalFSM:fsm|state~4                ; Lost fanout        ;
 ; generalFSM:fsm|state~5                ; Lost fanout        ;
 ; generalFSM:fsm|state~6                ; Lost fanout        ;
-; Total Number of Removed Registers = 6 ;                    ;
+; Total Number of Removed Registers = 4 ;                    ;
 +---------------------------------------+--------------------+
 
 
@@ -448,7 +453,7 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 327   ;
+; Total registers                              ; 329   ;
 ; Number of registers using Synchronous Clear  ; 276   ;
 ; Number of registers using Synchronous Load   ; 16    ;
 ; Number of registers using Asynchronous Clear ; 19    ;
@@ -497,40 +502,40 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                    ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------+
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |cpu|pc:pc|outPC[3]                                           ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |cpu|RegBank:rb|Register:Inst5|r[11]                          ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |cpu|RegBank:rb|Register:Inst0|r[8]                           ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |cpu|RegBank:rb|Register:Inst1|r[8]                           ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |cpu|RegBank:rb|Register:Inst2|r[10]                          ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |cpu|RegBank:rb|Register:Inst3|r[15]                          ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |cpu|RegBank:rb|Register:Inst4|r[15]                          ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |cpu|RegBank:rb|Register:Inst6|r[4]                           ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |cpu|RegBank:rb|Register:Inst7|r[13]                          ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |cpu|RegBank:rb|Register:Inst8|r[5]                           ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |cpu|RegBank:rb|Register:Inst9|r[2]                           ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |cpu|RegBank:rb|Register:Inst10|r[5]                          ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |cpu|RegBank:rb|Register:Inst11|r[8]                          ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |cpu|RegBank:rb|Register:Inst12|r[9]                          ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |cpu|RegBank:rb|Register:Inst13|r[12]                         ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |cpu|pc:pc|outPC[14]                                          ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |cpu|RegBank:rb|Register:Inst5|r[3]                           ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |cpu|RegBank:rb|Register:Inst0|r[15]                          ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |cpu|RegBank:rb|Register:Inst1|r[9]                           ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |cpu|RegBank:rb|Register:Inst2|r[12]                          ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |cpu|RegBank:rb|Register:Inst3|r[12]                          ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |cpu|RegBank:rb|Register:Inst4|r[11]                          ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |cpu|RegBank:rb|Register:Inst6|r[12]                          ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |cpu|RegBank:rb|Register:Inst7|r[0]                           ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |cpu|RegBank:rb|Register:Inst8|r[14]                          ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |cpu|RegBank:rb|Register:Inst9|r[8]                           ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |cpu|RegBank:rb|Register:Inst10|r[12]                         ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |cpu|RegBank:rb|Register:Inst11|r[4]                          ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |cpu|RegBank:rb|Register:Inst12|r[10]                         ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |cpu|RegBank:rb|Register:Inst13|r[13]                         ;
 ; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |cpu|RegBank:rb|Register:Inst14|r[11]                         ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |cpu|RegBank:rb|Register:Inst15|r[6]                          ;
-; 4:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |cpu|HardCodedVga:vga_mod|VGAcontroller:vga_control|hCount[9] ;
-; 4:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |cpu|HardCodedVga:vga_mod|VGAcontroller:vga_control|vCount[5] ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |cpu|RegBank:rb|Register:Inst15|r[13]                         ;
+; 4:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |cpu|HardCodedVga:vga_mod|VGAcontroller:vga_control|hCount[6] ;
+; 4:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |cpu|HardCodedVga:vga_mod|VGAcontroller:vga_control|vCount[9] ;
 ; 4:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |cpu|alu:alu|ShiftLeft0                                       ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |cpu|alu:alu|ShiftRight1                                      ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |cpu|alu:alu|ShiftRight0                                      ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |cpu|generalFSM:fsm|imm                                       ;
-; 16:1               ; 16 bits   ; 160 LEs       ; 160 LEs              ; 0 LEs                  ; No         ; |cpu|RegMux:RSrcMux|Mux3                                      ;
-; 16:1               ; 16 bits   ; 160 LEs       ; 160 LEs              ; 0 LEs                  ; No         ; |cpu|RegMux:RDstMux|Mux9                                      ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |cpu|generalFSM:fsm|Selector63                                ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |cpu|generalFSM:fsm|imm                                       ;
+; 16:1               ; 16 bits   ; 160 LEs       ; 160 LEs              ; 0 LEs                  ; No         ; |cpu|RegMux:RSrcMux|Mux1                                      ;
+; 16:1               ; 16 bits   ; 160 LEs       ; 160 LEs              ; 0 LEs                  ; No         ; |cpu|RegMux:RDstMux|Mux11                                     ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |cpu|generalFSM:fsm|Selector60                                ;
 ; 8:1                ; 2 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |cpu|generalFSM:fsm|state                                     ;
 ; 6:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |cpu|generalFSM:fsm|Selector22                                ;
-; 6:1                ; 4 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |cpu|generalFSM:fsm|Selector27                                ;
-; 6:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |cpu|generalFSM:fsm|Selector31                                ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |cpu|generalFSM:fsm|Selector29                                ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |cpu|generalFSM:fsm|Selector32                                ;
 ; 6:1                ; 4 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |cpu|generalFSM:fsm|Selector20                                ;
-; 92:1               ; 4 bits    ; 244 LEs       ; 100 LEs              ; 144 LEs                ; No         ; |cpu|TwoInputMux:KeyMux|out[15]                               ;
-; 91:1               ; 3 bits    ; 180 LEs       ; 72 LEs               ; 108 LEs                ; No         ; |cpu|TwoInputMux:KeyMux|out[4]                                ;
-; 93:1               ; 3 bits    ; 186 LEs       ; 72 LEs               ; 114 LEs                ; No         ; |cpu|TwoInputMux:KeyMux|out[9]                                ;
+; 92:1               ; 4 bits    ; 244 LEs       ; 100 LEs              ; 144 LEs                ; No         ; |cpu|TwoInputMux:KeyMux|out[13]                               ;
+; 91:1               ; 3 bits    ; 180 LEs       ; 72 LEs               ; 108 LEs                ; No         ; |cpu|TwoInputMux:KeyMux|out[6]                                ;
+; 93:1               ; 3 bits    ; 186 LEs       ; 72 LEs               ; 114 LEs                ; No         ; |cpu|TwoInputMux:KeyMux|out[11]                               ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------+
 
 
@@ -733,14 +738,13 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "HardCodedVga:vga_mod"                                                                                                                                          ;
-+-----------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port            ; Type  ; Severity ; Details                                                                                                                                              ;
-+-----------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------+
-; sys_data        ; Input ; Warning  ; Input port expression (81 bits) is smaller than the input port (96 bits) it drives.  Extra input bit(s) "sys_data[95..81]" will be connected to GND. ;
-; sys_data[80..1] ; Input ; Info     ; Stuck at GND                                                                                                                                         ;
-+-----------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------+
++----------------------------------------------------+
+; Port Connectivity Checks: "HardCodedVga:vga_mod"   ;
++------------------+-------+----------+--------------+
+; Port             ; Type  ; Severity ; Details      ;
++------------------+-------+----------+--------------+
+; sys_data[95..16] ; Input ; Info     ; Stuck at GND ;
++------------------+-------+----------+--------------+
 
 
 +------------------------------------------------------------------------------------------------------------------+
@@ -755,13 +759,16 @@ Note: In order to hide this table in the UI and the text report file, please set
 +--------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "TwoInputMux:KeyMux"                                                                                                                         ;
-+------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
-; Port ; Type  ; Severity ; Details                                                                                                                                      ;
-+------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
-; i1   ; Input ; Warning  ; Input port expression (5 bits) is smaller than the input port (16 bits) it drives.  Extra input bit(s) "i1[15..5]" will be connected to GND. ;
-+------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "TwoInputMux:KeyMux"                                                                                                                             ;
++----------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port     ; Type  ; Severity ; Details                                                                                                                                      ;
++----------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; i1       ; Input ; Warning  ; Input port expression (4 bits) is smaller than the input port (16 bits) it drives.  Extra input bit(s) "i1[15..4]" will be connected to GND. ;
+; i1[1..0] ; Input ; Info     ; Stuck at VCC                                                                                                                                 ;
+; i1[15]   ; Input ; Info     ; Stuck at VCC                                                                                                                                 ;
+; i1[14]   ; Input ; Info     ; Stuck at GND                                                                                                                                 ;
++----------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +----------------------------------------------------------------------------------------------------------------------+
@@ -778,12 +785,12 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 327                         ;
+; arriav_ff             ; 329                         ;
 ;     ENA CLR           ; 3                           ;
 ;     ENA CLR SLD       ; 16                          ;
 ;     ENA SCLR          ; 276                         ;
-;     plain             ; 32                          ;
-; arriav_lcell_comb     ; 1171                        ;
+;     plain             ; 34                          ;
+; arriav_lcell_comb     ; 1368                        ;
 ;     arith             ; 117                         ;
 ;         0 data inputs ; 2                           ;
 ;         1 data inputs ; 51                          ;
@@ -791,16 +798,16 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;         3 data inputs ; 14                          ;
 ;         4 data inputs ; 32                          ;
 ;         5 data inputs ; 1                           ;
-;     extend            ; 37                          ;
-;         7 data inputs ; 37                          ;
-;     normal            ; 1001                        ;
+;     extend            ; 43                          ;
+;         7 data inputs ; 43                          ;
+;     normal            ; 1192                        ;
 ;         0 data inputs ; 1                           ;
 ;         1 data inputs ; 3                           ;
-;         2 data inputs ; 77                          ;
-;         3 data inputs ; 156                         ;
-;         4 data inputs ; 108                         ;
-;         5 data inputs ; 174                         ;
-;         6 data inputs ; 482                         ;
+;         2 data inputs ; 103                         ;
+;         3 data inputs ; 211                         ;
+;         4 data inputs ; 145                         ;
+;         5 data inputs ; 213                         ;
+;         6 data inputs ; 516                         ;
 ;     shared            ; 16                          ;
 ;         2 data inputs ; 15                          ;
 ;         3 data inputs ; 1                           ;
@@ -808,8 +815,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; boundary_port         ; 61                          ;
 ; stratixv_ram_block    ; 128                         ;
 ;                       ;                             ;
-; Max LUT depth         ; 10.10                       ;
-; Average LUT depth     ; 6.68                        ;
+; Max LUT depth         ; 12.00                       ;
+; Average LUT depth     ; 7.31                        ;
 +-----------------------+-----------------------------+
 
 
@@ -818,7 +825,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:03     ;
+; Top            ; 00:00:04     ;
 +----------------+--------------+
 
 
@@ -828,7 +835,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
-    Info: Processing started: Thu Dec  4 02:27:20 2025
+    Info: Processing started: Thu Dec  4 12:24:55 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off vga -c HardCodedVga
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
@@ -872,20 +879,19 @@ Info (12021): Found 1 design units, including 1 entities, in source file FSM_tes
 Info (12021): Found 1 design units, including 1 entities, in source file FlagReg.v
     Info (12023): Found entity 1: FlagReg File: /home/u1460207/Desktop/GFlipFlops/CPU/FlagReg.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file cpu.v
-    Info (12023): Found entity 1: cpu File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 1
+    Info (12023): Found entity 1: cpu File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 9
 Info (12021): Found 1 design units, including 1 entities, in source file ALU_tb.v
     Info (12023): Found entity 1: ALU_tb File: /home/u1460207/Desktop/GFlipFlops/CPU/ALU_tb.v Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file alu.v
     Info (12023): Found entity 1: alu File: /home/u1460207/Desktop/GFlipFlops/CPU/alu.v Line: 3
-Warning (10236): Verilog HDL Implicit Net warning at cpu.v(158): created implicit net for "balls" File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 158
 Info (12127): Elaborating entity "cpu" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at cpu.v(154): object "cursor_loc" assigned a value but never read File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 154
-Warning (10034): Output port "segOut[27..14]" at cpu.v(9) has no driver File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 9
-Info (12128): Elaborating entity "pc" for hierarchy "pc:pc" File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 77
-Info (12128): Elaborating entity "TwoInputMux" for hierarchy "TwoInputMux:pcincr" File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 82
-Info (12128): Elaborating entity "PCDisplacementCalculator" for hierarchy "PCDisplacementCalculator:dispCalc" File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 85
+Warning (10036): Verilog HDL or VHDL warning at cpu.v(162): object "cursor_loc" assigned a value but never read File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 162
+Warning (10034): Output port "segOut[27..14]" at cpu.v(17) has no driver File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 17
+Info (12128): Elaborating entity "pc" for hierarchy "pc:pc" File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 85
+Info (12128): Elaborating entity "TwoInputMux" for hierarchy "TwoInputMux:pcincr" File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 90
+Info (12128): Elaborating entity "PCDisplacementCalculator" for hierarchy "PCDisplacementCalculator:dispCalc" File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 93
 Warning (10230): Verilog HDL assignment warning at PCDisplacementCalculator.v(23): truncated value with size 32 to match size of target (16) File: /home/u1460207/Desktop/GFlipFlops/CPU/PCDisplacementCalculator.v Line: 23
-Info (12128): Elaborating entity "generalFSM" for hierarchy "generalFSM:fsm" File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 104
+Info (12128): Elaborating entity "generalFSM" for hierarchy "generalFSM:fsm" File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 112
 Info (10264): Verilog HDL Case Statement information at generalFSM.v(44): all case item expressions in this case statement are onehot File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 44
 Warning (10230): Verilog HDL assignment warning at generalFSM.v(106): truncated value with size 16 to match size of target (8) File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 106
 Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(123): variable "inst" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 123
@@ -894,41 +900,43 @@ Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(129): vari
 Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(132): variable "inst" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 132
 Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(135): variable "inst" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 135
 Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(136): variable "inst" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 136
-Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(142): variable "inst" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 142
-Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(143): variable "inst" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 143
-Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(144): variable "inst" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 144
+Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(139): variable "inst" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 139
+Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(140): variable "inst" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 140
 Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(146): variable "inst" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 146
-Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(170): variable "Rdest" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 170
-Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(182): variable "savedRsrc" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 182
-Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(183): variable "savedRdest" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 183
-Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(205): variable "savedRdest" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 205
-Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(206): variable "savedAlu_Mux_ctrl" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 206
-Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(207): variable "savedRsrc" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 207
-Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(229): variable "savedRdest" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 229
-Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(230): variable "savedAlu_Mux_ctrl" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 230
-Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(231): variable "savedRsrc" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 231
-Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(259): variable "savedRsrc" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 259
-Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(260): variable "savedRdest" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 260
-Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(261): variable "displacement" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 261
-Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(268): variable "inst" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 268
-Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(274): variable "flags" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 274
-Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(287): variable "flags" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 287
-Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(310): variable "flags" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 310
-Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(325): variable "flags" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 325
-Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(340): variable "flags" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 340
-Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(354): variable "flags" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 354
-Warning (10270): Verilog HDL Case Statement warning at generalFSM.v(268): incomplete case statement has no default case item File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 268
-Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(371): variable "inst" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 371
-Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(382): variable "savedRsrc" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 382
-Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(383): variable "savedRdest" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 383
-Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(387): variable "inst" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 387
-Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(391): variable "flags" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 391
-Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(402): variable "flags" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 402
-Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(420): variable "flags" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 420
-Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(432): variable "flags" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 432
-Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(444): variable "flags" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 444
-Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(456): variable "flags" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 456
-Warning (10270): Verilog HDL Case Statement warning at generalFSM.v(387): incomplete case statement has no default case item File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 387
+Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(147): variable "inst" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 147
+Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(148): variable "inst" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 148
+Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(150): variable "inst" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 150
+Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(174): variable "Rdest" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 174
+Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(186): variable "savedRsrc" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 186
+Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(187): variable "savedRdest" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 187
+Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(209): variable "savedRdest" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 209
+Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(210): variable "savedAlu_Mux_ctrl" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 210
+Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(211): variable "savedRsrc" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 211
+Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(233): variable "savedRdest" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 233
+Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(234): variable "savedAlu_Mux_ctrl" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 234
+Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(235): variable "savedRsrc" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 235
+Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(263): variable "savedRsrc" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 263
+Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(264): variable "savedRdest" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 264
+Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(265): variable "displacement" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 265
+Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(272): variable "inst" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 272
+Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(278): variable "flags" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 278
+Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(291): variable "flags" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 291
+Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(314): variable "flags" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 314
+Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(329): variable "flags" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 329
+Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(344): variable "flags" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 344
+Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(358): variable "flags" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 358
+Warning (10270): Verilog HDL Case Statement warning at generalFSM.v(272): incomplete case statement has no default case item File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 272
+Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(375): variable "inst" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 375
+Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(386): variable "savedRsrc" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 386
+Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(387): variable "savedRdest" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 387
+Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(391): variable "inst" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 391
+Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(395): variable "flags" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 395
+Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(406): variable "flags" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 406
+Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(424): variable "flags" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 424
+Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(436): variable "flags" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 436
+Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(448): variable "flags" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 448
+Warning (10235): Verilog HDL Always Construct warning at generalFSM.v(460): variable "flags" is read inside the Always Construct but isn't in the Always Construct's Event Control File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 460
+Warning (10270): Verilog HDL Case Statement warning at generalFSM.v(391): incomplete case statement has no default case item File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 391
 Warning (10240): Verilog HDL Always Construct warning at generalFSM.v(83): inferring latch(es) for variable "PCen", which holds its previous value in one or more paths through the always construct File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 83
 Warning (10240): Verilog HDL Always Construct warning at generalFSM.v(83): inferring latch(es) for variable "LScntl", which holds its previous value in one or more paths through the always construct File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 83
 Warning (10240): Verilog HDL Always Construct warning at generalFSM.v(83): inferring latch(es) for variable "PCSel", which holds its previous value in one or more paths through the always construct File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 83
@@ -1024,14 +1032,14 @@ Info (10041): Inferred latch for "flagEn" at generalFSM.v(83) File: /home/u14602
 Info (10041): Inferred latch for "PCSel" at generalFSM.v(83) File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 83
 Info (10041): Inferred latch for "LScntl" at generalFSM.v(83) File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 83
 Info (10041): Inferred latch for "PCen" at generalFSM.v(83) File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 83
-Info (12128): Elaborating entity "alu" for hierarchy "alu:alu" File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 108
-Info (12128): Elaborating entity "FlagReg" for hierarchy "FlagReg:flagReg" File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 111
-Info (12128): Elaborating entity "RegBank" for hierarchy "RegBank:rb" File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 115
+Info (12128): Elaborating entity "alu" for hierarchy "alu:alu" File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 116
+Info (12128): Elaborating entity "FlagReg" for hierarchy "FlagReg:flagReg" File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 119
+Info (12128): Elaborating entity "RegBank" for hierarchy "RegBank:rb" File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 123
 Info (12128): Elaborating entity "Register" for hierarchy "RegBank:rb|Register:Inst0" File: /home/u1460207/Desktop/GFlipFlops/CPU/regfile.v Line: 66
-Info (12128): Elaborating entity "RegMux" for hierarchy "RegMux:RSrcMux" File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 135
-Info (12128): Elaborating entity "true_dual_port_ram_single_clock" for hierarchy "true_dual_port_ram_single_clock:memory" File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 149
-Warning (10850): Verilog HDL warning at true_dual_port_ram_single_clock.v(20): number of words (70) in memory file does not match the number of elements in the address range [0:65535] File: /home/u1460207/Desktop/GFlipFlops/CPU/true_dual_port_ram_single_clock.v Line: 20
-Info (12128): Elaborating entity "HardCodedVga" for hierarchy "HardCodedVga:vga_mod" File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 158
+Info (12128): Elaborating entity "RegMux" for hierarchy "RegMux:RSrcMux" File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 143
+Info (12128): Elaborating entity "true_dual_port_ram_single_clock" for hierarchy "true_dual_port_ram_single_clock:memory" File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 157
+Warning (10850): Verilog HDL warning at true_dual_port_ram_single_clock.v(20): number of words (74) in memory file does not match the number of elements in the address range [0:65535] File: /home/u1460207/Desktop/GFlipFlops/CPU/true_dual_port_ram_single_clock.v Line: 20
+Info (12128): Elaborating entity "HardCodedVga" for hierarchy "HardCodedVga:vga_mod" File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 166
 Info (12128): Elaborating entity "VGAcontroller" for hierarchy "HardCodedVga:vga_mod|VGAcontroller:vga_control" File: /home/u1460207/Desktop/GFlipFlops/VGA/HardCodedVga.v Line: 20
 Warning (10230): Verilog HDL assignment warning at VGAcontroller.v(32): truncated value with size 10 to match size of target (1) File: /home/u1460207/Desktop/GFlipFlops/VGA/VGAcontroller.v Line: 32
 Info (12128): Elaborating entity "VGABitGen" for hierarchy "HardCodedVga:vga_mod|VGABitGen:vga_bitgen" File: /home/u1460207/Desktop/GFlipFlops/VGA/HardCodedVga.v Line: 21
@@ -1373,17 +1381,12 @@ Warning (10230): Verilog HDL assignment warning at GlyphGen.v(670): truncated va
 Warning (10030): Net "glyphs.data_a" at GlyphGen.v(26) has no driver or initial value, using a default initial value '0' File: /home/u1460207/Desktop/GFlipFlops/VGA/GlyphGen.v Line: 26
 Warning (10030): Net "glyphs.waddr_a" at GlyphGen.v(26) has no driver or initial value, using a default initial value '0' File: /home/u1460207/Desktop/GFlipFlops/VGA/GlyphGen.v Line: 26
 Warning (10030): Net "glyphs.we_a" at GlyphGen.v(26) has no driver or initial value, using a default initial value '0' File: /home/u1460207/Desktop/GFlipFlops/VGA/GlyphGen.v Line: 26
-Info (12128): Elaborating entity "seven_seg_hex" for hierarchy "seven_seg_hex:a" File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 163
+Info (12128): Elaborating entity "seven_seg_hex" for hierarchy "seven_seg_hex:a" File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 171
 Warning (276020): Inferred RAM node "true_dual_port_ram_single_clock:memory|ram_rtl_0" from synchronous design logic.  Pass-through logic has been added to match the read-during-write behavior of the original design.
 Info (276014): Found 2 instances of uninferred RAM logic
     Info (276007): RAM logic "HardCodedVga:vga_mod|GlyphGen:ggen|glyphs" is uninferred due to asynchronous read logic File: /home/u1460207/Desktop/GFlipFlops/VGA/GlyphGen.v Line: 26
     Info (276007): RAM logic "true_dual_port_ram_single_clock:memory|ram" is uninferred due to asynchronous read logic File: /home/u1460207/Desktop/GFlipFlops/CPU/true_dual_port_ram_single_clock.v Line: 16
 Critical Warning (127005): Memory depth (8192) in the design file differs from memory depth (5120) in the Memory Initialization File "/home/u1460207/Desktop/GFlipFlops/CPU/db/HardCodedVga.ram0_GlyphGen_731ede49.hdl.mif" -- setting initial value for remaining addresses to 0
-Warning (14026): LATCH primitive "generalFSM:fsm|flagEn" is permanently enabled File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 9
-Warning (14026): LATCH primitive "generalFSM:fsm|we_a" is permanently enabled File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 9
-Warning (14026): LATCH primitive "generalFSM:fsm|LScntl" is permanently enabled File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 9
-Warning (14026): LATCH primitive "generalFSM:fsm|j_or_b_Sel" is permanently enabled File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 16
-Warning (14026): LATCH primitive "generalFSM:fsm|Alu_Mux_cntl" is permanently enabled File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 9
 Info (19000): Inferred 1 megafunctions from design logic
     Info (276029): Inferred altsyncram megafunction from the following design logic: "true_dual_port_ram_single_clock:memory|ram_rtl_0" 
         Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
@@ -1442,7 +1445,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/deco
     Info (12023): Found entity 1: decode_61a File: /home/u1460207/Desktop/GFlipFlops/CPU/db/decode_61a.tdf Line: 23
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_chb.tdf
     Info (12023): Found entity 1: mux_chb File: /home/u1460207/Desktop/GFlipFlops/CPU/db/mux_chb.tdf Line: 23
-Warning (12241): 3 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (12241): 2 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Info (13025): Duplicate LATCH primitives merged into single LATCH primitive
     Info (13026): Duplicate LATCH primitive "generalFSM:fsm|imm[15]" merged with LATCH primitive "generalFSM:fsm|imm[7]" File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 83
     Info (13026): Duplicate LATCH primitive "generalFSM:fsm|imm[14]" merged with LATCH primitive "generalFSM:fsm|imm[7]" File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 83
@@ -1454,65 +1457,67 @@ Info (13025): Duplicate LATCH primitives merged into single LATCH primitive
     Info (13026): Duplicate LATCH primitive "generalFSM:fsm|imm[8]" merged with LATCH primitive "generalFSM:fsm|imm[7]" File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 83
 Warning (13012): Latch generalFSM:fsm|PCSel has unsafe behavior File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 18
     Warning (13013): Ports D and ENA on the latch are fed by the same signal generalFSM:fsm|state.S7_Branch File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 27
+Warning (13012): Latch generalFSM:fsm|keySel has unsafe behavior File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 9
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal generalFSM:fsm|state.S8_Keypress File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 27
 Warning (13012): Latch generalFSM:fsm|RetAddrSave has unsafe behavior File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 9
     Warning (13013): Ports D and ENA on the latch are fed by the same signal generalFSM:fsm|state.S6_Jump File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 27
 Warning (13012): Latch generalFSM:fsm|Ren[15] has unsafe behavior File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 83
     Warning (13013): Ports D and ENA on the latch are fed by the same signal generalFSM:fsm|state.S6_Jump File: /home/u1460207/Desktop/GFlipFlops/CPU/generalFSM.v Line: 27
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "r[0]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 6
-    Warning (13410): Pin "r[1]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 6
-    Warning (13410): Pin "r[2]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 6
-    Warning (13410): Pin "r[3]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 6
-    Warning (13410): Pin "r[4]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 6
-    Warning (13410): Pin "r[5]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 6
-    Warning (13410): Pin "r[6]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 6
-    Warning (13410): Pin "g[0]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 6
-    Warning (13410): Pin "g[1]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 6
-    Warning (13410): Pin "g[2]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 6
-    Warning (13410): Pin "g[3]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 6
-    Warning (13410): Pin "g[4]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 6
-    Warning (13410): Pin "g[5]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 6
-    Warning (13410): Pin "g[6]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 6
-    Warning (13410): Pin "b[0]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 6
-    Warning (13410): Pin "b[1]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 6
-    Warning (13410): Pin "b[2]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 6
-    Warning (13410): Pin "b[3]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 6
-    Warning (13410): Pin "b[4]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 6
-    Warning (13410): Pin "b[5]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 6
-    Warning (13410): Pin "b[6]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 6
-    Warning (13410): Pin "segOut[14]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 9
-    Warning (13410): Pin "segOut[15]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 9
-    Warning (13410): Pin "segOut[16]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 9
-    Warning (13410): Pin "segOut[17]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 9
-    Warning (13410): Pin "segOut[18]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 9
-    Warning (13410): Pin "segOut[19]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 9
-    Warning (13410): Pin "segOut[20]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 9
-    Warning (13410): Pin "segOut[21]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 9
-    Warning (13410): Pin "segOut[22]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 9
-    Warning (13410): Pin "segOut[23]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 9
-    Warning (13410): Pin "segOut[24]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 9
-    Warning (13410): Pin "segOut[25]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 9
-    Warning (13410): Pin "segOut[26]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 9
-    Warning (13410): Pin "segOut[27]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 9
+    Warning (13410): Pin "r[0]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 14
+    Warning (13410): Pin "r[1]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 14
+    Warning (13410): Pin "r[2]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 14
+    Warning (13410): Pin "r[3]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 14
+    Warning (13410): Pin "r[4]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 14
+    Warning (13410): Pin "r[5]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 14
+    Warning (13410): Pin "r[6]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 14
+    Warning (13410): Pin "g[0]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 14
+    Warning (13410): Pin "g[1]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 14
+    Warning (13410): Pin "g[2]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 14
+    Warning (13410): Pin "g[3]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 14
+    Warning (13410): Pin "g[4]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 14
+    Warning (13410): Pin "g[5]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 14
+    Warning (13410): Pin "g[6]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 14
+    Warning (13410): Pin "b[0]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 14
+    Warning (13410): Pin "b[1]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 14
+    Warning (13410): Pin "b[2]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 14
+    Warning (13410): Pin "b[3]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 14
+    Warning (13410): Pin "b[4]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 14
+    Warning (13410): Pin "b[5]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 14
+    Warning (13410): Pin "b[6]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 14
+    Warning (13410): Pin "segOut[14]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 17
+    Warning (13410): Pin "segOut[15]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 17
+    Warning (13410): Pin "segOut[16]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 17
+    Warning (13410): Pin "segOut[17]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 17
+    Warning (13410): Pin "segOut[18]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 17
+    Warning (13410): Pin "segOut[19]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 17
+    Warning (13410): Pin "segOut[20]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 17
+    Warning (13410): Pin "segOut[21]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 17
+    Warning (13410): Pin "segOut[22]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 17
+    Warning (13410): Pin "segOut[23]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 17
+    Warning (13410): Pin "segOut[24]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 17
+    Warning (13410): Pin "segOut[25]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 17
+    Warning (13410): Pin "segOut[26]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 17
+    Warning (13410): Pin "segOut[27]" is stuck at GND File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 17
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 6 registers lost all their fanouts during netlist optimizations.
+Info (17049): 4 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file /home/u1460207/Desktop/GFlipFlops/CPU/HardCodedVga.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 2 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "ps2_clk" File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 4
-    Warning (15610): No output dependent on input pin "ps2_dat" File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 4
-Info (21057): Implemented 1634 device resources after synthesis - the final resource count might be different
+    Warning (15610): No output dependent on input pin "ps2_clk" File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 12
+    Warning (15610): No output dependent on input pin "ps2_dat" File: /home/u1460207/Desktop/GFlipFlops/CPU/cpu.v Line: 12
+Info (21057): Implemented 1831 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 5 input pins
     Info (21059): Implemented 56 output pins
-    Info (21061): Implemented 1444 logic cells
+    Info (21061): Implemented 1641 logic cells
     Info (21064): Implemented 128 RAM segments
     Info (21062): Implemented 1 DSP elements
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 475 warnings
-    Info: Peak virtual memory: 874 megabytes
-    Info: Processing ended: Thu Dec  4 02:28:37 2025
-    Info: Elapsed time: 00:01:17
-    Info: Total CPU time (on all processors): 00:01:22
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 473 warnings
+    Info: Peak virtual memory: 917 megabytes
+    Info: Processing ended: Thu Dec  4 12:25:53 2025
+    Info: Elapsed time: 00:00:58
+    Info: Total CPU time (on all processors): 00:01:03
 
 
 +------------------------------------------+
