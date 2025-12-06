@@ -12,7 +12,7 @@
 5E06
 0020
 4ECE
-F0F0    //load ps2 into r6	// keypress
+F0F0    //load ps2 into r6 // keypress
 0B10    // mov r11 r6
 0B56
 1B08    //andi r11 8          // r11 = r11 & 0b1000 (mask bit 3)
@@ -20,19 +20,19 @@ BB00    //cmpi r11 0          // Compare with 0
 0E10    // jne cont
 5E1B
 0020
-4ECE
+41CE
 F0E0    //handled keypress
 0E10    // ret
-0E5F				
+0E5F
 4ECE
-0A10    // mov r10 r6		// cont
+0A10    // mov r10 r6 // cont
 0A56
 1A07    //andi r10 7          // r10 = r10 & 0b0111 (get key code)
 BA00    //cmpi r10 0
 0E10    // jne check_a
 5E28
 0020
-4ECE
+41CE
 9510    //subi r5 16          // Move cursor up one row
 F0E0    //handled keypress
 0E10    // ret
@@ -42,7 +42,7 @@ BA01    //cmpi r10 1
 0E10    // jne check_s
 5E32
 0020
-4ECE
+41CE
 9501    //subi r5 1           // Move cursor left
 F0E0    //handled keypress
 0E10    // ret
@@ -52,7 +52,7 @@ BA02    //cmpi r10 2
 0E10    // jne check_d
 5E3C
 0020
-4ECE
+41CE
 5510    //addi r5 16          // Move cursor down one row
 F0E0    //handled keypress
 0E10    // ret
@@ -62,7 +62,7 @@ BA03    //cmpi r10 3
 0E10    // jne keypress_ret
 5E46
 0020
-4ECE
+41CE
 5501    //addi r5 1           // Move cursor right
 F0E0    //handled keypress
 0E10    // ret
@@ -72,3 +72,25 @@ F0E0    //handled keypress
 0E10    // ret
 0E5F
 4ECE
+0000
+0000
+0000
+0000
+0000
+0000
+0000
+0001
+0002
+0003
+0004
+0005
+0006
+0007
+0008
+0009
+000A
+000B
+000C
+000D
+000E
+000F

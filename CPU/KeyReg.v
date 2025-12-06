@@ -13,11 +13,11 @@ output reg [3:0] key_info
 	always @(posedge clk, negedge rst, posedge newpress_en, posedge rst_handle) begin
 	
 		if (~rst) begin
-			key_info <= 11'd0;
+			key_info <= 4'd0;
 		end
 		else if(newpress_en) begin
 			handle_press = 1'b1;
-			key_info <= {handle_press, key_enc};
+			key_info <= {handle_press, key_enc[2:0]};
 		end
 		else if (rst_handle)begin
 			handle_press = 1'b0;

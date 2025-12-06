@@ -51,9 +51,10 @@ endmodule
 
 // Structural Implementation of RegBank
 /********/
-module RegBank(din, r0, r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14, r15, regEnable, clk, rst);
+module RegBank(din, audioCounter, r0, r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14, r15, regEnable, clk, rst);
 	input clk, rst;
 	input [15:0] din;
+	input [15:0] audioCounter;
 	input [15:0] regEnable;
 	output [15:0] r0, r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14, r15;
 
@@ -67,7 +68,7 @@ Register Inst0(
 Register Inst1(din, regEnable[1], rst, clk, r1);
 Register Inst2(din, regEnable[2], rst, clk, r2);
 Register Inst3(din, regEnable[3], rst, clk, r3);
-Register Inst4(din, regEnable[4], rst, clk, r4);
+Register Inst4(audioCounter, 1, rst, clk, r4);
 Register Inst5(din, regEnable[5], rst, clk, r5);
 Register Inst6(din, regEnable[6], rst, clk, r6);
 Register Inst7(din, regEnable[7], rst, clk, r7);

@@ -13,7 +13,7 @@ module HardCodedVga(
 	assign cursorLoc =  sys_data[15:0];
 	
 	assign beatArray = {8'b10100001, 8'b11111111, 8'b11111111, 8'b01001010, 8'b10100001, 8'b11111111, 8'b00000000, 8'b01001010};
-	assign currentBeat = 4'd2;
+	assign currentBeat = sys_data[31:16];
 	
 	
 	

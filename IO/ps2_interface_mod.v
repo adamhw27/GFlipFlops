@@ -28,16 +28,18 @@ wire parity;
 wire stop;
 wire parity_check;
 
+// Capture bits to be interpreted (11 bits total)
+reg [15:0] key_data;		// Main data bits, including E0 if applicable
+reg [10:0] shift_reg;	// PS/2 data frame
+reg [3:0] bit_count;		// Counter for no. of bits
+
 assign start = shift_reg[0];
 assign data_b = shift_reg[8:1];
 assign parity = shift_reg[9];
 assign stop = shift_reg[10];
 assign parity_check = ((^data_b) ^ parity) == 1'b1;
 
-// Capture bits to be interpreted (11 bits total)
-reg [15:0] key_data;		// Main data bits, including E0 if applicable
-reg [10:0] shift_reg;	// PS/2 data frame
-reg [3:0] bit_count;		// Counter for no. of bits
+
 
 // Decoding bits from PS/2 keyboard
 always @(posedge clk or negedge rst) begin
