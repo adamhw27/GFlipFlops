@@ -45,12 +45,13 @@ parameter ASHU = 8'b1000_1111;
 parameter ASHUI = 8'b1000_001x;
 
 
+initial begin
+flags[4:0] = 5'b00000;
 
+end
 always @(R1, R2, opcode, cin)
  begin
-	
-	flags[4:0] = 5'b00000;
-	
+		
 	casex (opcode)
 	
   

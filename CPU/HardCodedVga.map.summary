@@ -1,11 +1,11 @@
-Analysis & Synthesis Status : Successful - Sat Dec  6 11:35:34 2025
+Analysis & Synthesis Status : Successful - Sat Dec  6 15:42:50 2025
 Quartus Prime Version : 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 Revision Name : HardCodedVga
 Top-level Entity Name : cpu
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
 Total registers : 464
-Total pins : 73
+Total pins : 75
 Total virtual pins : 0
 Total block memory bits : 1,048,576
 Total DSP Blocks : 1

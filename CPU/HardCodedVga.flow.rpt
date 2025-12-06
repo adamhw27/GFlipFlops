@@ -1,5 +1,5 @@
 Flow report for HardCodedVga
-Sat Dec  6 11:35:34 2025
+Sat Dec  6 15:42:50 2025
 Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 
 
@@ -41,16 +41,16 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +---------------------------------+------------------------------------------------+
-; Flow Status                     ; Successful - Sat Dec  6 11:35:34 2025          ;
+; Flow Status                     ; Successful - Sat Dec  6 15:42:50 2025          ;
 ; Quartus Prime Version           ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
 ; Revision Name                   ; HardCodedVga                                   ;
 ; Top-level Entity Name           ; cpu                                            ;
 ; Family                          ; Cyclone V                                      ;
-; Device                          ; 5CSEMA5F31C6                                   ;
+; Device                          ; 5CGXFC7C7F23C8                                 ;
 ; Timing Models                   ; Final                                          ;
 ; Logic utilization (in ALMs)     ; N/A                                            ;
 ; Total registers                 ; 464                                            ;
-; Total pins                      ; 73                                             ;
+; Total pins                      ; 75                                             ;
 ; Total virtual pins              ; 0                                              ;
 ; Total block memory bits         ; 1,048,576                                      ;
 ; Total DSP Blocks                ; 1                                              ;
@@ -68,7 +68,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 12/06/2025 11:35:16 ;
+; Start date & time ; 12/06/2025 15:42:37 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; HardCodedVga        ;
 +-------------------+---------------------+
@@ -79,39 +79,48 @@ https://fpgasoftware.intel.com/eula.
 +--------------------------------------+----------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                      ; Value                                  ; Default Value ; Entity Name ; Section Id     ;
 +--------------------------------------+----------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID                ; 242035846946476.176504611623280        ; --            ; --          ; --             ;
-; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --          ; cpu_ps2_tb     ;
-; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; cpu_ps2_tb                             ; --            ; --          ; eda_simulation ;
+; COMPILER_SIGNATURE_ID                ; 27214213951882.176506095741618         ; --            ; --          ; --             ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --          ; generalFSM_tb  ;
+; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; generalFSM_tb                          ; --            ; --          ; eda_simulation ;
 ; EDA_OUTPUT_DATA_FORMAT               ; Verilog Hdl                            ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                  ; Questa Intel FPGA (Verilog)            ; <None>        ; --          ; --             ;
 ; EDA_TEST_BENCH_ENABLE_STATUS         ; TEST_BENCH_MODE                        ; --            ; --          ; eda_simulation ;
-; EDA_TEST_BENCH_FILE                  ; cpu_ps2_tb.v                           ; --            ; --          ; cpu_ps2_tb     ;
-; EDA_TEST_BENCH_FILE                  ; cpu.v                                  ; --            ; --          ; cpu_ps2_tb     ;
-; EDA_TEST_BENCH_FILE                  ; regfile.v                              ; --            ; --          ; cpu_ps2_tb     ;
-; EDA_TEST_BENCH_FILE                  ; generalFSM.v                           ; --            ; --          ; cpu_ps2_tb     ;
-; EDA_TEST_BENCH_FILE                  ; key_demo_fix.hex                       ; --            ; --          ; cpu_ps2_tb     ;
-; EDA_TEST_BENCH_FILE                  ; KeyReg.v                               ; --            ; --          ; cpu_ps2_tb     ;
-; EDA_TEST_BENCH_FILE                  ; simple_keydemo.hex                     ; --            ; --          ; cpu_ps2_tb     ;
-; EDA_TEST_BENCH_FILE                  ; keydemo.hex                            ; --            ; --          ; cpu_ps2_tb     ;
-; EDA_TEST_BENCH_FILE                  ; seven_seg_hex.v                        ; --            ; --          ; cpu_ps2_tb     ;
-; EDA_TEST_BENCH_FILE                  ; true_dual_port_ram_single_clock.v      ; --            ; --          ; cpu_ps2_tb     ;
-; EDA_TEST_BENCH_FILE                  ; twoInputMuxv.v                         ; --            ; --          ; cpu_ps2_tb     ;
-; EDA_TEST_BENCH_FILE                  ; tb_hardcoded_FSM_test.v                ; --            ; --          ; cpu_ps2_tb     ;
-; EDA_TEST_BENCH_FILE                  ; pc.v                                   ; --            ; --          ; cpu_ps2_tb     ;
-; EDA_TEST_BENCH_FILE                  ; memH.hex                               ; --            ; --          ; cpu_ps2_tb     ;
-; EDA_TEST_BENCH_FILE                  ; alu.v                                  ; --            ; --          ; cpu_ps2_tb     ;
-; EDA_TEST_BENCH_FILE                  ; PCDisplacementCalculator.v             ; --            ; --          ; cpu_ps2_tb     ;
-; EDA_TEST_BENCH_FILE                  ; Mux.v                                  ; --            ; --          ; cpu_ps2_tb     ;
-; EDA_TEST_BENCH_FILE                  ; IRreg.v                                ; --            ; --          ; cpu_ps2_tb     ;
-; EDA_TEST_BENCH_FILE                  ; FlagReg.v                              ; --            ; --          ; cpu_ps2_tb     ;
-; EDA_TEST_BENCH_FILE                  ; ../VGA/HardCodedVga.v                  ; --            ; --          ; cpu_ps2_tb     ;
-; EDA_TEST_BENCH_FILE                  ; ../VGA/vgabitgen.v                     ; --            ; --          ; cpu_ps2_tb     ;
-; EDA_TEST_BENCH_FILE                  ; ../VGA/VGAcontroller.v                 ; --            ; --          ; cpu_ps2_tb     ;
-; EDA_TEST_BENCH_FILE                  ; ../VGA/GlyphGen.v                      ; --            ; --          ; cpu_ps2_tb     ;
-; EDA_TEST_BENCH_FILE                  ; ../VGA/glyph_new2_mem.hex              ; --            ; --          ; cpu_ps2_tb     ;
-; EDA_TEST_BENCH_FILE                  ; ../IO/ps2_interface_mod.v              ; --            ; --          ; cpu_ps2_tb     ;
-; EDA_TEST_BENCH_MODULE_NAME           ; cpu_ps2_tb                             ; --            ; --          ; cpu_ps2_tb     ;
-; EDA_TEST_BENCH_NAME                  ; cpu_ps2_tb                             ; --            ; --          ; eda_simulation ;
+; EDA_TEST_BENCH_FILE                  ; alu.v                                  ; --            ; --          ; generalFSM_tb  ;
+; EDA_TEST_BENCH_FILE                  ; generalFSM_tb.v                        ; --            ; --          ; generalFSM_tb  ;
+; EDA_TEST_BENCH_FILE                  ; cpu.v                                  ; --            ; --          ; generalFSM_tb  ;
+; EDA_TEST_BENCH_FILE                  ; generalFSM.v                           ; --            ; --          ; generalFSM_tb  ;
+; EDA_TEST_BENCH_FILE                  ; IRreg.v                                ; --            ; --          ; generalFSM_tb  ;
+; EDA_TEST_BENCH_FILE                  ; key_demo_fix.hex                       ; --            ; --          ; generalFSM_tb  ;
+; EDA_TEST_BENCH_FILE                  ; keydemo.hex                            ; --            ; --          ; generalFSM_tb  ;
+; EDA_TEST_BENCH_FILE                  ; KeyReg.v                               ; --            ; --          ; generalFSM_tb  ;
+; EDA_TEST_BENCH_FILE                  ; memH.hex                               ; --            ; --          ; generalFSM_tb  ;
+; EDA_TEST_BENCH_FILE                  ; Mux.v                                  ; --            ; --          ; generalFSM_tb  ;
+; EDA_TEST_BENCH_FILE                  ; pc.v                                   ; --            ; --          ; generalFSM_tb  ;
+; EDA_TEST_BENCH_FILE                  ; regfile.v                              ; --            ; --          ; generalFSM_tb  ;
+; EDA_TEST_BENCH_FILE                  ; PCDisplacementCalculator.v             ; --            ; --          ; generalFSM_tb  ;
+; EDA_TEST_BENCH_FILE                  ; seven_seg_hex.v                        ; --            ; --          ; generalFSM_tb  ;
+; EDA_TEST_BENCH_FILE                  ; simple_keydemo.hex                     ; --            ; --          ; generalFSM_tb  ;
+; EDA_TEST_BENCH_FILE                  ; true_dual_port_ram_single_clock.v      ; --            ; --          ; generalFSM_tb  ;
+; EDA_TEST_BENCH_FILE                  ; twoInputMuxv.v                         ; --            ; --          ; generalFSM_tb  ;
+; EDA_TEST_BENCH_FILE                  ; ../Audio/pll_0002.v                    ; --            ; --          ; generalFSM_tb  ;
+; EDA_TEST_BENCH_FILE                  ; ../Audio/pll.v                         ; --            ; --          ; generalFSM_tb  ;
+; EDA_TEST_BENCH_FILE                  ; ../Audio/pll.vo                        ; --            ; --          ; generalFSM_tb  ;
+; EDA_TEST_BENCH_FILE                  ; ../Audio/i2c_controller.v              ; --            ; --          ; generalFSM_tb  ;
+; EDA_TEST_BENCH_FILE                  ; ../Audio/i2c_config.v                  ; --            ; --          ; generalFSM_tb  ;
+; EDA_TEST_BENCH_FILE                  ; ../Audio/completeAudioCodec.v          ; --            ; --          ; generalFSM_tb  ;
+; EDA_TEST_BENCH_FILE                  ; ../Audio/bitStreamControl.v            ; --            ; --          ; generalFSM_tb  ;
+; EDA_TEST_BENCH_FILE                  ; ../Audio/bitStreamAudio.v              ; --            ; --          ; generalFSM_tb  ;
+; EDA_TEST_BENCH_FILE                  ; ../Audio/RboomboomBigEndian.txt        ; --            ; --          ; generalFSM_tb  ;
+; EDA_TEST_BENCH_FILE                  ; ../Audio/RlalaBigEndian.txt            ; --            ; --          ; generalFSM_tb  ;
+; EDA_TEST_BENCH_FILE                  ; ../Audio/RpowmpowmBigEndian.txt        ; --            ; --          ; generalFSM_tb  ;
+; EDA_TEST_BENCH_FILE                  ; ../Audio/RpshhpshhBigEndian.txt        ; --            ; --          ; generalFSM_tb  ;
+; EDA_TEST_BENCH_FILE                  ; ../VGA/GlyphGen.v                      ; --            ; --          ; generalFSM_tb  ;
+; EDA_TEST_BENCH_FILE                  ; ../VGA/glyph_new2_mem.hex              ; --            ; --          ; generalFSM_tb  ;
+; EDA_TEST_BENCH_FILE                  ; ../VGA/HardCodedVga.v                  ; --            ; --          ; generalFSM_tb  ;
+; EDA_TEST_BENCH_FILE                  ; ../VGA/vgabitgen.v                     ; --            ; --          ; generalFSM_tb  ;
+; EDA_TEST_BENCH_FILE                  ; ../VGA/VGAcontroller.v                 ; --            ; --          ; generalFSM_tb  ;
+; EDA_TEST_BENCH_MODULE_NAME           ; generalFSM_tb                          ; --            ; --          ; generalFSM_tb  ;
+; EDA_TEST_BENCH_NAME                  ; generalFSM_tb                          ; --            ; --          ; eda_simulation ;
 ; EDA_TIME_SCALE                       ; 1 ps                                   ; --            ; --          ; eda_simulation ;
 ; MAX_CORE_JUNCTION_TEMP               ; 85                                     ; --            ; --          ; --             ;
 ; MIN_CORE_JUNCTION_TEMP               ; 0                                      ; --            ; --          ; --             ;
@@ -129,18 +138,18 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:18     ; 1.0                     ; 4895 MB             ; 00:00:36                           ;
-; Total                ; 00:00:18     ; --                      ; --                  ; 00:00:36                           ;
+; Analysis & Synthesis ; 00:00:12     ; 1.0                     ; 828 MB              ; 00:00:19                           ;
+; Total                ; 00:00:12     ; --                      ; --                  ; 00:00:19                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+------------------------------------------------------------------------------------+
-; Flow OS Summary                                                                    ;
-+----------------------+------------------+------------+------------+----------------+
-; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
-+----------------------+------------------+------------+------------+----------------+
-; Analysis & Synthesis ; Charburrito      ; Windows 10 ; 10.0       ; x86_64         ;
-+----------------------+------------------+------------+------------+----------------+
++-------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                     ;
++----------------------+----------------------+---------+------------+----------------+
+; Module Name          ; Machine Hostname     ; OS Name ; OS Version ; Processor type ;
++----------------------+----------------------+---------+------------+----------------+
+; Analysis & Synthesis ; lab1-13.eng.utah.edu ; Red Hat ; Red Hat    ; x86_64         ;
++----------------------+----------------------+---------+------------+----------------+
 
 
 ------------

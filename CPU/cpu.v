@@ -9,7 +9,7 @@
 module cpu (
 input cin,
 input clk, rst,
-//input ps2_clk, ps2_dat,
+input ps2_clk, ps2_dat,
 input [3:0] key_enc,
 input button_decr, button_incr,
 output vga_clk, vga_blank_n, vga_vs, vga_hs,
@@ -151,7 +151,7 @@ wire [15:0] ret_addr_or_alu;
 TwoInputMux returnAddress(.i0(ALUBus), .i1(nextpc), .sel(RetAddrSave), .out(ret_addr_or_alu));
 
 // mux for checking if were writing to reg bank from keyboard or mem or alu
-TwoInputMux KeyMux(.i0(ret_addr_or_alu), .i1(key_info), .sel(keySel), .out(inputToRB));
+TwoInputMux KeyMux(.i0(ret_addr_or_alu), .i1({12'd0, key_info}), .sel(keySel), .out(inputToRB));
 
 
 
