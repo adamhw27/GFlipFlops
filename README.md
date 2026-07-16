@@ -2,9 +2,9 @@
 
 A semester-long project for **ECE 3710: Computer Design Lab** in which we designed a
 16-bit processor from scratch in Verilog, implemented it on an Intel DE10-Standard
-(Cyclone V) FPGA, and built a small hardware system around it: PS/2 keyboard input,
-VGA text/graphics output, and an audio codec driver. We also wrote a Python assembler
-and toolchain so we could write programs for the CPU and run them on the board.
+(Cyclone V) FPGA, and built a small hardware system around it: VGA graphics output
+and an audio codec driver. We also wrote a Python assembler and toolchain so we could
+write programs for the CPU and generate memory images for the board.
 
 **Team:** Adam Welsh, Charbel Salloum, Ethan Palisoc, Harrison LeTourneau
 
@@ -14,10 +14,19 @@ and toolchain so we could write programs for the CPU and run them on the board.
 
 The processor implements a custom RISC-style instruction set (a CR16-like ISA). It
 runs programs out of a dual-port block RAM, drives a VGA display through a glyph/tile
-renderer, reads key input from a PS/2 keyboard, and can play audio samples out through
-the board's audio codec over I²C + I²S. The headline demo is an interactive grid where
-the WASD keys move a cursor on the VGA screen, with the current program counter and
-cursor position shown on the seven-segment displays.
+renderer, and plays audio samples out through the board's audio codec over I²C + I²S.
+
+The working end-of-semester demo is a simple beat visualizer: an audio sample loops
+continuously through the codec while an arrow glyph steps across a row of beat markers
+on the VGA display. The arrow position (0–63) is driven by the two on-board push-buttons
+(increment / decrement), and the program counter and a register value are shown on the
+seven-segment displays.
+
+> **Scope note:** a PS/2 keyboard interface (`IO/`) was written and is instantiated in
+> the top-level, with the intent of letting a keyboard move the on-screen cursor. We were
+> not able to get the PS/2 path working end-to-end, so it is **not** part of the final
+> demo — the on-screen arrow is driven by the push-buttons instead. The PS/2 RTL is left
+> in the tree as the work we did on it.
 
 ## Repository layout
 
@@ -26,7 +35,7 @@ cursor position shown on the seven-segment displays.
 | `CPU/`     | The processor core — ALU, register bank, program counter, control FSM, instruction register, flag register, and the top-level `cpu.v` that wires it all together. Includes testbenches (`*_tb.v`) and the memory-init `.hex` files. |
 | `VGA/`     | VGA controller, glyph generator, and the hard-coded VGA demo top (`HardCodedVga.v`) plus its glyph memory. |
 | `Audio/`   | Audio codec pipeline — I²C configuration, I²S bit-stream transfer, PLL, and the audio sample data (`*BigEndian.txt`). |
-| `IO/`      | PS/2 keyboard interface and its testbenches. |
+| `IO/`      | PS/2 keyboard interface and its testbenches (attempted input path — see scope note above). |
 | `Memory/`  | Standalone memory subsystem lab — dual-port RAM, memory FSM, and testbench. |
 | `asm/`     | Python assembler toolchain (see below). |
 
@@ -47,7 +56,8 @@ python3 asm/glyph_gen.py asm/glyphs/*.c glyph_mem.hex
 ```
 
 `psuedo_ref.py` is a reference implementation documenting how each pseudo-instruction
-expands. `asm/examples/keydemo.asm` is the WASD cursor demo program.
+expands. `asm/examples/keydemo.asm` is a sample program written for the (unfinished)
+PS/2 keyboard-control path — a WASD cursor loop — kept as an example of assembler input.
 
 ## Building & simulating
 
