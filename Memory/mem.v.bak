@@ -1,6 +1,0 @@
-module mem
-(
-	input clk, rst
-);
-	
-endmodule

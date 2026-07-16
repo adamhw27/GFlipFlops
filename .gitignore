@@ -1,9 +1,39 @@
-work
-db
-incremental_db
-output_files
-simulation
-c5_pin_model_dump.txt
-*.qsf
+# --- Quartus build output & intermediate databases ---
+db/
+incremental_db/
+output_files/
+greybox_tmp/
+simulation/
+work/
 *.qws
+*.qsf
+*.qdf
+*.rpt
+*.summary
+*.smsg
+*.done
+*.sof
+*.pof
+*.pin
+*.cdf
+*.jdi
+*.sld
+*.sof.rbf
+c5_pin_model_dump.txt
+
+# --- ModelSim / simulation ---
+transcript
+vsim.wlf
+*.vo
+*.vho
+
+# --- Editor / tool backups & scratch ---
+*.bak
+*~
+.#*
+\#*\#
+
+# --- IDE / OS cruft ---
+.idea/
+.DS_Store
 *.pdf
