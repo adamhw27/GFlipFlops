@@ -8,7 +8,7 @@ module FlagReg(
 	begin
 		if (~rst)
 			oFlags <= 5'd0;
-	  else if (flagEn)
+	  	else if (flagEn)
 			oFlags <= iFlags;
 	end
 endmodule

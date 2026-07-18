@@ -1,11 +1,3 @@
-// TODO
-// 1. Figure out how to integrate ps2 to control r5. Asm currently properly updates r5.
-// 2. integrate global memory, demo.hex (asm), vga_arr, and aud_arr need to be declared in dual port so asm can access and manipulate.
-// 3. integrate audio
-// DEMO
-
-
-
 module cpu (
 input cin,
 input clk, rst,
@@ -185,37 +177,17 @@ TwoInputMux ALUmux(.i0(aluOut), .i1(instruction), .sel(Alu_Mux_cntl), .out(ALUBu
 wire [15:0] cursor_loc;
 assign cursor_loc = r5;
 
-
-reg [15:0]demo_cursor;
-
-
-HardCodedVga vga_mod(.clk(clk), .rst(rst), .sys_data({64'd0,r4, demo_cursor}), .vga_clk(vga_clk), .vga_blank_n(vga_blank_n), .vga_vs(vga_vs), .vga_hs(vga_hs), .r(r), .g(g), .b(b));
-
-
-always @(negedge button_incr, negedge button_decr, negedge rst) begin
-	if (~rst)begin
-		demo_cursor <= 16'd0;
-		end
-	else if (~button_incr) begin
-		if (demo_cursor == 16'd63) begin
-			demo_cursor <= 16'd0;
-		end
-		else begin
-			demo_cursor <= demo_cursor + 1'b1;
-		end
-	end
-	else if (~button_decr) begin
-		if (demo_cursor == 16'd0) begin
-			demo_cursor <= 16'd63;
-		end
-		else begin
-			demo_cursor <= demo_cursor - 1'b1;
-		end
-	end
-	
-end
-
-
+HardCodedVga vga_mod(
+	.clk(clk), 
+	.rst(rst), 
+	.sys_data({64'd0,r4, cursor_loc}), 
+	.vga_clk(vga_clk), 
+	.vga_blank_n(vga_blank_n), 
+	.vga_vs(vga_vs), 
+	.vga_hs(vga_hs), 
+	.r(r), 
+	.g(g), 
+	.b(b));
 
 // Connect SegOut
 seven_seg_hex a(PCvalue[3:0], segOut[6:0]);
@@ -223,20 +195,6 @@ seven_seg_hex sb(r5[3:0], segOut[13:7]);
 //seven_seg_hex c(r5[11:8], segOut[20:14]);
 //seven_seg_hex d(r5[15:12], segOut[27:21]);
 
-
-
-// Balls tester
-
-///reg [15:0] balls;
-//
-//always @(negedge button_clk, negedge rst)begin
-//	if(~rst) begin
-//		balls <= 16'd0;
-//	end
-//	else if (~button_clk) begin
-//		balls <= balls + 16'd1;
-//	end
-//end
 
 pll pll (
     .refclk (clk),

@@ -39,19 +39,6 @@ module GlyphGen(
 			pixColor <= glyphs[{current_glyph, vCount[4:0], hCount[4:1]}][7:4];
 	end
 	
-	reg [1:0] dance_state_indicator;
-	reg dance_state;
-	
-	always @(*)
-	begin
-		dance_state_indicator = currentBeat % 4;
-		if(dance_state_indicator == 0 || dance_state_indicator == 1)
-			dance_state = 0;
-		else
-			dance_state = 1;
-	end
-	
-	
 	always @(*)
 	begin
 	

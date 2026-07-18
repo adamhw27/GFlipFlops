@@ -37,3 +37,4 @@ vsim.wlf
 .idea/
 .DS_Store
 *.pdf
+.editorconfig
